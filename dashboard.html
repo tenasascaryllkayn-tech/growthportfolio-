@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Growth Portfolio</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9fbf9;
+      font-family: 'Quicksand', sans-serif;
+      color: #2d3436;
+    }
+
+    /* HEADER BANNER */
+    header {
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.15);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-size: 14px;
+      margin: 10px 0 0;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* DASHBOARD GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    /* SECTION CARDS */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #2d3436;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+      border: 1px solid #edf2f0;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(39, 174, 96, 0.12);
+      border-color: #2ecc71;
+    }
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    /* Color-coded icons for clarity */
+    .icon-philosophy { color: #27ae60; } /* Organic Green */
+    .icon-artifacts { color: #e67e22; }  /* Warm Amber */
+    .icon-reflection { color: #2980b9; } /* Deep Intellectual Blue */
+
+    .card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 10px 0;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #7f8c8d;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #7f8c8d;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+      color: #27ae60;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 0 30px;
+      font-size: 11px;
+      color: #95a5a6;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Teaching Portfolio</h1>
+    <p>Graduate Milestone & Pedagogical Documentation</p>
+  </header>
+
+  <div class="container">
+    
+    <a href="index.html" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Cover
+    </a>
+
+    <div class="grid">
+      
+      <a href="philosophy.html" class="card">
+        <div class="card-icon icon-philosophy">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <h2>Teaching Philosophy</h2>
+        <p>Core core beliefs, early childhood frameworks, and inclusive pedagogical values.</p>
+      </a>
+
+      <a href="artifacts.html" class="card">
+        <div class="card-icon icon-artifacts">
+          <i class="fa-solid fa-folder-open"></i>
+        </div>
+        <h2>Evidence & Artifacts</h2>
+        <p>Documented lesson plans, classroom setups, and student engagement materials.</p>
+      </a>
+
+      <a href="reflection.html" class="card">
+        <div class="card-icon icon-reflection">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h2>Professional Reflection</h2>
+        <p>Critical evaluations of teaching practice and goals for future growth.</p>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>© 2026 CARYLL'S GROWTH PORTFOLIO</footer>
+
+</body>
+</html>
