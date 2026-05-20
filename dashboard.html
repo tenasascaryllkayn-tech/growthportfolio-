@@ -25,22 +25,29 @@
       scroll-behavior: smooth;
     }
 
-    /* FLUSH TOP PROGRESS BAR */
-    .top-progress-bar {
+    /* FLUSH TOP EDGE PROGRESS BAR CONTAINER WITH INNER BAR */
+    .top-progress-container {
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
       width: 100% !important;
       height: 12px !important;
-      background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
+      background-color: #f2f4f4 !important;
       z-index: 1000 !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    }
+
+    .top-progress-bar {
+      width: 0%;
+      height: 100% !important;
+      background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
+      transition: width 0.1s ease-out !important;
     }
 
     .dashboard-container {
       width: 100% !important;
       max-width: 900px !important;
-      padding: 60px 20px 40px !important; /* Added top padding to clear the bar */
+      padding: 60px 20px 40px !important; 
       box-sizing: border-box !important;
       display: flex !important;
       flex-direction: column !important;
@@ -133,7 +140,6 @@
       position: relative !important;
     }
 
-    /* APPLE LEAF / STEM */
     .apple-stem {
       width: 16px !important;
       height: 22px !important;
@@ -176,7 +182,7 @@
       box-shadow: 0 12px 25px rgba(192, 57, 43, 0.3) !important;
     }
 
-    /* ICONS & LABELS - SOFT CREAM */
+    /* ICONS & LABELS */
     .apple-body i {
       font-size: 28px !important;
       color: #fcefe9 !important; 
@@ -194,12 +200,11 @@
       text-align: center !important;
     }
 
-    /* RESPONSIVE, ROUND FLOATING CONTROL MENU */
-    .floating-control-panel {
+    /* SLEEK LOWER RIGHT FIXED DOCK */
+    .lower-control-panel {
       position: fixed !important;
-      right: 20px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
+      right: 25px !important;
+      bottom: 25px !important;
       display: flex !important;
       flex-direction: column !important;
       gap: 12px !important;
@@ -207,11 +212,11 @@
     }
 
     .control-btn {
-      width: 46px !important;
-      height: 46px !important;
-      background-color: #27ae60 !important; /* Seedling green */
+      width: 48px !important;
+      height: 48px !important;
+      background-color: #27ae60 !important; /* Seedling Green */
       color: #ffffff !important;
-      border-radius: 50% !important; /* Perfectly Round Circles */
+      border-radius: 50% !important; /* Crisp Circles */
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -219,27 +224,35 @@
       border: none !important;
       text-decoration: none !important;
       cursor: pointer !important;
-      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3) !important;
+      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3) !important;
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease !important;
     }
 
     .control-btn:hover {
-      transform: scale(1.12) !important;
+      transform: scale(1.1) !important;
       background-color: #219653 !important;
     }
 
-    /* Style tweak for the home button to match theme beautifully */
+    /* Home Button styling distinction */
     .home-btn {
-      background-color: #2d3436 !important; /* Classic bold grey-black for home distinction */
-      box-shadow: 0 4px 12px rgba(45, 52, 54, 0.25) !important;
+      background-color: #2d3436 !important; /* Grounded Charcoal Grey */
+      box-shadow: 0 4px 15px rgba(45, 52, 54, 0.25) !important;
     }
     .home-btn:hover {
       background-color: #1a1a1a !important;
     }
 
+    /* Rotate transition for the flipping smart arrow */
+    .smart-arrow i {
+      transition: transform 0.3s ease !important;
+    }
+    .flip-up i {
+      transform: rotate(180deg) !important;
+    }
+
     @media (max-width: 480px) {
-      .floating-control-panel { right: 12px !important; }
-      .control-btn { width: 40px !important; height: 40px !important; font-size: 15px !important; }
+      .lower-control-panel { right: 16px !important; bottom: 16px !important; }
+      .control-btn { width: 44px !important; height: 44px !important; font-size: 16px !important; }
     }
 
     footer {
@@ -255,16 +268,16 @@
 </head>
 <body>
 
-  <div class="top-progress-bar"></div>
+  <div class="top-progress-container">
+    <div id="scrollProgressBar" class="top-progress-bar"></div>
+  </div>
 
-  <div class="floating-control-panel">
+  <div class="lower-control-panel">
     <a href="index.html" class="control-btn home-btn" aria-label="Go to home cover screen">
       <i class="fa-solid fa-house"></i>
     </a>
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="control-btn" aria-label="Scroll to top">
-      <i class="fa-solid fa-chevron-up"></i>
-    </button>
-    <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" class="control-btn" aria-label="Scroll to bottom">
+    
+    <button id="adaptiveArrow" onclick="handleArrowScroll()" class="control-btn smart-arrow" aria-label="Scroll page">
       <i class="fa-solid fa-chevron-down"></i>
     </button>
   </div>
@@ -363,6 +376,37 @@
 
   <footer>© 2026 Miss Caryll's Teaching Portfolio</footer>
 
+  <script>
+    window.onscroll = function() { handleScrollTracks() };
+
+    function handleScrollTracks() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      
+      // Update Top Border Tracker Line
+      document.getElementById("scrollProgressBar").style.width = scrolled + "%";
+      
+      // Turn the single arrow up if user scrolls past the halfway mark
+      var arrowButton = document.getElementById("adaptiveArrow");
+      if (scrolled > 50) {
+        arrowButton.classList.add("flip-up");
+      } else {
+        arrowButton.classList.remove("flip-up");
+      }
+    }
+
+    function handleArrowScroll() {
+      var arrowButton = document.getElementById("adaptiveArrow");
+      if (arrowButton.classList.contains("flip-up")) {
+        // Zip cleanly up to the top
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      } else {
+        // Roll smoothly right to the bottom footer
+        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+      }
+    }
+  </script>
+
 </body>
 </html>
-
