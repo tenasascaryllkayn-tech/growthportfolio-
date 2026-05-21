@@ -169,18 +169,16 @@
       position: relative !important;
     }
 
-    /* THE BASAL FLOWER POT */
+    /* THE CLAY POT BASE */
     .terracotta-pot {
       width: 54px !important;
       height: 42px !important;
-      background: #e67e22 !important; /* Clay Orange */
+      background: #e67e22 !important; 
       border-bottom-left-radius: 12px !important;
       border-bottom-right-radius: 12px !important;
       position: relative !important;
       box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1) !important;
     }
-
-    /* The rim of the flower pot */
     .terracotta-pot::before {
       content: '' !important;
       position: absolute !important;
@@ -192,95 +190,189 @@
       border-radius: 4px !important;
     }
 
-    /* STAGE 1: THE SEED (Soil Only) */
-    .stage-seed .growth-element {
-      width: 14px !important;
-      height: 8px !important;
-      background: #855e42 !important; /* Little mound of dirt */
+    /* --- THE 9 EVOLUTIONARY STAGES CSS --- */
+
+    /* STAGE 1: BARE SEEDLING (No Pot) */
+    .stage-1-bare .growth-element {
+      width: 16px !important;
+      height: 24px !important;
+      background-color: #2ecc71 !important;
+      border-radius: 0 100% 0 100% !important;
+      transform: rotate(-10deg);
+      margin-bottom: 15px !important;
+      box-shadow: -4px -1px 0 #27ae60 inset !important;
+    }
+    /* Simple earth mound replacement instead of a pot */
+    .stage-1-bare .earth-mound {
+      width: 60px !important;
+      height: 16px !important;
+      background: #855e42 !important;
       border-radius: 50% 50% 0 0 !important;
-      margin-bottom: 0px !important;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15) !important;
     }
 
-    /* STAGE 2: THE SPROUT (Tiny Leaves) */
-    .stage-sprout .growth-element {
-      width: 24px !important;
-      height: 18px !important;
+    /* STAGE 2: POTTED SPROUT */
+    .stage-2-sprout .growth-element {
+      width: 20px !important;
+      height: 16px !important;
       background-color: #2ecc71 !important;
       border-radius: 0 100% 0 100% !important;
       transform: rotate(-15deg);
       margin-bottom: 2px !important;
-      box-shadow: -6px -2px 0 #27ae60 inset !important;
     }
 
-    /* STAGE 3: THE SAPLING (Stem & Leaves) */
-    .stage-sapling .growth-element {
-      width: 6px !important;
-      height: 32px !important;
+    /* STAGE 3: GROWING SAPLING */
+    .stage-3-sapling .growth-element {
+      width: 5px !important;
+      height: 26px !important;
       background: #27ae60 !important;
-      border-radius: 4px !important;
       position: relative !important;
       margin-bottom: -2px !important;
     }
-    .stage-sapling .growth-element::after {
+    .stage-3-sapling .growth-element::after {
       content: '' !important;
-      position: absolute !important;
-      top: 6px !important;
-      right: -12px !important;
-      width: 14px !important;
-      height: 10px !important;
-      background: #2ecc71 !important;
-      border-radius: 0 100% 0 100% !important;
+      position: absolute;
+      top: 4px; right: -10px;
+      width: 12px; height: 8px;
+      background: #2ecc71;
+      border-radius: 0 100% 0 100%;
     }
 
-    /* STAGE 4: THE SHRUB (Bushy Foliage) */
-    .stage-shrub .growth-element {
-      width: 44px !important;
-      height: 44px !important;
+    /* STAGE 4: SMALL SHRUB */
+    .stage-4-shrub1 .growth-element {
+      width: 32px !important;
+      height: 32px !important;
       background: #27ae60 !important;
-      border-radius: 50% 50% 45% 45% !important;
-      margin-bottom: -4px !important;
-      position: relative !important;
-      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.08) !important;
-    }
-    .stage-shrub .growth-element::before {
-      content: '' !important;
-      position: absolute !important;
-      width: 20px !important;
-      height: 20px !important;
-      background: #2ecc71 !important;
       border-radius: 50% !important;
-      top: -6px !important;
-      left: 12px !important;
+      margin-bottom: -3px !important;
     }
 
-    /* STAGE 5: THE TREE (Matured Trunk and Canopy) */
-    .stage-tree .growth-element {
-      width: 10px !important;
-      height: 24px !important;
-      background: #855e42 !important; /* Wooden Trunk */
+    /* STAGE 5: MEDIUM SHRUB */
+    .stage-5-shrub2 .growth-element {
+      width: 42px !important;
+      height: 40px !important;
+      background: #219653 !important;
+      border-radius: 50% 50% 40% 40% !important;
       margin-bottom: -4px !important;
       position: relative !important;
     }
-    .stage-tree .growth-element::before {
+    .stage-5-shrub2 .growth-element::before {
       content: '' !important;
-      position: absolute !important;
-      bottom: 18px !important;
-      left: -25px !important;
-      width: 60px !important;
-      height: 50px !important;
-      background: #1e824c !important; /* Deep Green Canopy */
-      border-radius: 30px 30px 25px 25px !important;
-      box-shadow: inset -6px -6px 0 rgba(0,0,0,0.15) !important;
+      position: absolute;
+      width: 18px; height: 18px;
+      background: #2ecc71;
+      border-radius: 50%;
+      top: -4px; left: 16px;
     }
 
-    /* APP CONTEXT FLOATING ICONS OVER POTS */
+    /* STAGE 6: LARGE LUSH SHRUB */
+    .stage-6-shrub3 .growth-element {
+      width: 50px !important;
+      height: 48px !important;
+      background: #1e824c !important;
+      border-radius: 45% 45% 40% 40% !important;
+      margin-bottom: -4px !important;
+      position: relative;
+    }
+    .stage-6-shrub3 .growth-element::after {
+      content: '' !important;
+      position: absolute;
+      width: 25px; height: 25px;
+      background: #27ae60;
+      border-radius: 50%;
+      top: -6px; left: 4px;
+    }
+
+    /* STAGE 7: YOUNG TREE */
+    .stage-7-youngtree .growth-element {
+      width: 8px !important;
+      height: 22px !important;
+      background: #855e42 !important; /* Wood Trunk */
+      margin-bottom: -4px !important;
+      position: relative;
+    }
+    .stage-7-youngtree .growth-element::before {
+      content: '' !important;
+      position: absolute;
+      bottom: 16px; left: -18px;
+      width: 44px; height: 38px;
+      background: #27ae60;
+      border-radius: 50%;
+    }
+
+    /* STAGE 8: MATURE CANOPY TREE */
+    .stage-8-maturetree .growth-element {
+      width: 10px !important;
+      height: 25px !important;
+      background: #734d26 !important;
+      margin-bottom: -4px !important;
+      position: relative;
+    }
+    .stage-8-maturetree .growth-element::before {
+      content: '' !important;
+      position: absolute;
+      bottom: 18px; left: -26px;
+      width: 62px; height: 52px;
+      background: #1e824c;
+      border-radius: 35px 35px 25px 25px !important;
+      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.1) !important;
+    }
+
+    /* STAGE 9: FRUITING TREE (Lush Tree with Sweet Apples) */
+    .stage-9-fruittree .growth-element {
+      width: 10px !important;
+      height: 25px !important;
+      background: #734d26 !important;
+      margin-bottom: -4px !important;
+      position: relative;
+    }
+    .stage-9-fruittree .growth-element::before {
+      content: '' !important;
+      position: absolute;
+      bottom: 18px; left: -26px;
+      width: 62px; height: 52px;
+      background: #196f3d !important;
+      border-radius: 35px 35px 25px 25px !important;
+      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.15) !important;
+    }
+    /* Tiny Sweet Apples growing on the tree canopy */
+    .stage-9-fruittree .growth-element::after {
+      content: '🍎' !important;
+      position: absolute;
+      bottom: 34px;
+      left: -8px;
+      font-size: 14px;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+    }
+    .stage-9-fruittree .apple-extra-1 {
+      position: absolute !important;
+      bottom: 25px !important;
+      right: -18px !important;
+      font-size: 10px !important;
+      z-index: 3 !important;
+    }
+    .stage-9-fruittree .apple-extra-2 {
+      position: absolute !important;
+      bottom: 44px !important;
+      right: -2px !important;
+      font-size: 11px !important;
+      z-index: 3 !important;
+    }
+
+
+    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
     .topic-badge-icon {
       position: absolute !important;
       bottom: 12px !important;
       z-index: 5 !important;
       color: #ffffff !important;
-      font-size: 14px !important;
+      font-size: 13px !important;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+    }
+    /* Specific adjustment for the pot-less bare seedling earth */
+    .stage-1-bare .topic-badge-icon {
+      bottom: 2px !important;
+      color: #fafbfc !important;
     }
 
     /* TEXT LABEL CONTENT STYLE */
@@ -390,16 +482,16 @@
 
     <div class="garden-grid">
       
-      <a href="the-teacher.html" class="plant-card stage-seed">
+      <a href="the-teacher.html" class="plant-card stage-1-bare">
         <div class="plant-art-container">
           <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
+          <div class="earth-mound"></div>
           <i class="fa-solid fa-user-tie topic-badge-icon"></i>
         </div>
         <span>The Teacher</span>
       </a>
 
-      <a href="environment.html" class="plant-card stage-seed">
+      <a href="environment.html" class="plant-card stage-2-sprout">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -408,7 +500,7 @@
         <span>Environment</span>
       </a>
 
-      <a href="theory.html" class="plant-card stage-sprout">
+      <a href="theory.html" class="plant-card stage-3-sapling">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -417,7 +509,7 @@
         <span>Theory</span>
       </a>
 
-      <a href="philosophy.html" class="plant-card stage-sprout">
+      <a href="philosophy.html" class="plant-card stage-4-shrub1">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -426,7 +518,7 @@
         <span>Philosophy</span>
       </a>
 
-      <a href="management.html" class="plant-card stage-sapling">
+      <a href="management.html" class="plant-card stage-5-shrub2">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -435,7 +527,7 @@
         <span>Management</span>
       </a>
 
-      <a href="assessment.html" class="plant-card stage-shrub">
+      <a href="assessment.html" class="plant-card stage-6-shrub3">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -444,7 +536,7 @@
         <span>Assessment</span>
       </a>
 
-      <a href="demo-teaching.html" class="plant-card stage-shrub">
+      <a href="demo-teaching.html" class="plant-card stage-7-youngtree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -453,7 +545,7 @@
         <span>Demo Teaching</span>
       </a>
 
-      <a href="gallery.html" class="plant-card stage-tree">
+      <a href="gallery.html" class="plant-card stage-8-maturetree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -462,9 +554,11 @@
         <span>Gallery</span>
       </a>
 
-      <a href="cbar.html" class="plant-card stage-tree">
+      <a href="cbar.html" class="plant-card stage-9-fruittree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
+          <span class="apple-extra-1">🍎</span>
+          <span class="apple-extra-2">🍎</span>
           <div class="terracotta-pot"></div>
           <i class="fa-solid fa-chart-bar topic-badge-icon"></i>
         </div>
@@ -490,7 +584,6 @@
       var arrowButton = document.getElementById("adaptiveArrow");
 
       if (totalHeight <= 10) {
-        // Since dashboard fits beautifully on screen, start bar fresh at 0%
         progressBar.style.width = "0%";
         arrowButton.classList.remove("flip-up");
       } else {
@@ -510,7 +603,6 @@
       var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       var arrowButton = document.getElementById("adaptiveArrow");
       
-      // If the dashboard fits perfectly without scrolling, let the arrow cleanly slide user down to footer
       if (totalHeight <= 10) {
         window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
       } else {
