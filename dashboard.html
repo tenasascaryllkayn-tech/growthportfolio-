@@ -9,7 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* STRUCTURAL FIX TO ENABLE GENUINE SCROLL ENGINE CALCULATIONS */
+    /* GLOBAL STRUCTURE & SCROLL ENGINE FIX */
     html {
       margin: 0 !important;
       padding: 0 !important;
@@ -22,7 +22,7 @@
       margin: 0 !important;
       padding: 0 !important;
       width: 100% !important;
-      min-height: 101vh !important; /* Forces just enough canvas depth so the browser registers scrolling */
+      min-height: 101vh !important; 
       background-color: #ffffff !important;
       font-family: 'Quicksand', sans-serif !important;
       color: #2d3436 !important;
@@ -30,7 +30,7 @@
       box-sizing: border-box !important;
     }
 
-    /* FLUSH TOP EDGE PROGRESS BAR CONTAINER WITH INNER BAR */
+    /* FLUSH TOP EDGE PROGRESS BAR */
     .top-progress-container {
       position: fixed !important;
       top: 0 !important;
@@ -43,15 +43,15 @@
     }
 
     .top-progress-bar {
-      width: 0%; /* Starts tracking accurately from zero now! */
+      width: 0%; 
       height: 100% !important;
       background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
     }
 
     .dashboard-container {
       width: 100% !important;
-      max-width: 900px !important;
-      margin: 0 auto !important; /* Smooth central horizontal alignment */
+      max-width: 950px !important;
+      margin: 0 auto !important; 
       padding: 60px 20px 40px !important; 
       box-sizing: border-box !important;
       display: flex !important;
@@ -59,7 +59,7 @@
       align-items: center !important;
     }
 
-    /* TOP LOGO & HEADER */
+    /* TYPOGRAPHY HEADERS */
     .hero-icon {
       font-size: 55px !important; 
       color: #27ae60 !important; 
@@ -98,11 +98,11 @@
       text-align: center !important;
     }
 
-    /* ARISTOTLE QUOTE BLOCK */
+    /* QUOTE BLOCK */
     .quote-container {
       max-width: 550px !important;
       text-align: center !important;
-      margin-bottom: 45px !important;
+      margin-bottom: 55px !important;
     }
 
     .quote-text {
@@ -119,93 +119,184 @@
       margin-top: 8px !important;
     }
 
-    /* THE APPLE GRID */
-    .apple-grid {
+    /* THE LUSH GARDEN GRID */
+    .garden-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
-      gap: 30px 20px !important;
+      gap: 40px 25px !important;
       width: 100% !important;
-      max-width: 700px !important;
-      margin-bottom: 50px !important;
+      max-width: 800px !important;
+      margin-bottom: 60px !important;
     }
 
-    @media (max-width: 600px) {
-      .apple-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    @media (max-width: 650px) {
+      .garden-grid { grid-template-columns: repeat(2, 1fr) !important; }
     }
-    @media (max-width: 400px) {
-      .apple-grid { grid-template-columns: 1fr !important; }
+    @media (max-width: 420px) {
+      .garden-grid { grid-template-columns: 1fr !important; }
     }
 
-    /* CUSTOM APPLE COMPONENT */
-    .apple-wrapper {
+    /* BOTANICAL PLANT ELEMENT WRAPPER */
+    .plant-card {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       text-decoration: none !important;
       position: relative !important;
-    }
-
-    .apple-stem {
-      width: 16px !important;
-      height: 22px !important;
-      background-color: #27ae60 !important;
-      border-radius: 0 100% 0 100% !important;
-      margin-bottom: -4px !important;
-      z-index: 2 !important;
-      transform: rotate(-15deg);
-    }
-
-    /* SHAPED APPLE BODY */
-    .apple-body {
-      width: 140px !important;
-      height: 125px !important;
-      background-color: #c0392b !important; 
-      border-radius: 60px 60px 60px 60px / 50px 50px 75px 75px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      padding: 15px !important;
-      box-sizing: border-box !important;
-      box-shadow: 0 8px 20px rgba(192, 57, 43, 0.15) !important;
+      background: #fafbfc !important;
+      border: 1px solid #f0f3f4 !important;
+      border-radius: 20px !important;
+      padding: 20px 10px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
     }
 
-    .apple-body::after {
+    .plant-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 12px 24px rgba(39, 174, 96, 0.12) !important;
+      background: #ffffff !important;
+    }
+
+    /* THE GROWING PLANT ARTWORK LAYOUT */
+    .plant-art-container {
+      width: 100px !important;
+      height: 110px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      margin-bottom: 12px !important;
+      position: relative !important;
+    }
+
+    /* THE BASAL FLOWER POT */
+    .terracotta-pot {
+      width: 54px !important;
+      height: 42px !important;
+      background: #e67e22 !important; /* Clay Orange */
+      border-bottom-left-radius: 12px !important;
+      border-bottom-right-radius: 12px !important;
+      position: relative !important;
+      box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1) !important;
+    }
+
+    /* The rim of the flower pot */
+    .terracotta-pot::before {
       content: '' !important;
       position: absolute !important;
-      bottom: 22px !important;
-      width: 25px !important;
+      top: 0 !important;
+      left: -4px !important;
+      width: 62px !important;
       height: 8px !important;
-      background-color: #ffffff !important;
+      background: #d35400 !important;
+      border-radius: 4px !important;
+    }
+
+    /* STAGE 1: THE SEED (Soil Only) */
+    .stage-seed .growth-element {
+      width: 14px !important;
+      height: 8px !important;
+      background: #855e42 !important; /* Little mound of dirt */
+      border-radius: 50% 50% 0 0 !important;
+      margin-bottom: 0px !important;
+    }
+
+    /* STAGE 2: THE SPROUT (Tiny Leaves) */
+    .stage-sprout .growth-element {
+      width: 24px !important;
+      height: 18px !important;
+      background-color: #2ecc71 !important;
+      border-radius: 0 100% 0 100% !important;
+      transform: rotate(-15deg);
+      margin-bottom: 2px !important;
+      box-shadow: -6px -2px 0 #27ae60 inset !important;
+    }
+
+    /* STAGE 3: THE SAPLING (Stem & Leaves) */
+    .stage-sapling .growth-element {
+      width: 6px !important;
+      height: 32px !important;
+      background: #27ae60 !important;
+      border-radius: 4px !important;
+      position: relative !important;
+      margin-bottom: -2px !important;
+    }
+    .stage-sapling .growth-element::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 6px !important;
+      right: -12px !important;
+      width: 14px !important;
+      height: 10px !important;
+      background: #2ecc71 !important;
+      border-radius: 0 100% 0 100% !important;
+    }
+
+    /* STAGE 4: THE SHRUB (Bushy Foliage) */
+    .stage-shrub .growth-element {
+      width: 44px !important;
+      height: 44px !important;
+      background: #27ae60 !important;
+      border-radius: 50% 50% 45% 45% !important;
+      margin-bottom: -4px !important;
+      position: relative !important;
+      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.08) !important;
+    }
+    .stage-shrub .growth-element::before {
+      content: '' !important;
+      position: absolute !important;
+      width: 20px !important;
+      height: 20px !important;
+      background: #2ecc71 !important;
       border-radius: 50% !important;
-      opacity: 0.15 !important;
+      top: -6px !important;
+      left: 12px !important;
     }
 
-    .apple-wrapper:hover .apple-body {
-      transform: scale(1.06) !important;
-      box-shadow: 0 12px 25px rgba(192, 57, 43, 0.3) !important;
+    /* STAGE 5: THE TREE (Matured Trunk and Canopy) */
+    .stage-tree .growth-element {
+      width: 10px !important;
+      height: 24px !important;
+      background: #855e42 !important; /* Wooden Trunk */
+      margin-bottom: -4px !important;
+      position: relative !important;
+    }
+    .stage-tree .growth-element::before {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 18px !important;
+      left: -25px !important;
+      width: 60px !important;
+      height: 50px !important;
+      background: #1e824c !important; /* Deep Green Canopy */
+      border-radius: 30px 30px 25px 25px !important;
+      box-shadow: inset -6px -6px 0 rgba(0,0,0,0.15) !important;
     }
 
-    /* ICONS & LABELS */
-    .apple-body i {
-      font-size: 28px !important;
-      color: #fcefe9 !important; 
-      margin-bottom: 8px !important;
+    /* APP CONTEXT FLOATING ICONS OVER POTS */
+    .topic-badge-icon {
+      position: absolute !important;
+      bottom: 12px !important;
+      z-index: 5 !important;
+      color: #ffffff !important;
+      font-size: 14px !important;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
     }
 
-    .apple-body span {
+    /* TEXT LABEL CONTENT STYLE */
+    .plant-card span {
       font-family: 'Montserrat', sans-serif !important;
-      font-size: 10px !important;
+      font-size: 11px !important;
       font-weight: 700 !important;
-      color: #fcefe9 !important;
+      color: #2d3436 !important;
       text-transform: uppercase !important;
       letter-spacing: 1px !important;
-      line-height: 1.3 !important;
       text-align: center !important;
+      margin-top: 8px !important;
+      line-height: 1.3 !important;
     }
 
-    /* SLEEK LOWER RIGHT FIXED DOCK */
+    /* LOWER RIGHT NAVIGATION CONTROLS */
     .lower-control-panel {
       position: fixed !important;
       right: 25px !important;
@@ -246,7 +337,6 @@
       background-color: #1a1a1a !important;
     }
 
-    /* Smooth transitions for our single adaptive arrow */
     .smart-arrow i {
       transition: transform 0.3s ease !important;
     }
@@ -262,11 +352,10 @@
     footer {
       width: 100% !important;
       text-align: center !important;
-      padding: 30px 0 !important;
+      padding: 45px 0 30px !important;
       font-size: 11px !important;
       color: #95a5a6 !important;
       letter-spacing: 2px !important;
-      margin-top: auto !important;
     }
   </style>
 </head>
@@ -280,7 +369,6 @@
     <a href="index.html" class="control-btn home-btn" aria-label="Go to home cover screen">
       <i class="fa-solid fa-house"></i>
     </a>
-    
     <button id="adaptiveArrow" onclick="handleArrowScroll()" class="control-btn smart-arrow" aria-label="Scroll page">
       <i class="fa-solid fa-chevron-down"></i>
     </button>
@@ -300,78 +388,87 @@
       <span class="quote-author">— Aristotle</span>
     </div>
 
-    <div class="apple-grid">
+    <div class="garden-grid">
       
-      <a href="the-teacher.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-user-tie"></i>
-          <span>The Teacher</span>
+      <a href="the-teacher.html" class="plant-card stage-seed">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-user-tie topic-badge-icon"></i>
         </div>
+        <span>The Teacher</span>
       </a>
 
-      <a href="environment.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-school"></i>
-          <span>Environment</span>
+      <a href="environment.html" class="plant-card stage-seed">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-school topic-badge-icon"></i>
         </div>
+        <span>Environment</span>
       </a>
 
-      <a href="theory.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-lightbulb"></i>
-          <span>Theory</span>
+      <a href="theory.html" class="plant-card stage-sprout">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-lightbulb topic-badge-icon"></i>
         </div>
+        <span>Theory</span>
       </a>
 
-      <a href="philosophy.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-heart"></i>
-          <span>Philosophy</span>
+      <a href="philosophy.html" class="plant-card stage-sprout">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-heart topic-badge-icon"></i>
         </div>
+        <span>Philosophy</span>
       </a>
 
-      <a href="management.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-hand-holding-heart"></i>
-          <span>Management</span>
+      <a href="management.html" class="plant-card stage-sapling">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-hand-holding-heart topic-badge-icon"></i>
         </div>
+        <span>Management</span>
       </a>
 
-      <a href="assessment.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-clipboard-check"></i>
-          <span>Assessment</span>
+      <a href="assessment.html" class="plant-card stage-shrub">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-clipboard-check topic-badge-icon"></i>
         </div>
+        <span>Assessment</span>
       </a>
 
-      <a href="demo-teaching.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-chalkboard-user"></i>
-          <span>Demo Teaching</span>
+      <a href="demo-teaching.html" class="plant-card stage-shrub">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-chalkboard-user topic-badge-icon"></i>
         </div>
+        <span>Demo Teaching</span>
       </a>
 
-      <a href="gallery.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-images"></i>
-          <span>Gallery</span>
+      <a href="gallery.html" class="plant-card stage-tree">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-images topic-badge-icon"></i>
         </div>
+        <span>Gallery</span>
       </a>
 
-      <a href="cbar.html" class="apple-wrapper">
-        <div class="apple-stem"></div>
-        <div class="apple-body">
-          <i class="fa-solid fa-chart-bar"></i>
-          <span>CBAR</span>
+      <a href="cbar.html" class="plant-card stage-tree">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-chart-bar topic-badge-icon"></i>
         </div>
+        <span>CBAR</span>
       </a>
 
     </div>
@@ -386,21 +483,19 @@
     window.onresize = function() { trackScrollEngine() };
 
     function trackScrollEngine() {
-      // Pull correct coordinates regardless of document architecture quirks
       var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
       var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       
       var progressBar = document.getElementById("scrollProgressBar");
       var arrowButton = document.getElementById("adaptiveArrow");
 
-      if (totalHeight <= 5) {
-        // Fallback for short page: let layout track fine adjustments smoothly
-        progressBar.style.width = winScroll > 0 ? "100%" : "0%";
+      if (totalHeight <= 10) {
+        // Since dashboard fits beautifully on screen, start bar fresh at 0%
+        progressBar.style.width = "0%";
+        arrowButton.classList.remove("flip-up");
       } else {
         var scrolled = (winScroll / totalHeight) * 100;
-        // Keep inside bounds 0-100 safely
         scrolled = Math.min(Math.max(scrolled, 0), 100);
-        
         progressBar.style.width = scrolled + "%";
         
         if (scrolled > 40) {
@@ -412,11 +507,18 @@
     }
 
     function handleArrowScroll() {
+      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       var arrowButton = document.getElementById("adaptiveArrow");
-      if (arrowButton.classList.contains("flip-up")) {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      } else {
+      
+      // If the dashboard fits perfectly without scrolling, let the arrow cleanly slide user down to footer
+      if (totalHeight <= 10) {
         window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+      } else {
+        if (arrowButton.classList.contains("flip-up")) {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        } else {
+          window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+        }
       }
     }
   </script>
