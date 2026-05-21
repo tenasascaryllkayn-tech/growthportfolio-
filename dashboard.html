@@ -9,20 +9,25 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* GLOBAL RESET & ALIGNMENT */
-    html, body {
+    /* STRUCTURAL FIX TO ENABLE GENUINE SCROLL ENGINE CALCULATIONS */
+    html {
       margin: 0 !important;
       padding: 0 !important;
       width: 100% !important;
-      min-height: 100vh !important;
+      height: 100% !important;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      min-height: 101vh !important; /* Forces just enough canvas depth so the browser registers scrolling */
       background-color: #ffffff !important;
       font-family: 'Quicksand', sans-serif !important;
       color: #2d3436 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
+      display: block !important;
       box-sizing: border-box !important;
-      scroll-behavior: smooth;
     }
 
     /* FLUSH TOP EDGE PROGRESS BAR CONTAINER WITH INNER BAR */
@@ -33,21 +38,21 @@
       width: 100% !important;
       height: 12px !important;
       background-color: #f2f4f4 !important;
-      z-index: 1000 !important;
+      z-index: 2000 !important;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
     }
 
     .top-progress-bar {
-      width: 100%; /* Defaults to full if content fits on one screen; changes dynamically when scrollable */
+      width: 0%; /* Starts tracking accurately from zero now! */
       height: 100% !important;
       background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
-      transition: width 0.15s ease-out !important;
     }
 
     .dashboard-container {
       width: 100% !important;
       max-width: 900px !important;
-      padding: 45px 20px 40px !important; 
+      margin: 0 auto !important; /* Smooth central horizontal alignment */
+      padding: 60px 20px 40px !important; 
       box-sizing: border-box !important;
       display: flex !important;
       flex-direction: column !important;
@@ -376,28 +381,29 @@
   <footer>© 2026 Miss Caryll's Teaching Portfolio</footer>
 
   <script>
-    // Execute logic immediately on layout generation and scroll toggling
-    window.onscroll = function() { handleScrollTracks() };
-    window.onload = function() { handleScrollTracks() };
-    window.onresize = function() { handleScrollTracks() };
+    window.onscroll = function() { trackScrollEngine() };
+    window.onload = function() { trackScrollEngine() };
+    window.onresize = function() { trackScrollEngine() };
 
-    function handleScrollTracks() {
-      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    function trackScrollEngine() {
+      // Pull correct coordinates regardless of document architecture quirks
+      var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       
       var progressBar = document.getElementById("scrollProgressBar");
       var arrowButton = document.getElementById("adaptiveArrow");
 
-      if (height <= 0) {
-        // Safe check fallback: If content fits neatly on one single screen, set bar to full
-        progressBar.style.width = "100%";
-        arrowButton.classList.add("flip-up"); // Point up to return cleanly to index cover page
+      if (totalHeight <= 5) {
+        // Fallback for short page: let layout track fine adjustments smoothly
+        progressBar.style.width = winScroll > 0 ? "100%" : "0%";
       } else {
-        // Scale dynamically relative to accurate scroll distances
-        var scrolled = (winScroll / height) * 100;
+        var scrolled = (winScroll / totalHeight) * 100;
+        // Keep inside bounds 0-100 safely
+        scrolled = Math.min(Math.max(scrolled, 0), 100);
+        
         progressBar.style.width = scrolled + "%";
         
-        if (scrolled > 50) {
+        if (scrolled > 40) {
           arrowButton.classList.add("flip-up");
         } else {
           arrowButton.classList.remove("flip-up");
@@ -406,18 +412,11 @@
     }
 
     function handleArrowScroll() {
-      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var arrowButton = document.getElementById("adaptiveArrow");
-      
-      if (height <= 0) {
-        // Quick short-circuit shortcut: If the page doesn't need to scroll, let it act as a link back home!
-        window.location.href = "index.html";
+      if (arrowButton.classList.contains("flip-up")) {
+        window.scrollTo({top: 0, behavior: 'smooth'});
       } else {
-        if (arrowButton.classList.contains("flip-up")) {
-          window.scrollTo({top: 0, behavior: 'smooth'});
-        } else {
-          window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
-        }
+        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
       }
     }
   </script>
