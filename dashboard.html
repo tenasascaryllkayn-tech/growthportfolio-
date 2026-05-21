@@ -38,16 +38,16 @@
     }
 
     .top-progress-bar {
-      width: 0%;
+      width: 100%; /* Defaults to full if content fits on one screen; changes dynamically when scrollable */
       height: 100% !important;
       background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
-      transition: width 0.1s ease-out !important;
+      transition: width 0.15s ease-out !important;
     }
 
     .dashboard-container {
       width: 100% !important;
       max-width: 900px !important;
-      padding: 60px 20px 40px !important; 
+      padding: 45px 20px 40px !important; 
       box-sizing: border-box !important;
       display: flex !important;
       flex-direction: column !important;
@@ -214,9 +214,9 @@
     .control-btn {
       width: 48px !important;
       height: 48px !important;
-      background-color: #27ae60 !important; /* Seedling Green */
+      background-color: #27ae60 !important; 
       color: #ffffff !important;
-      border-radius: 50% !important; /* Crisp Circles */
+      border-radius: 50% !important; 
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -233,16 +233,15 @@
       background-color: #219653 !important;
     }
 
-    /* Home Button styling distinction */
     .home-btn {
-      background-color: #2d3436 !important; /* Grounded Charcoal Grey */
+      background-color: #2d3436 !important; 
       box-shadow: 0 4px 15px rgba(45, 52, 54, 0.25) !important;
     }
     .home-btn:hover {
       background-color: #1a1a1a !important;
     }
 
-    /* Rotate transition for the flipping smart arrow */
+    /* Smooth transitions for our single adaptive arrow */
     .smart-arrow i {
       transition: transform 0.3s ease !important;
     }
@@ -377,33 +376,48 @@
   <footer>© 2026 Miss Caryll's Teaching Portfolio</footer>
 
   <script>
+    // Execute logic immediately on layout generation and scroll toggling
     window.onscroll = function() { handleScrollTracks() };
+    window.onload = function() { handleScrollTracks() };
+    window.onresize = function() { handleScrollTracks() };
 
     function handleScrollTracks() {
       var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
       
-      // Update Top Border Tracker Line
-      document.getElementById("scrollProgressBar").style.width = scrolled + "%";
-      
-      // Turn the single arrow up if user scrolls past the halfway mark
+      var progressBar = document.getElementById("scrollProgressBar");
       var arrowButton = document.getElementById("adaptiveArrow");
-      if (scrolled > 50) {
-        arrowButton.classList.add("flip-up");
+
+      if (height <= 0) {
+        // Safe check fallback: If content fits neatly on one single screen, set bar to full
+        progressBar.style.width = "100%";
+        arrowButton.classList.add("flip-up"); // Point up to return cleanly to index cover page
       } else {
-        arrowButton.classList.remove("flip-up");
+        // Scale dynamically relative to accurate scroll distances
+        var scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + "%";
+        
+        if (scrolled > 50) {
+          arrowButton.classList.add("flip-up");
+        } else {
+          arrowButton.classList.remove("flip-up");
+        }
       }
     }
 
     function handleArrowScroll() {
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var arrowButton = document.getElementById("adaptiveArrow");
-      if (arrowButton.classList.contains("flip-up")) {
-        // Zip cleanly up to the top
-        window.scrollTo({top: 0, behavior: 'smooth'});
+      
+      if (height <= 0) {
+        // Quick short-circuit shortcut: If the page doesn't need to scroll, let it act as a link back home!
+        window.location.href = "index.html";
       } else {
-        // Roll smoothly right to the bottom footer
-        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+        if (arrowButton.classList.contains("flip-up")) {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        } else {
+          window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+        }
       }
     }
   </script>
