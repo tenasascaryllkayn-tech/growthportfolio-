@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Teacher's Symphony | Portfolio Asset</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  
+  <!-- Fonts & Icons matching the crisp, minimalist branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    /* RESET & LIGHT BRIGHT BRANDING CUES FROM 2371_2.jpg */
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      -webkit-tap-highlight-color: transparent; 
+    }
+    
+    body {
+      background-color: #ffffff; /* Crisp light backdrop from 2371_2.jpg */
+      color: #2d3436; /* Dark charcoal text for readability */
+      font-family: 'Quicksand', sans-serif;
+      padding: 40px 20px 120px 20px; /* Comfort spacing for mobile viewports */
+      max-width: 500px; /* Constrains perfectly to a mobile screen */
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* MINI BRANDING ICON (Sprout Inspired) */
+    .brand-icon {
+      color: #2ecc71; /* Sprout Green from image 2371_2.jpg */
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: gentle-bounce 2s infinite ease-in-out;
+    }
+
+    /* INTERACTIVE FRAME CONTAINER */
+    .poem-container {
+      position: relative; 
+      padding-bottom: 56.25%; /* Golden widescreen 16:9 ratio */
+      height: 0; 
+      overflow: hidden; 
+      width: 100%; 
+      background: #fafafa;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); /* Soft subtle shadow */
+      margin-bottom: 30px;
+    }
+
+    .poem-container iframe {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    /* MINIMALIST CAPTION / INSTRUCTIONAL TEXT */
+    .meta-caption {
+      text-align: center;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .meta-caption p {
+      font-size: 13px;
+      color: #636e72;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .meta-caption span {
+      display: block;
+      margin-top: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #e67e22; /* Accent Orange from 2371_2.jpg */
+    }
+
+    /* PERSISTENT FLOATING BOTTOM CONTROL ACTION */
+    .mobile-nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white blur */
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    /* INTERACTIVE BUTTON MATCHING THE MENU STYLE */
+    .return-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none; 
+      color: #e67e22; /* Warm Amber Orange Accent */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      transition: all 0.3s ease;
+      padding: 12px 28px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 2px solid #e67e22; /* Orange box border matching your original layout */
+      cursor: pointer;
+    }
+
+    /* Hover/Tap interaction states */
+    .return-link-btn:active, .return-link-btn:hover {
+      background-color: #e67e22;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
+    }
+
+    /* Keyframe for a little dynamic brand movement */
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- THE SPROUT IDENTITY MOTIF -->
+  <div class="brand-icon">
+    <i class="fa-solid fa-seedling"></i>
+  </div>
+
+  <!-- EMBED WINDOW LAYER -->
+  <div class="poem-container">
+    <iframe 
+      src="https://view.genially.com/69ac7f6014c7191a9d5c6ddb/interactive-content-a-teachers-symphony" 
+      type="text/html" 
+      allowscriptaccess="always" 
+      allowfullscreen="true" 
+      scrolling="yes" 
+      allownetworking="all">
+    </iframe>
+  </div>
+
+  <!-- INSTRUCTIONAL CAPTION -->
+  <div class="meta-caption">
+    <p>Tap inside the panel above to experience the interactive dashboard asset natively.</p>
+    <span>Interactive Experience</span>
+  </div>
+
+  <!-- STICKY BOTTOM RETURN PORTAL -->
+  <nav class="mobile-nav-bar">
+    <a href="index.html" class="return-link-btn">
+       <i class="fa-solid fa-arrow-left-long"></i>
+       Return to Dashboard
+    </a>
+  </nav>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Teacher's Symphony | Portfolio Asset</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  
+  <!-- Fonts & Icons matching the crisp, minimalist branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    /* RESET & LIGHT BRIGHT BRANDING CUES FROM 2371_2.jpg */
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      -webkit-tap-highlight-color: transparent; 
+    }
+    
+    body {
+      background-color: #ffffff; /* Crisp light backdrop from 2371_2.jpg */
+      color: #2d3436; /* Dark charcoal text for readability */
+      font-family: 'Quicksand', sans-serif;
+      padding: 40px 20px 120px 20px; /* Comfort spacing for mobile viewports */
+      max-width: 500px; /* Constrains perfectly to a mobile screen */
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* MINI BRANDING ICON (Sprout Inspired) */
+    .brand-icon {
+      color: #2ecc71; /* Sprout Green from image 2371_2.jpg */
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: gentle-bounce 2s infinite ease-in-out;
+    }
+
+    /* INTERACTIVE FRAME CONTAINER */
+    .poem-container {
+      position: relative; 
+      padding-bottom: 56.25%; /* Golden widescreen 16:9 ratio */
+      height: 0; 
+      overflow: hidden; 
+      width: 100%; 
+      background: #fafafa;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); /* Soft subtle shadow */
+      margin-bottom: 30px;
+    }
+
+    .poem-container iframe {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    /* MINIMALIST CAPTION / INSTRUCTIONAL TEXT */
+    .meta-caption {
+      text-align: center;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .meta-caption p {
+      font-size: 13px;
+      color: #636e72;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .meta-caption span {
+      display: block;
+      margin-top: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #e67e22; /* Accent Orange from 2371_2.jpg */
+    }
+
+    /* PERSISTENT FLOATING BOTTOM CONTROL ACTION */
+    .mobile-nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white blur */
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    /* INTERACTIVE BUTTON MATCHING THE MENU STYLE */
+    .return-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none; 
+      color: #e67e22; /* Warm Amber Orange Accent */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      transition: all 0.3s ease;
+      padding: 12px 28px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 2px solid #e67e22; /* Orange box border matching your original layout */
+      cursor: pointer;
+    }
+
+    /* Hover/Tap interaction states */
+    .return-link-btn:active, .return-link-btn:hover {
+      background-color: #e67e22;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
+    }
+
+    /* Keyframe for a little dynamic brand movement */
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- THE SPROUT IDENTITY MOTIF -->
+  <div class="brand-icon">
+    <i class="fa-solid fa-seedling"></i>
+  </div>
+
+  <!-- EMBED WINDOW LAYER -->
+  <div class="poem-container">
+    <iframe 
+      src="https://view.genially.com/69ac7f6014c7191a9d5c6ddb/interactive-content-a-teachers-symphony" 
+      type="text/html" 
+      allowscriptaccess="always" 
+      allowfullscreen="true" 
+      scrolling="yes" 
+      allownetworking="all">
+    </iframe>
+  </div>
+
+  <!-- INSTRUCTIONAL CAPTION -->
+  <div class="meta-caption">
+    <p>Tap inside the panel above to experience the interactive dashboard asset natively.</p>
+    <span>Interactive Experience</span>
+  </div>
+
+  <!-- STICKY BOTTOM RETURN PORTAL -->
+  <nav class="mobile-nav-bar">
+    <a href="index.html" class="return-link-btn">
+       <i class="fa-solid fa-arrow-left-long"></i>
+       Return to Dashboard
+    </a>
+  </nav>
+
+</body>
+</html>
