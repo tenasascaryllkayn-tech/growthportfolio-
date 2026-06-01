@@ -34,8 +34,7 @@
 
     .poem-container {
       position: relative; 
-      padding-bottom: 56.25%; 
-      height: 0; 
+      height: 600px; 
       overflow: hidden; 
       width: 100%; 
       background: #fafafa;
@@ -43,6 +42,11 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
       margin-bottom: 30px;
+      transition: height 0.3s ease;
+    }
+
+    .poem-container.zoomed {
+      height: 900px; /* zoomed in */
     }
 
     .poem-container iframe {
@@ -190,11 +194,11 @@
   <h2 class="section-heading">Poem Reflection</h2>
 
   <!-- Google Docs Embedded Viewer -->
-  <div class="poem-container" id="docViewer" style="padding-bottom:0; height:600px;">
+  <div class="poem-container" id="docViewer">
     <iframe 
       id="docFrame"
       src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
-      width="100%" height="600" style="border:0; border-radius:16px;">
+      width="100%" height="100%" style="border:0; border-radius:16px;">
     </iframe>
   </div>
 
@@ -220,11 +224,7 @@
   <script>
     function toggleZoom() {
       const viewer = document.getElementById("docViewer");
-      if (viewer.style.height === "600px") {
-        viewer.style.height = "900px"; // zoomed in
-      } else {
-        viewer.style.height = "600px"; // default size
-      }
+      viewer.classList.toggle("zoomed");
     }
 
     function printDoc() {
@@ -236,4 +236,3 @@
 
 </body>
 </html>
-
