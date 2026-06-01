@@ -5,22 +5,16 @@
   <title>A Teacher's Symphony | Portfolio Asset</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
   
-  <!-- Fonts & Icons matching your crisp typography profile -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* DESIGN REPLICATED FROM THE BRANDING IN 2371_2.jpg */
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      -webkit-tap-highlight-color: transparent; 
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     
     body {
-      background-color: #ffffff; /* Crisp light backdrop */
-      color: #2d3436; /* Dark charcoal text */
+      background-color: #ffffff;
+      color: #2d3436;
       font-family: 'Quicksand', sans-serif;
       padding: 40px 20px 120px 20px; 
       max-width: 500px; 
@@ -31,7 +25,6 @@
       align-items: center;
     }
 
-    /* Sprout Green Accent Motif */
     .brand-icon {
       color: #2ecc71; 
       font-size: 32px;
@@ -39,7 +32,6 @@
       animation: gentle-bounce 2s infinite ease-in-out;
     }
 
-    /* Embed Widescreen Container */
     .poem-container {
       position: relative; 
       padding-bottom: 56.25%; 
@@ -55,10 +47,8 @@
 
     .poem-container iframe {
       position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%;
+      top: 0; left: 0; 
+      width: 100%; height: 100%;
       border: 0;
       border-radius: 16px;
     }
@@ -66,7 +56,7 @@
     .meta-caption {
       text-align: center;
       max-width: 90%;
-      margin: 0 auto;
+      margin: 0 auto 30px auto;
     }
 
     .meta-caption p {
@@ -84,10 +74,20 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: #e67e22; /* Accent Orange */
+      color: #e67e22;
     }
 
-    /* Fixed Bottom Navigation Area */
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #e67e22;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
     .mobile-nav-bar {
       position: fixed;
       bottom: 0;
@@ -104,7 +104,6 @@
       z-index: 2000;
     }
 
-    /* Orange Box Border Link Style matching your original UI */
     .return-link-btn {
       display: inline-flex;
       align-items: center;
@@ -124,7 +123,7 @@
       cursor: pointer;
     }
 
-    .return-link-btn:active, .return-link-btn:hover {
+    .return-link-btn:hover {
       background-color: #e67e22;
       color: #ffffff;
       box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
@@ -142,194 +141,36 @@
     <i class="fa-solid fa-seedling"></i>
   </div>
 
+  <!-- Genially Embed -->
   <div class="poem-container">
     <iframe 
       src="https://view.genially.com/69ac7f6014c7191a9d5c6ddb/interactive-content-a-teachers-symphony" 
-      type="text/html" 
-      allowscriptaccess="always" 
-      allowfullscreen="true" 
-      scrolling="yes" 
-      allownetworking="all">
+      allowfullscreen="true" scrolling="yes">
     </iframe>
   </div>
 
   <div class="meta-caption">
-    <p>Tap inside the panel above to view the interactive portfolio asset natively.</p>
+    <p><strong>Teacher’s Guide:</strong> Please zoom in on the interactive Genially slide above to explore the visuals and text clearly.</p>
     <span>Interactive Experience</span>
   </div>
 
-  <nav class="mobile-nav-bar">
-    <!-- Points to your main repository folder index without trailing hyphens -->
-    <a href="index.html" class="return-link-btn">
-       <i class="fa-solid fa-arrow-left-long"></i>
-       Return to Dashboard
-    </a>
-  </nav>
+  <!-- Poem Reflection Heading -->
+  <h2 class="section-heading">Poem Reflection</h2>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>A Teacher's Symphony | Portfolio Asset</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-  
-  <!-- Fonts & Icons matching your crisp typography profile -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-  
-  <style>
-    /* DESIGN REPLICATED FROM THE BRANDING IN 2371_2.jpg */
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      -webkit-tap-highlight-color: transparent; 
-    }
-    
-    body {
-      background-color: #ffffff; /* Crisp light backdrop */
-      color: #2d3436; /* Dark charcoal text */
-      font-family: 'Quicksand', sans-serif;
-      padding: 40px 20px 120px 20px; 
-      max-width: 500px; 
-      margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Sprout Green Accent Motif */
-    .brand-icon {
-      color: #2ecc71; 
-      font-size: 32px;
-      margin-bottom: 20px;
-      animation: gentle-bounce 2s infinite ease-in-out;
-    }
-
-    /* Embed Widescreen Container */
-    .poem-container {
-      position: relative; 
-      padding-bottom: 56.25%; 
-      height: 0; 
-      overflow: hidden; 
-      width: 100%; 
-      background: #fafafa;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
-      margin-bottom: 30px;
-    }
-
-    .poem-container iframe {
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%;
-      border: 0;
-      border-radius: 16px;
-    }
-
-    .meta-caption {
-      text-align: center;
-      max-width: 90%;
-      margin: 0 auto;
-    }
-
-    .meta-caption p {
-      font-size: 13px;
-      color: #636e72;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    .meta-caption span {
-      display: block;
-      margin-top: 8px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #e67e22; /* Accent Orange */
-    }
-
-    /* Fixed Bottom Navigation Area */
-    .mobile-nav-bar {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 500px;
-      background-color: rgba(255, 255, 255, 0.95); 
-      backdrop-filter: blur(8px);
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      z-index: 2000;
-    }
-
-    /* Orange Box Border Link Style matching your original UI */
-    .return-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none; 
-      color: #e67e22; 
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px; 
-      font-weight: 700; 
-      text-transform: uppercase; 
-      letter-spacing: 2px; 
-      transition: all 0.3s ease;
-      padding: 12px 28px;
-      border-radius: 6px;
-      background: #ffffff;
-      border: 2px solid #e67e22; 
-      cursor: pointer;
-    }
-
-    .return-link-btn:active, .return-link-btn:hover {
-      background-color: #e67e22;
-      color: #ffffff;
-      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
-    }
-
-    @keyframes gentle-bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="brand-icon">
-    <i class="fa-solid fa-seedling"></i>
-  </div>
-
-  <div class="poem-container">
+  <!-- Google Docs Embedded Viewer -->
+  <div class="poem-container" style="padding-bottom:0; height:600px;">
     <iframe 
-      src="https://view.genially.com/69ac7f6014c7191a9d5c6ddb/interactive-content-a-teachers-symphony" 
-      type="text/html" 
-      allowscriptaccess="always" 
-      allowfullscreen="true" 
-      scrolling="yes" 
-      allownetworking="all">
+      src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
+      width="100%" height="600" style="border:0; border-radius:16px;">
     </iframe>
   </div>
 
   <div class="meta-caption">
-    <p>Tap inside the panel above to view the interactive portfolio asset natively.</p>
-    <span>Interactive Experience</span>
+    <p>The reflection document is embedded above for direct viewing within the portfolio.</p>
+    <span>Reflection Document Viewer</span>
   </div>
 
   <nav class="mobile-nav-bar">
-    <!-- Points to your main repository folder index without trailing hyphens -->
     <a href="index.html" class="return-link-btn">
        <i class="fa-solid fa-arrow-left-long"></i>
        Return to Dashboard
