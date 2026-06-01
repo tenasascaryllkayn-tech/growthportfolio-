@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>A Teacher's Symphony | Portfolio Asset</title>
+  <title>Classroom Management | Portfolio Asset</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
   
   <!-- Fonts & Icons -->
@@ -28,8 +28,31 @@
     .brand-icon {
       color: #2ecc71; 
       font-size: 32px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       animation: gentle-bounce 2s infinite ease-in-out;
+    }
+
+    /* Top Main Page Title */
+    .main-page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #2d3436;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .main-page-title::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background-color: #e67e22;
+      margin: 8px auto 0 auto;
+      border-radius: 2px;
     }
 
     .poem-container {
@@ -42,7 +65,7 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
       margin-bottom: 30px;
-      transition: height 0.3s ease;
+      transition: height 0.2s ease-out; /* Smooth transition for zoom */
     }
 
     .poem-container iframe {
@@ -91,18 +114,18 @@
     .utility-buttons {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
       flex-wrap: wrap;
     }
 
-    .utility-buttons button, .utility-buttons a, .utility-buttons input[type=range] {
+    .utility-buttons button, .utility-buttons a, .zoom-control label {
       font-family: 'Montserrat', sans-serif;
       font-size: 11px; 
       font-weight: 700; 
       text-transform: uppercase; 
       letter-spacing: 1px; 
-      transition: all 0.3s ease;
     }
 
     .utility-buttons button, .utility-buttons a {
@@ -116,6 +139,7 @@
       background: #ffffff;
       border: 2px solid #e67e22; 
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .utility-buttons button:hover, .utility-buttons a:hover {
@@ -124,9 +148,25 @@
       box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
     }
 
+    .zoom-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fafafa;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .zoom-control label {
+      color: #636e72;
+      font-size: 10px;
+    }
+
     .utility-buttons input[type=range] {
-      width: 150px;
+      width: 110px;
       accent-color: #e67e22;
+      cursor: pointer;
     }
 
     .mobile-nav-bar {
@@ -182,6 +222,9 @@
     <i class="fa-solid fa-seedling"></i>
   </div>
 
+  <!-- New Main Header -->
+  <h1 class="main-page-title">Classroom Management</h1>
+
   <!-- Genially Embed -->
   <div class="poem-container">
     <iframe 
@@ -191,31 +234,36 @@
   </div>
 
   <div class="meta-caption">
-    <p><strong>Teacher’s Guide:</strong> Please zoom in on the interactive Genially slide above to explore the visuals and text clearly.</p>
+    <p><strong>Teacher’s Guide:</strong> Please use the settings panel inside the interactive Genially slide above to explore the multimedia elements clearly.</p>
     <span>Interactive Experience</span>
   </div>
 
   <!-- Poem Reflection Heading -->
   <h2 class="section-heading">Poem Reflection</h2>
 
-  <!-- Google Docs Embedded Viewer -->
+  <!-- Google Docs Embedded Viewer Container with id for Zoom -->
   <div class="poem-container" id="docViewer">
     <iframe 
       id="docFrame"
       src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
-      width="100%" height="100%" style="border:0; border-radius:16px;">
+      width="100%" height="100%">
     </iframe>
   </div>
 
   <div class="meta-caption">
     <p>The reflection document is embedded above for direct viewing within the portfolio.</p>
+    
     <div class="utility-buttons">
-      <label for="zoomRange"><i class="fa-solid fa-magnifying-glass"></i> Zoom</label>
-      <input type="range" id="zoomRange" min="600" max="1000" step="50" value="600" 
-             oninput="adjustZoom(this.value)">
-      <button onclick="printDoc()"><i class="fa-solid fa-print"></i> Print</button>
+      <!-- Fixed Zoom UI control layout -->
+      <div class="zoom-control">
+        <label for="zoomRange"><i class="fa-solid fa-magnifying-glass"></i> Size</label>
+        <input type="range" id="zoomRange" min="500" max="1000" step="50" value="600">
+      </div>
+      
+      <button id="printBtn"><i class="fa-solid fa-print"></i> Print</button>
+      
       <a href="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/edit?usp=sharing" target="_blank">
-        <i class="fa-solid fa-up-right-from-square"></i> Open in Tab
+        <i class="fa-solid fa-up-right-from-square"></i> Open Tab
       </a>
     </div>
     <span>Reflection Document Viewer</span>
@@ -229,17 +277,29 @@
   </nav>
 
   <script>
-    function adjustZoom(value) {
-      const viewer = document.getElementById("docViewer");
-      viewer.style.height = value + "px";
+    // Robust event checking for slider compatibility across Safari/Chrome
+    const slider = document.getElementById('zoomRange');
+    const viewer = document.getElementById('docViewer');
+    
+    if(slider && viewer) {
+      slider.addEventListener('input', function() {
+        viewer.style.height = this.value + 'px';
+      });
     }
 
-    function printDoc() {
-      const frame = document.getElementById("docFrame").contentWindow;
-      frame.focus();
-      frame.print();
+    // Bypass cross-origin iframe print restrictions smoothly
+    const printBtn = document.getElementById('printBtn');
+    if(printBtn) {
+      printBtn.addEventListener('click', function() {
+        const printWindow = window.open('https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/revisions', '_blank');
+        if(printWindow) {
+          printWindow.focus();
+          // Timeout gives Google Docs UI a millisecond to buffer text elements
+          setTimeout(() => { printWindow.print(); }, 500);
+        }
+      });
     }
   </script>
 
 </body>
-</
+</html>
