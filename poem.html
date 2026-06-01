@@ -88,6 +88,38 @@
       text-align: center;
     }
 
+    .utility-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .utility-buttons button, .utility-buttons a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none; 
+      color: #e67e22; 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 2px solid #e67e22; 
+      cursor: pointer;
+    }
+
+    .utility-buttons button:hover, .utility-buttons a:hover {
+      background-color: #e67e22;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);
+    }
+
     .mobile-nav-bar {
       position: fixed;
       bottom: 0;
@@ -157,9 +189,10 @@
   <!-- Poem Reflection Heading -->
   <h2 class="section-heading">Poem Reflection</h2>
 
-  <!-- Google Docs Embedded Viewer with Zoom -->
+  <!-- Google Docs Embedded Viewer -->
   <div class="poem-container" id="docViewer" style="padding-bottom:0; height:600px;">
     <iframe 
+      id="docFrame"
       src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
       width="100%" height="600" style="border:0; border-radius:16px;">
     </iframe>
@@ -167,9 +200,13 @@
 
   <div class="meta-caption">
     <p>The reflection document is embedded above for direct viewing within the portfolio.</p>
-    <button onclick="toggleZoom()" class="return-link-btn">
-      <i class="fa-solid fa-magnifying-glass"></i> Zoom Document
-    </button>
+    <div class="utility-buttons">
+      <button onclick="toggleZoom()"><i class="fa-solid fa-magnifying-glass"></i> Zoom</button>
+      <button onclick="printDoc()"><i class="fa-solid fa-print"></i> Print</button>
+      <a href="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/edit?usp=sharing" target="_blank">
+        <i class="fa-solid fa-up-right-from-square"></i> Open in Tab
+      </a>
+    </div>
     <span>Reflection Document Viewer</span>
   </div>
 
@@ -188,6 +225,12 @@
       } else {
         viewer.style.height = "600px"; // default size
       }
+    }
+
+    function printDoc() {
+      const frame = document.getElementById("docFrame").contentWindow;
+      frame.focus();
+      frame.print();
     }
   </script>
 
