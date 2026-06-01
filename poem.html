@@ -65,7 +65,15 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
       margin-bottom: 30px;
-      transition: height 0.2s ease-out; /* Smooth transition for zoom */
+    }
+
+    /* Wrapper specifically for the scaling zoom effect */
+    .iframe-zoom-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* Enables scrolling inside the frame box */
+      position: relative;
+      border-radius: 16px;
     }
 
     .poem-container iframe {
@@ -74,6 +82,8 @@
       width: 100%; height: 100%;
       border: 0;
       border-radius: 16px;
+      transform-origin: top left; /* Critical for scaling cleanly from the top corner */
+      transition: transform 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
     }
 
     .meta-caption {
@@ -164,7 +174,7 @@
     }
 
     .utility-buttons input[type=range] {
-      width: 110px;
+      width: 100px;
       accent-color: #e67e22;
       cursor: pointer;
     }
@@ -222,7 +232,7 @@
     <i class="fa-solid fa-seedling"></i>
   </div>
 
-  <!-- New Main Header -->
+  <!-- Main Header -->
   <h1 class="main-page-title">Classroom Management</h1>
 
   <!-- Genially Embed -->
@@ -241,23 +251,25 @@
   <!-- Poem Reflection Heading -->
   <h2 class="section-heading">Poem Reflection</h2>
 
-  <!-- Google Docs Embedded Viewer Container with id for Zoom -->
-  <div class="poem-container" id="docViewer">
-    <iframe 
-      id="docFrame"
-      src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
-      width="100%" height="100%">
-    </iframe>
+  <!-- Google Docs Embedded Viewer Container -->
+  <div class="poem-container">
+    <div class="iframe-zoom-wrapper" id="zoomWrapper">
+      <iframe 
+        id="docFrame"
+        src="https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/preview" 
+        width="100%" height="100%">
+      </iframe>
+    </div>
   </div>
 
   <div class="meta-caption">
     <p>The reflection document is embedded above for direct viewing within the portfolio.</p>
     
     <div class="utility-buttons">
-      <!-- Fixed Zoom UI control layout -->
+      <!-- Updated range parameters to correspond to magnification percentage (100% to 175%) -->
       <div class="zoom-control">
-        <label for="zoomRange"><i class="fa-solid fa-magnifying-glass"></i> Size</label>
-        <input type="range" id="zoomRange" min="500" max="1000" step="50" value="600">
+        <label for="zoomRange"><i class="fa-solid fa-magnifying-glass"></i> Zoom</label>
+        <input type="range" id="zoomRange" min="1" max="1.75" step="0.05" value="1">
       </div>
       
       <button id="printBtn"><i class="fa-solid fa-print"></i> Print</button>
@@ -277,24 +289,29 @@
   </nav>
 
   <script>
-    // Robust event checking for slider compatibility across Safari/Chrome
     const slider = document.getElementById('zoomRange');
-    const viewer = document.getElementById('docViewer');
+    const frame = document.getElementById('docFrame');
     
-    if(slider && viewer) {
+    if(slider && frame) {
       slider.addEventListener('input', function() {
-        viewer.style.height = this.value + 'px';
+        const scaleValue = this.value;
+        
+        // Scale the iframe elements smoothly
+        frame.style.transform = `scale(${scaleValue})`;
+        
+        // Counteract the visual compression by expanding the internal frame bounds
+        frame.style.width = (100 / scaleValue) + '%';
+        frame.style.height = (100 / scaleValue) + '%';
       });
     }
 
-    // Bypass cross-origin iframe print restrictions smoothly
+    // Print logic 
     const printBtn = document.getElementById('printBtn');
     if(printBtn) {
       printBtn.addEventListener('click', function() {
         const printWindow = window.open('https://docs.google.com/document/d/1kU7EYf0ZcZDReONDU3FNVn1nonyavfGeIIgxq61oXoM/revisions', '_blank');
         if(printWindow) {
           printWindow.focus();
-          // Timeout gives Google Docs UI a millisecond to buffer text elements
           setTimeout(() => { printWindow.print(); }, 500);
         }
       });
@@ -303,3 +320,4 @@
 
 </body>
 </html>
+
