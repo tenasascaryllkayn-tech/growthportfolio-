@@ -151,6 +151,14 @@
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
     }
 
+    /* Keep pointer cursor for links, default for static card */
+    a.plant-card {
+      cursor: pointer !important;
+    }
+    div.plant-card {
+      cursor: default !important;
+    }
+
     .plant-card:hover {
       transform: translateY(-6px) !important;
       box-shadow: 0 12px 24px rgba(39, 174, 96, 0.12) !important;
@@ -190,7 +198,7 @@
       border-radius: 4px !important;
     }
 
-    /* --- THE 9 EVOLUTIONARY STAGES CSS --- */
+    /* --- THE EVOLUTIONARY STAGES CSS --- */
 
     /* STAGE 1: BARE SEEDLING (No Pot) */
     .stage-1-bare .growth-element {
@@ -202,7 +210,6 @@
       margin-bottom: 15px !important;
       box-shadow: -4px -1px 0 #27ae60 inset !important;
     }
-    /* Simple earth mound replacement instead of a pot */
     .stage-1-bare .earth-mound {
       width: 60px !important;
       height: 16px !important;
@@ -287,7 +294,7 @@
     .stage-7-youngtree .growth-element {
       width: 8px !important;
       height: 22px !important;
-      background: #855e42 !important; /* Wood Trunk */
+      background: #855e42 !important; 
       margin-bottom: -4px !important;
       position: relative;
     }
@@ -318,7 +325,7 @@
       box-shadow: inset -5px -5px 0 rgba(0,0,0,0.1) !important;
     }
 
-    /* STAGE 9: FRUITING TREE (Lush Tree with Sweet Apples) */
+    /* STAGE 9: FRUITING TREE */
     .stage-9-fruittree .growth-element {
       width: 10px !important;
       height: 25px !important;
@@ -335,7 +342,6 @@
       border-radius: 35px 35px 25px 25px !important;
       box-shadow: inset -5px -5px 0 rgba(0,0,0,0.15) !important;
     }
-    /* Tiny Sweet Apples growing on the tree canopy */
     .stage-9-fruittree .growth-element::after {
       content: '🍎' !important;
       position: absolute;
@@ -359,6 +365,39 @@
       z-index: 3 !important;
     }
 
+    /* STAGE 10: DESIGNER CLOSE-UP BITTEN APPLE */
+    .stage-10-bitten-apple-container {
+      position: relative !important;
+      width: 65px !important;
+      height: 65px !important;
+      margin-bottom: 20px !important;
+      animation: gentle-sway 4s infinite ease-in-out;
+    }
+
+    /* Base Apple Character */
+    .bitten-apple-base {
+      font-size: 55px !important;
+      color: #c0392b !important;
+      position: absolute !important;
+      top: 0; left: 0;
+    }
+
+    /* Invisible circle overlay matching card backdrop that chews a bite out of the right side */
+    .bitten-apple-base::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 14px !important;
+      right: -10px !important;
+      width: 22px !important;
+      height: 22px !important;
+      background: #fafbfc !important; /* Perfect blend with resting card bg color */
+      border-radius: 50% !important;
+    }
+
+    /* Keeps cutout fluid and seamless on card hovering */
+    .plant-card:hover .bitten-apple-base::after {
+      background: #ffffff !important; 
+    }
 
     /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
     .topic-badge-icon {
@@ -369,7 +408,6 @@
       font-size: 13px !important;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
     }
-    /* Specific adjustment for the pot-less bare seedling earth */
     .stage-1-bare .topic-badge-icon {
       bottom: 2px !important;
       color: #fafbfc !important;
@@ -436,6 +474,11 @@
       transform: rotate(180deg) !important;
     }
 
+    @keyframes gentle-sway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+
     @media (max-width: 480px) {
       .lower-control-panel { right: 16px !important; bottom: 16px !important; }
       .control-btn { width: 44px !important; height: 44px !important; font-size: 16px !important; }
@@ -458,7 +501,7 @@
   </div>
 
   <div class="lower-control-panel">
-    <a href="index.html" class="control-btn home-btn" aria-label="Go to home cover screen">
+    <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/index.html" class="control-btn home-btn" aria-label="Go to home cover screen">
       <i class="fa-solid fa-house"></i>
     </a>
     <button id="adaptiveArrow" onclick="handleArrowScroll()" class="control-btn smart-arrow" aria-label="Scroll page">
@@ -482,6 +525,7 @@
 
     <div class="garden-grid">
       
+      <!-- STAGE 1: THE TEACHER -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/the-teacher.html" class="plant-card stage-1-bare">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -491,7 +535,8 @@
         <span>The Teacher</span>
       </a>
 
-      <a href="environment.html" class="plant-card stage-2-sprout">
+      <!-- STAGE 2: ENVIRONMENT -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/environment.html" class="plant-card stage-2-sprout">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -500,7 +545,8 @@
         <span>Environment</span>
       </a>
 
-      <a href="theory.html" class="plant-card stage-3-sapling">
+      <!-- STAGE 3: THEORY -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/theory.html" class="plant-card stage-3-sapling">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -509,7 +555,8 @@
         <span>Theory</span>
       </a>
 
-      <a href="philosophy.html" class="plant-card stage-4-shrub1">
+      <!-- STAGE 4: PHILOSOPHY -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/philosophy.html" class="plant-card stage-4-shrub1">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -518,6 +565,7 @@
         <span>Philosophy</span>
       </a>
 
+      <!-- STAGE 5: MANAGEMENT -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/management.html" class="plant-card stage-5-shrub2">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -527,16 +575,18 @@
         <span>Management</span>
       </a>
 
-      <a href="assessment.html" class="plant-card stage-6-shrub3">
+      <!-- STAGE 6: ASSESSMENT (STATIC CARD - LINK REMOVED) -->
+      <div class="plant-card stage-6-shrub3">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
           <i class="fa-solid fa-clipboard-check topic-badge-icon"></i>
         </div>
         <span>Assessment</span>
-      </a>
+      </div>
 
-      <a href="demo-teaching.html" class="plant-card stage-7-youngtree">
+      <!-- STAGE 7: DEMO TEACHING -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/demo-teaching.html" class="plant-card stage-7-youngtree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -545,7 +595,8 @@
         <span>Demo Teaching</span>
       </a>
 
-      <a href="gallery.html" class="plant-card stage-8-maturetree">
+      <!-- STAGE 8: GALLERY -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/gallery.html" class="plant-card stage-8-maturetree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
@@ -554,7 +605,8 @@
         <span>Gallery</span>
       </a>
 
-      <a href="cbar.html" class="plant-card stage-9-fruittree">
+      <!-- STAGE 9: CBAR -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/cbar.html" class="plant-card stage-9-fruittree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <span class="apple-extra-1">🍎</span>
@@ -563,6 +615,16 @@
           <i class="fa-solid fa-chart-bar topic-badge-icon"></i>
         </div>
         <span>CBAR</span>
+      </a>
+
+      <!-- STAGE 10: COURSE REFLECTION -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card">
+        <div class="plant-art-container" style="justify-content: center !important;">
+          <div class="stage-10-bitten-apple-container">
+            <i class="fa-solid fa-apple-whole bitten-apple-base"></i>
+          </div>
+        </div>
+        <span>Course Reflection</span>
       </a>
 
     </div>
