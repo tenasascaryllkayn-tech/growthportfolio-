@@ -10,13 +10,14 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* EXACT CLASSROOM MANAGEMENT SYSTEM VARIABLES */
+    /* CLASSROOM MANAGEMENT SYSTEM VARIABLES */
     :root {
         --bg-color: #fcfbfa; /* Warm oatmeal backdrop */
         --text-color: #2c3e50;
         --accent-color: #4a6741; /* Sage green primary color */
         --border-color: #e6e4e0;
         --secondary-text: #576574;
+        --btn-color: #d37327; /* The warm orange-brown color */
     }
 
     * { 
@@ -30,7 +31,7 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Quicksand', sans-serif;
-      padding: 40px 20px 120px 20px; 
+      padding: 40px 20px 140px 20px; /* Extra bottom padding so content doesn't hide behind the floating button */
       max-width: 500px; 
       margin: 0 auto;
       min-height: 100vh;
@@ -94,7 +95,7 @@
       text-align: justify;
     }
 
-    /* PROFILE IMAGE COMPONENT FOR THE CARDS */
+    /* PROFILE IMAGE COMPONENT */
     .profile-image-container {
         width: 100%;
         margin-bottom: 25px;
@@ -109,7 +110,7 @@
         border: 1px solid var(--border-color);
     }
 
-    /* LIST STYLING MATCHING THE CLASSROOM MANAGEMENT BULLETS */
+    /* LIST STYLING */
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -132,30 +133,39 @@
       top: 0;
     }
 
-    /* NEUTRAL DASHBOARD LINK BUTTON MATCHING CLASSROOM MANAGEMENT */
+    /* CONSTANT FLOATING BOTTOM CONTAINER */
     .dashboard-btn-container {
-      text-align: center;
-      margin-top: 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
       width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      z-index: 999;
+      background: linear-gradient(to top, rgba(252,251,250,1) 70%, rgba(252,251,250,0) 100%); /* Fades seamlessly into background */
     }
 
+    /* THE FLOATING ORANGE-BROWN BUTTON */
     .dashboard-link-btn {
       display: inline-block;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Montserrat', sans-serif; 
       font-weight: 700;
-      color: var(--text-color); /* Charcoal text color, not green */
+      color: var(--btn-color);
       text-decoration: none;
-      border: 1px solid var(--border-color); /* Plain border matching the cards */
-      padding: 10px 24px;
-      border-radius: 4px;
-      font-size: 0.95rem;
+      border: 2px solid var(--btn-color);
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase; 
+      background: #ffffff; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow so it looks elevated */
       transition: all 0.2s ease;
-      background: transparent;
+      cursor: pointer;
     }
 
     .dashboard-link-btn:hover {
-      background-color: var(--text-color);
-      border-color: var(--text-color);
+      background-color: var(--btn-color);
       color: #ffffff;
     }
 
@@ -206,9 +216,9 @@
     </ul>
   </div>
 
-  <!-- Integrated Navigation Button (Neutral Dashboard Link) -->
+  <!-- Sticky Constant Floating Navigation Button -->
   <div class="dashboard-btn-container">
-    <a href="dashboard.html" class="dashboard-link-btn">Go to Dashboard</a>
+    <a href="dashboard.html" class="dashboard-link-btn">← Return to Dashboard</a>
   </div>
 
 </body>
