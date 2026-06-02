@@ -151,7 +151,6 @@
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
     }
 
-    /* Handle visual interactive focus rules clearly across both anchor and div types */
     a.plant-card {
       cursor: pointer !important;
     }
@@ -325,7 +324,7 @@
       box-shadow: inset -5px -5px 0 rgba(0,0,0,0.1) !important;
     }
 
-    /* STAGE 9: FRUITING TREE */
+    /* STAGE 9: FRUITING TREE (CBAR) */
     .stage-9-fruittree .growth-element {
       width: 10px !important;
       height: 25px !important;
@@ -365,38 +364,60 @@
       z-index: 3 !important;
     }
 
-    /* STAGE 10: DESIGNER CLOSE-UP BITTEN APPLE */
-    .stage-10-bitten-apple-container {
-      position: relative !important;
-      width: 65px !important;
-      height: 65px !important;
-      margin-bottom: 20px !important;
+    /* STAGE 10: ULTIMATE BOTANICAL TREE (COURSE REFLECTION) WITH SHADED/BORDERED APPLE */
+    .stage-10-reflectiontree .growth-element {
+      width: 10px !important;
+      height: 25px !important;
+      background: #5c3a21 !important; 
+      margin-bottom: -4px !important;
+      position: relative;
+    }
+    .stage-10-reflectiontree .growth-element::before {
+      content: '' !important;
+      position: absolute;
+      bottom: 18px; left: -26px;
+      width: 62px; height: 52px;
+      background: #145a32 !important; 
+      border-radius: 35px 35px 25px 25px !important;
+      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.2) !important;
+    }
+
+    /* Rich Shaded and Outlined Bitten Apple floating overlay within canopy */
+    .stage-10-reflectiontree .bitten-apple-canopy-emblem {
+      position: absolute !important;
+      bottom: 34px !important;
+      left: -14px !important;
+      font-size: 28px !important;
+      z-index: 4 !important;
+      
+      /* --- SHADING EFFECTS --- */
+      /* Base red fallback with a linear lighting gradient running from top-left down to dark bottom-right */
+      background: linear-gradient(135deg, #ff6b6b 0%, #c0392b 60%, #962d22 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      
+      /* --- BORDER CONTRAST ENGINE --- */
+      /* Generates a crisp, continuous 1.5px border layout around the curved icon silhouette */
+      -webkit-text-stroke: 1.5px #7b1e15 !important;
+      
+      /* Drop shadow for visual separation from dark green leaves */
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.35)) !important;
       animation: gentle-sway 4s infinite ease-in-out;
     }
 
-    /* Base Apple Character */
-    .bitten-apple-base {
-      font-size: 55px !important;
-      color: #c0392b !important;
-      position: absolute !important;
-      top: 0; left: 0;
-    }
-
-    /* Invisible circle overlay matching card backdrop that chews a bite out of the right side */
-    .bitten-apple-base::after {
+    /* Bite Cutout dynamically blending with the tree canopy foliage */
+    .stage-10-reflectiontree .bitten-apple-canopy-emblem::after {
       content: '' !important;
       position: absolute !important;
-      top: 14px !important;
-      right: -10px !important;
-      width: 22px !important;
-      height: 22px !important;
-      background: #fafbfc !important; /* Perfect blend with resting card bg color */
+      top: 6px !important;
+      right: -5px !important;
+      width: 11px !important;
+      height: 11px !important;
+      background: #145a32 !important; /* Matches perfectly to canopy green background */
       border-radius: 50% !important;
-    }
-
-    /* Keeps cutout fluid and seamless on card hovering */
-    .plant-card:hover .bitten-apple-base::after {
-      background: #ffffff !important; 
+      
+      /* Subtle dark border line match along the inside curve of the bite cutout */
+      box-shadow: -1.5px 0 0 0 #7b1e15 !important;
     }
 
     /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
@@ -475,8 +496,8 @@
     }
 
     @keyframes gentle-sway {
-      0%, 100% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
 
     @media (max-width: 480px) {
@@ -525,6 +546,7 @@
 
     <div class="garden-grid">
       
+      <!-- STAGE 1: THE TEACHER -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/the-teacher.html" class="plant-card stage-1-bare">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -534,6 +556,7 @@
         <span>The Teacher</span>
       </a>
 
+      <!-- STAGE 2: ENVIRONMENT -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/environment.html" class="plant-card stage-2-sprout">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -543,6 +566,7 @@
         <span>Environment</span>
       </a>
 
+      <!-- STAGE 3: THEORY -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/theory.html" class="plant-card stage-3-sapling">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -552,6 +576,7 @@
         <span>Theory</span>
       </a>
 
+      <!-- STAGE 4: PHILOSOPHY -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/philosophy.html" class="plant-card stage-4-shrub1">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -561,6 +586,7 @@
         <span>Philosophy</span>
       </a>
 
+      <!-- STAGE 5: MANAGEMENT -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/management.html" class="plant-card stage-5-shrub2">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -570,6 +596,7 @@
         <span>Management</span>
       </a>
 
+      <!-- STAGE 6: ASSESSMENT (LINK REMOVED - TURNED TO STYLED CONTAINER) -->
       <div class="plant-card stage-6-shrub3">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -579,6 +606,7 @@
         <span>Assessment</span>
       </div>
 
+      <!-- STAGE 7: DEMO TEACHING -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/demo-teaching.html" class="plant-card stage-7-youngtree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -588,6 +616,7 @@
         <span>Demo Teaching</span>
       </a>
 
+      <!-- STAGE 8: GALLERY -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/gallery.html" class="plant-card stage-8-maturetree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -597,6 +626,7 @@
         <span>Gallery</span>
       </a>
 
+      <!-- STAGE 9: CBAR -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/cbar.html" class="plant-card stage-9-fruittree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -608,11 +638,13 @@
         <span>CBAR</span>
       </a>
 
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card">
-        <div class="plant-art-container" style="justify-content: center !important;">
-          <div class="stage-10-bitten-apple-container">
-            <i class="fa-solid fa-apple-whole bitten-apple-base"></i>
-          </div>
+      <!-- STAGE 10: COURSE REFLECTION (HARMONIZED BOTANICAL APPLE TREE WITH DETAILED ART) -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card stage-10-reflectiontree">
+        <div class="plant-art-container">
+          <div class="growth-element"></div>
+          <i class="fa-solid fa-apple-whole bitten-apple-canopy-emblem"></i>
+          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-book-open topic-badge-icon"></i>
         </div>
         <span>Course Reflection</span>
       </a>
