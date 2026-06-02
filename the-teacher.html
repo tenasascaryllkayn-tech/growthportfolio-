@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Me | Caryll Kayn</title>
+  <title>About Me | Portfolio Asset</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
   
   <!-- Fonts & Icons -->
@@ -10,6 +10,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
+    /* EXACT CLASSROOM MANAGEMENT SYSTEM VARIABLES */
     :root {
         --bg-color: #fcfbfa; /* Warm oatmeal backdrop */
         --text-color: #2c3e50;
@@ -30,7 +31,7 @@
       color: var(--text-color);
       font-family: 'Quicksand', sans-serif;
       padding: 40px 20px 120px 20px; 
-      max-width: 500px; /* Mobile-optimized width from Classroom Management */
+      max-width: 500px; 
       margin: 0 auto;
       min-height: 100vh;
       display: flex;
@@ -66,7 +67,34 @@
       font-style: italic;
     }
 
-    /* PROFILE IMAGE MATCHING NEW COMPACT FORMAT */
+    /* CONTENT BLOCKS */
+    .content-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* PROFILE IMAGE COMPONENT FOR THE CARDS */
     .profile-image-container {
         width: 100%;
         margin-bottom: 25px;
@@ -81,42 +109,7 @@
         border: 1px solid var(--border-color);
     }
 
-    /* STRUCTURED CONTENT CARDS */
-    .content-card {
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 25px;
-    }
-
-    blockquote {
-        border-left: 3px solid var(--accent-color);
-        margin: 15px 0;
-        padding-left: 15px;
-        font-style: italic;
-        color: var(--secondary-text);
-    }
-
-    h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 1.2rem;
-      color: var(--accent-color);
-      margin-bottom: 12px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 6px;
-    }
-
-    p {
-      font-size: 1.05rem;
-      color: var(--text-color);
-      margin-bottom: 15px;
-      text-align: justify;
-    }
-
-    /* REVISED LIST STYLING FOR CARDS */
+    /* LIST STYLING MATCHING THE CLASSROOM MANAGEMENT BULLETS */
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -139,11 +132,7 @@
       top: 0;
     }
 
-    ul li strong {
-        color: var(--text-color);
-    }
-
-    /* DASHBOARD LINK BUTTON */
+    /* NEUTRAL DASHBOARD LINK BUTTON MATCHING CLASSROOM MANAGEMENT */
     .dashboard-btn-container {
       text-align: center;
       margin-top: 20px;
@@ -154,9 +143,9 @@
       display: inline-block;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
-      color: var(--accent-color);
+      color: var(--text-color); /* Charcoal text color, not green */
       text-decoration: none;
-      border: 1px solid var(--accent-color);
+      border: 1px solid var(--border-color); /* Plain border matching the cards */
       padding: 10px 24px;
       border-radius: 4px;
       font-size: 0.95rem;
@@ -165,17 +154,9 @@
     }
 
     .dashboard-link-btn:hover {
-      background-color: var(--accent-color);
+      background-color: var(--text-color);
+      border-color: var(--text-color);
       color: #ffffff;
-    }
-
-    footer {
-        text-align: center;
-        font-size: 0.85rem;
-        color: var(--secondary-text);
-        margin-top: 40px;
-        letter-spacing: 0.5px;
-        width: 100%;
     }
 
     /* FLOATING ANIMATION FOR ICON */
@@ -187,58 +168,48 @@
 </head>
 <body>
 
-  <!-- Floating Brand Icon -->
+  <!-- Exact Seedling Icon From Classroom Management -->
   <div class="brand-icon">
     <i class="fa-solid fa-seedling"></i>
   </div>
 
-  <!-- Page Header Layout -->
+  <!-- Page Header -->
   <h1 class="main-page-title">Caryll Kayn</h1>
   <p class="subtitle">Editor, Educator, and Lifelong Learner</p>
 
-  <!-- Profile Image Card -->
+  <!-- Profile Image Container -->
   <div class="profile-image-container">
       <img src="image/YOUR_IMAGE_NAME.jpg" alt="Caryll Kayn Portfolio Photo">
   </div>
 
-  <!-- Biography Card 1 -->
+  <!-- Biography Card -->
   <div class="content-card">
+    <h3>About Me</h3>
     <p>
-        I’m Caryll Kayn, a professional digital content editor for LexisNexis Legal & Professional, and I’m currently taking my Master of Education degree. Balancing a demanding editing job and heavy graduate school modules takes a lot of discipline and late-night reading. But the rewarding part is getting to use what I learn to design gentler, happier, and more inclusive classrooms for young kids.
+      I’m Caryll Kayn, a professional digital content editor for LexisNexis Legal & Professional, and I’m currently taking my Master of Education degree. Balancing a demanding editing job and heavy graduate school modules takes a lot of discipline and late-night reading. But the rewarding part is getting to use what I learn to design gentler, happier, and more inclusive classrooms for young kids.
     </p>
     <p>
-        In my studies, I focus on early childhood and special education. I really believe that classrooms shouldn't be about rigid rules or forcing kids to just comply. Instead, I'm drawn to progressive ideas like the Reggio Emilia approach and the <em>“Dignity of Risk,”</em> which are all about creating safe, self-regulating spaces that protect a child’s natural innocence and creative expression.
+      In my studies, I focus on early childhood and special education. I really believe that classrooms shouldn't be about rigid rules or forcing kids to just comply. Instead, I'm drawn to progressive ideas like the Reggio Emilia approach and the <em>“Dignity of Risk,”</em> which are all about creating safe, self-regulating spaces that protect a child’s natural innocence and creative expression.
     </p>
-    <blockquote>
-        "They say that the roots of education are bitter, but the fruit is sweet."
-    </blockquote>
   </div>
 
-  <!-- Hobbies Card 2 -->
+  <!-- Hobbies Card -->
   <div class="content-card">
     <h3>Beyond the Desk & Classroom</h3>
     <p>
-        When I’m not buried in schoolwork or editing legal content, I keep myself grounded through a mix of eclectic hobbies:
+      When I’m not buried in schoolwork or editing legal content, I keep myself grounded through a mix of eclectic hobbies:
     </p>
     <ul>
-        <li><strong>Navigate & Observe:</strong> I have a deep appreciation for cultural preservation, and I love keeping up with the news, always drawn to thoughts and ideas that navigate the complexities of our changing world.</li>
-        <li><strong>Create & Experiment:</strong> On the creative side, I express myself through hands-on beadwork and love experimenting with creative cooking in the kitchen.</li>
-        <li><strong>Quiet Companionship:</strong> Most nights, you can find me typing away at my reflections with my scruffy Shih Tzu-mix, Jinji, keeping me company right by my side.</li>
+      <li><strong>Navigate & Observe:</strong> I have a deep appreciation for cultural preservation, and I love keeping up with the news, always drawn to thoughts and ideas that navigate the complexities of our changing world.</li>
+      <li><strong>Create & Experiment:</strong> On the creative side, I express myself through hands-on beadwork and love experimenting with creative cooking in the kitchen.</li>
+      <li><strong>Quiet Companionship:</strong> Most nights, you can find me typing away at my reflections with my scruffy Shih Tzu-mix, Jinji, keeping me company right by my side.</li>
     </ul>
-    <p style="margin-top: 15px; margin-bottom: 0;">
-        At the end of the day, I look at education the same way I look at life—as a beautiful mix of structure, art, theory, and real heart.
-    </p>
   </div>
 
-  <!-- Dashboard Button -->
+  <!-- Integrated Navigation Button (Neutral Dashboard Link) -->
   <div class="dashboard-btn-container">
     <a href="dashboard.html" class="dashboard-link-btn">Go to Dashboard</a>
   </div>
-
-  <!-- Footer -->
-  <footer>
-      <p>Built with heart, theory, and structure. © 2026</p>
-  </footer>
 
 </body>
 </html>
