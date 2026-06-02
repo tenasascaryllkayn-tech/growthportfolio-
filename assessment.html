@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Classroom Environment Assessment | Portfolio Asset</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    /* CLASSROOM MANAGEMENT SYSTEM VARIABLES */
+    :root {
+        --bg-color: #fcfbfa; /* Warm oatmeal backdrop */
+        --text-color: #2c3e50;
+        --accent-color: #4a6741; /* Sage green primary color */
+        --border-color: #e6e4e0;
+        --secondary-text: #576574;
+        --btn-color: #d37327; /* Warm orange-brown color */
+    }
+
+    * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0; 
+        -webkit-tap-highlight-color: transparent; 
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Quicksand', sans-serif;
+      padding: 40px 20px 140px 20px; 
+      max-width: 500px; 
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.7;
+    }
+
+    /* GENTLE FLOATING BRAND ICON */
+    .brand-icon {
+      color: var(--accent-color); 
+      font-size: 32px;
+      margin-bottom: 12px;
+      animation: gentle-bounce 3s infinite ease-in-out;
+    }
+
+    /* TOP MAIN PAGE TITLE */
+    .main-page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--accent-color);
+      text-align: center;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--secondary-text);
+      text-align: center;
+      margin-bottom: 35px;
+      font-style: italic;
+    }
+
+    /* STRUCTURED CARD BLOCKS */
+    .content-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-color);
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* INTERACTIVE DOCUMENT UTILITY TOOLBAR */
+    .doc-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      background: #fdfdfd;
+      border: 1px solid var(--border-color);
+      border-bottom: none;
+      padding: 8px 12px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+
+    .toolbar-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--secondary-text);
+      padding: 6px 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .toolbar-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+      background: #fafbfa;
+    }
+
+    /* RESPONSIVE EMBED FRAMES */
+    .doc-embed-wrapper {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow-y: auto; /* Handles interactive scrolling boundaries cleanly */
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-color);
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      background: #fafafa;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    /* ZOOM CLASS STATES MANAGED BY JAVASCRIPT */
+    .zoomed-in {
+      transform: scale(1.15);
+      transform-origin: top center;
+      height: 550px;
+    }
+
+    /* CONSTANT STICKY FLOATING CONTAINER */
+    .dashboard-btn-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      z-index: 999;
+      background: linear-gradient(to top, rgba(252,251,250,1) 70%, rgba(252,251,250,0) 100%);
+    }
+
+    /* ORANGE-BROWN FIXED BUTTON FROM SCREENSHOT */
+    .dashboard-link-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 700;
+      color: var(--btn-color);
+      text-decoration: none;
+      border: 2px solid var(--btn-color);
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase; 
+      background: #ffffff; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .dashboard-link-btn:hover {
+      background-color: var(--btn-color);
+      color: #ffffff;
+    }
+
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-icon">
+    <i class="fa-solid fa-seedling"></i>
+  </div>
+
+  <h1 class="main-page-title">Classroom Environment</h1>
+  <p class="subtitle">Evaluating and auditing intentional learning spaces</p>
+
+  <div class="content-card">
+    <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 8px;"></i> Environmental Checklist</h3>
+    <p>Utilize the quick controls below to navigate, print, or adapt scale boundaries for the current space audit criteria:</p>
+    
+    <div class="doc-toolbar">
+      <button class="toolbar-btn" onclick="toggleZoom('frame1')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
+      <button class="toolbar-btn" onclick="scrollToTop('frame1')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
+      <a class="toolbar-btn" href="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/edit" target="_blank"><i class="fa-solid fa-print"></i> Print</a>
+    </div>
+
+    <div class="doc-embed-wrapper" id="frame1">
+      <iframe 
+        src="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/preview" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h3><i class="fa-regular fa-comment-dots" style="margin-right: 8px;"></i> Reflection on Environment Checklist</h3>
+    <p>Read the pedagogical annotations, focal conclusions, and environmental adjustments detailing the final environment model:</p>
+    
+    <div class="doc-toolbar">
+      <button class="toolbar-btn" onclick="toggleZoom('frame2')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
+      <button class="toolbar-btn" onclick="scrollToTop('frame2')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
+      <a class="toolbar-btn" href="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/edit" target="_blank"><i class="fa-solid fa-print"></i> Print</a>
+    </div>
+
+    <div class="doc-embed-wrapper" id="frame2">
+      <iframe 
+        src="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/preview" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="dashboard-btn-container">
+    <a href="dashboard.html" class="dashboard-link-btn">← Return to Dashboard</a>
+  </div>
+
+  <script>
+    function toggleZoom(frameId) {
+      const targetFrame = document.getElementById(frameId);
+      targetFrame.classList.toggle('zoomed-in');
+    }
+
+    function scrollToTop(frameId) {
+      const targetFrame = document.getElementById(frameId);
+      targetFrame.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
 
