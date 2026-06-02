@@ -136,6 +136,28 @@
             color: var(--secondary-text);
         }
 
+        /* CLEAN DASHBOARD BUTTON STYLING */
+        .dashboard-btn-container {
+            text-align: center;
+            margin: 40px 0 20px 0;
+        }
+
+        .dashboard-link-btn {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-link-btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
         footer {
             text-align: center;
             font-size: 0.85rem;
@@ -153,10 +175,10 @@
             <p class="subtitle">Editor, Educator, and Lifelong Learner</p>
         </header>
 
-        <!-- Profile Image Block -->
+        <!-- PROFILE IMAGE PLACEHOLDER BLOCK -->
         <div class="profile-image-container">
-            <!-- Replace 'images/1000001109.jpg' with your actual image path or hosting URL -->
-            <img src="images/1000001109.jpg" alt="Caryll Kayn Portfolio Photo">
+            <!-- Just replace 'YOUR_IMAGE_NAME.jpg' below with your exact filename (e.g., 1000001109.jpg) -->
+            <img src="image/YOUR_IMAGE_NAME.jpg" alt="Caryll Kayn Portfolio Photo">
         </div>
 
         <p>
@@ -186,28 +208,12 @@
         </p>
 
         <hr>
+>
 
-        <section class="portfolio-guide">
-            <h2>📂 Portfolio Guide</h2>
-            <p style="color: var(--secondary-text); font-style: italic; margin-bottom: 25px;">
-                This website maps out the real-world milestones of my teaching journey, balancing the hard work of graduate school with practical results:
-            </p>
-
-            <div class="portfolio-item">
-                <strong>📊 Child Assessment & Action</strong>
-                <p>My actual hands-on experience with child assessment (CBRS) and the lesson plans from my demo teaching.</p>
-            </div>
-
-            <div class="portfolio-item">
-                <strong>📸 Documentations</strong>
-                <p>A visual look at my instructional materials and photos from my time in the classroom.</p>
-            </div>
-
-            <div class="portfolio-item">
-                <strong>📝 Classroom-Based Action Research (CBAR)</strong>
-                <p>My formal research proposal focused on finding practical, evidence-based ways to improve classroom dynamics.</p>
-            </div>
-        </section>
+        <!-- NAVIGATION LINKS REMOVED — NEW DASHBOARD BUTTON PLACED HERE -->
+        <div class="dashboard-btn-container">
+            <a href="index.html" class="dashboard-link-btn">Go to Dashboard</a>
+        </div>
 
         <footer>
             <p>Built with heart, theory, and structure. © 2026</p>
