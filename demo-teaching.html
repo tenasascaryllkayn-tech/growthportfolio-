@@ -68,14 +68,13 @@
   <div style="text-align: center;">
     <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
   </div>
-
-   <script>
+  <script>
     const supabase = supabase.createClient('https://gbtatmfnaaqqnmrjanvf.supabase.co', 'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz');
     const journal = document.getElementById('reflectionJournal');
     const ts = document.getElementById('timestamp');
     const vidFrame = document.getElementById('vidFrame');
 
-    // Click handler for links
+    // 1. Keep the click handler
     journal.addEventListener('click', (e) => {
         if (e.target.classList.contains('ts-link')) {
             const time = e.target.dataset.time;
@@ -83,28 +82,32 @@
         }
     });
 
+    // 2. Load function
     async function load() {
         const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
         if (data) journal.innerHTML = data.content;
     }
     
+    // 3. Updated Save function
     async function saveReflection() {
-        // 1. Get raw text to strip existing messy HTML
-        let rawText = journal.innerText;
+        console.log("Save button clicked!"); // Check your browser console
         
-        // 2. Replace timestamps in the clean text
-        let processedHtml = rawText.replace(/(\d+):(\d+)/g, (match, m, s) => {
+        let text = journal.innerHTML; 
+        
+        // This regex looks for digits, a colon, and more digits
+        let newHtml = text.replace(/(\d+):(\d+)/g, (match, m, s) => {
             const seconds = parseInt(m) * 60 + parseInt(s);
-            return `<span class="ts-link" data-time="${seconds}">${match}</span>`;
+            return `<span class="ts-link" style="color: #e67e22; text-decoration: underline; cursor: pointer; font-weight: bold;" data-time="${seconds}">${match}</span>`;
         });
         
-        // 3. Update the display and save
-        journal.innerHTML = processedHtml;
-        await supabase.from('reflections').update({ content: processedHtml }).eq('id', 1);
+        journal.innerHTML = newHtml;
+        
+        await supabase.from('reflections').update({ content: newHtml }).eq('id', 1);
         ts.innerText = "Last saved: " + new Date().toLocaleString();
     }
     load();
   </script>
+
 
 </body>
 </html>
