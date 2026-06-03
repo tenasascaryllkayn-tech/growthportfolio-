@@ -5,48 +5,48 @@
     <title>Caryll's Growth Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        :root { --terracotta: #cc5500; --off-white: #fcf9f5; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--off-white); margin: 0; padding: 0; }
+        /* Exact Aesthetic Match to your Portfolio Branding */
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; text-align: center; }
         
-        /* Header Match */
-        .header-bar { background: var(--terracotta); color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-        .dashboard-link { font-weight: bold; }
-        .home-btn { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 4px; color: white; text-decoration: none; }
+        .brand-area { padding: 40px 20px; }
+        .leaf-logo { font-size: 40px; margin-bottom: 5px; display: block; }
+        h1 { font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin: 5px 0; }
+        .sub-header { font-weight: 300; letter-spacing: 2px; color: #cc5500; margin-bottom: 30px; }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
-        h1, h3 { color: var(--terracotta); }
+        .container { max-width: 800px; margin: auto; padding: 20px; text-align: left; }
+        h3 { color: #cc5500; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
 
-        .notebook-editor { background: white; border: 1px solid #e0e0e0; padding: 30px; min-height: 200px; border-radius: 8px; margin: 20px 0; }
-        .video-container { border: 4px solid var(--terracotta); border-radius: 8px; overflow: hidden; }
-        .auto-timestamp { color: var(--terracotta); text-decoration: underline; cursor: pointer; font-weight: bold; }
+        .notebook-editor { border: 1px solid #eee; padding: 30px; min-height: 200px; border-radius: 10px; margin: 20px 0; }
+        .video-container { border: 2px solid #333; margin: 20px 0; }
+        .auto-timestamp { color: #cc5500; text-decoration: underline; cursor: pointer; font-weight: bold; }
         
-        /* Zoom/Scroll Logic */
-        .doc-wrapper { border: 2px solid #ddd; height: 600px; overflow: scroll; background: white; position: relative; }
-        #zoomTarget { transform-origin: top left; width: 100%; transition: transform 0.1s; }
+        .doc-wrapper { border: 1px solid #ddd; height: 600px; overflow: auto; margin-top: 20px; position: relative; }
+        #zoomTarget { transform-origin: top left; transition: transform 0.2s; width: 100%; }
+        .controls { margin-top: 20px; padding: 15px; background: #fafafa; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-<div class="header-bar">
-    <div class="dashboard-link">Terracotta Dashboard 🍃</div>
-    <a href="index.html" class="home-btn">Back to Home</a>
+<div class="brand-area">
+    <span class="leaf-logo">🌱</span>
+    <h1>Caryll's</h1>
+    <div class="sub-header">GROWTH PORTFOLIO</div>
 </div>
 
 <div class="container">
-    <h1>Caryll's Growth Portfolio</h1>
-
     <h3>Demo Lesson Video</h3>
     <div class="video-container">
-        <iframe id="lessonVideo" width="100%" height="400" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        <iframe id="lessonVideo" width="100%" height="450" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div class="notebook-editor" id="reflectionJournal" contenteditable="false">
-        <p id="statusMsg" style="color:var(--terracotta);"><em>View-Only Mode</em></p>
+        <p id="statusMsg" style="color:#cc5500;"><em>View-Only Mode</em></p>
         <p>Type your reflections here...</p>
     </div>
 
     <h3>Lesson Plan</h3>
-    <div class="controls" style="margin-bottom:10px;">
+    <div class="controls">
+        <label>Zoom:</label>
         <input type="range" id="zoomRange" min="50" max="150" value="100">
         <span id="zoomVal">100%</span>
     </div>
@@ -68,11 +68,9 @@
     const zoomTarget = document.getElementById('zoomTarget');
     const zoomRange = document.getElementById('zoomRange');
 
-    // FIXED ZOOM LOGIC
     zoomRange.addEventListener('input', (e) => {
         const val = e.target.value;
         zoomTarget.style.transform = `scale(${val / 100})`;
-        zoomTarget.style.width = `${100 / (val / 100)}%`; // Keeps layout correct
         document.getElementById('zoomVal').innerText = val + "%";
     });
 
