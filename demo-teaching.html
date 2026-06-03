@@ -2,75 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Growth Portfolio</title>
-    <!-- Load Supabase Library -->
+    <title>Chalkboard Chronicles | Growth Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; padding: 20px; }
         .notebook-editor { 
-            border: 1px solid #ccc; 
-            padding: 15px; 
-            min-height: 300px; 
-            border-radius: 8px; 
+            background: white; border: 1px solid #ddd; padding: 20px; 
+            min-height: 500px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        .upload-section { margin: 10px 0; padding: 10px; background: #eef; border-radius: 5px; }
+        .video-container { margin: 20px 0; border: 3px solid #333; }
         img { max-width: 100%; height: auto; display: block; margin: 10px 0; }
     </style>
 </head>
 <body>
 
-    <h1>My Teaching Portfolio</h1>
-    <p>Type your reflections or paste images below. Everything saves automatically!</p>
-    
-    <div id="reflectionJournal" class="notebook-editor" contenteditable="true"></div>
+    <div class="notebook-editor" id="reflectionJournal" contenteditable="true">
+        <h1>Chalkboard Chronicles</h1>
+        
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/Jqr0cwi7qkk" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="upload-section">
+            <label><strong>Add Images:</strong> </label>
+            <input type="file" id="imageUploader" accept="image/*">
+        </div>
+
+        <ul>
+            <li><a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit?usp=drivesdk" target="_blank">Access Lesson Plan</a></li>
+        </ul>
+        
+        <p>Add your pedagogical reflections here...</p>
+    </div>
 
     <script>
-        // 1. Initialize Cloud Connection
-        const supabaseUrl = 'https://gbtatmfnaaqqnmrjanvf.supabase.co';
-        const supabaseKey = 'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz'; 
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        const supabase = supabase.createClient(
+            'https://gbtatmfnaaqqnmrjanvf.supabase.co',
+            'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz'
+        );
 
         const journalArea = document.getElementById('reflectionJournal');
 
-        // 2. Load data from Cloud on startup
+        // Load from cloud
         window.addEventListener('DOMContentLoaded', async () => {
-            const { data } = await supabase
-                .from('reflections')
-                .select('content')
-                .eq('id', 1)
-                .single();
+            const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
             if (data) journalArea.innerHTML = data.content;
         });
 
-        // 3. Save to Cloud automatically
+        // Save logic
         async function saveToCloud() {
-            const content = journalArea.innerHTML;
-            await supabase
-                .from('reflections')
-                .upsert({ id: 1, content: content });
+            await supabase.from('reflections').upsert({ id: 1, content: journalArea.innerHTML });
         }
 
-        // Trigger save 1 second after you stop typing
         journalArea.addEventListener('keyup', () => {
             clearTimeout(window.saveTimer);
             window.saveTimer = setTimeout(saveToCloud, 1000);
         });
 
-        // 4. Handle Image Pasting
-        journalArea.addEventListener('paste', (e) => {
-            const items = e.clipboardData.items;
-            for (let item of items) {
-                if (item.type.startsWith('image')) {
-                    const file = item.getAsFile();
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                        const img = document.createElement('img');
-                        img.src = event.target.result;
-                        journalArea.appendChild(img);
-                        saveToCloud(); // Save immediately after adding image
-                    };
-                    reader.readAsDataURL(file);
-                }
+        // Image Upload Button Logic
+        document.getElementById('imageUploader').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    journalArea.appendChild(img);
+                    saveToCloud();
+                };
+                reader.readAsDataURL(file);
             }
         });
     </script>
