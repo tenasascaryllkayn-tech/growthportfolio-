@@ -343,10 +343,10 @@
       z-index: 3 !important;
     }
 
-    /* STAGE 10: PRODUCT STAGE (Bake/Pie Pan Setup) */
+    /* STAGE 10: PRODUCT STAGE (Isolated Pie Pan Setup) */
     .stage-10-reflectiontree .apple-pie-combo-container {
       position: absolute !important;
-      bottom: 36px !important; 
+      bottom: 38px !important; 
       left: 22px !important; 
       width: 55px !important;
       height: 30px !important;
@@ -379,7 +379,7 @@
       box-shadow: inset 1px -0.5px 0 0.5px #7b1e15 !important;
     }
 
-    /* 2. THE PIE SLICE BESIDE IT */
+    /* 2. THE PIE SLICE */
     .stage-10-reflectiontree .pie-slice-icon {
       font-size: 22px !important;
       background: linear-gradient(135deg, #f39c12 0%, #d35400 70%, #a04000 100%) !important;
@@ -391,31 +391,42 @@
       margin-left: -2px !important;
     }
 
-    /* 3. THE BROWN PIE PAN TIN */
-    .stage-10-reflectiontree .pie-pan {
-      width: 66px !important;
-      height: 28px !important;
-      background: linear-gradient(to bottom, #8e684d, #5c3e29) !important;
-      border-bottom-left-radius: 20px !important;
-      border-bottom-right-radius: 20px !important;
+    /* 3. THE DISTINCT BROWN PIE PAN TIN (No Terracotta References) */
+    .pie-pan-tin-isolated {
+      width: 68px !important;
+      height: 26px !important;
+      background: linear-gradient(to bottom, #8a5a36, #5c3a21) !important; /* Deep pastry brown */
+      border-bottom-left-radius: 16px !important;
+      border-bottom-right-radius: 16px !important;
       position: relative !important;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.2) !important;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.2) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      margin-bottom: 4px !important;
+      margin-bottom: 6px !important;
+      z-index: 2 !important;
     }
+    
     /* Flared crimped rim of the pie pan */
-    .stage-10-reflectiontree .pie-pan::before {
+    .pie-pan-tin-isolated::before {
       content: '' !important;
       position: absolute !important;
-      top: -4px !important;
-      left: -5px !important;
+      top: -3px !important;
+      left: -4px !important;
       width: 76px !important;
-      height: 6px !important;
-      background: #714f37 !important;
-      border-radius: 4px !important;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+      height: 5px !important;
+      background: #734a29 !important;
+      border-radius: 3px !important;
+    }
+
+    /* Isolated inner-pan Book Icon */
+    .topic-badge-icon-pan {
+      color: #ffffff !important;
+      font-size: 12px !important;
+      position: relative !important;
+      top: 1px !important;
+      z-index: 5 !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
     }
     
     /* Dynamic hover updates to keep mask crisp matching card background states */
@@ -423,7 +434,7 @@
       background: #ffffff !important;
     }
 
-    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH / PAN */
+    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
     .topic-badge-icon {
       position: absolute !important;
       bottom: 12px !important;
@@ -435,12 +446,6 @@
     .stage-1-bare .topic-badge-icon {
       bottom: 2px !important;
       color: #fafbfc !important;
-    }
-    /* Specific inner-pan adjustment for Course Reflection logo */
-    .stage-10-reflectiontree .topic-badge-icon {
-      position: relative !important;
-      bottom: -2px !important;
-      font-size: 11px !important;
     }
 
     /* TEXT LABEL CONTENT STYLE */
@@ -600,15 +605,15 @@
         <span>Management</span>
       </a>
 
-      <!-- STAGE 6: ASSESSMENT -->
-      <div class="plant-card stage-6-shrub3">
+      <!-- STAGE 6: ASSESSMENT (CHANGED FROM DIV TO A HREF) -->
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/assessment.html" class="plant-card stage-6-shrub3">
         <div class="plant-art-container">
           <div class="growth-element"></div>
           <div class="terracotta-pot"></div>
           <i class="fa-solid fa-clipboard-check topic-badge-icon"></i>
         </div>
         <span>Assessment</span>
-      </div>
+      </a>
 
       <!-- STAGE 7: DEMO TEACHING -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/demo-teaching.html" class="plant-card stage-7-youngtree">
@@ -642,21 +647,16 @@
         <span>CBAR</span>
       </a>
 
-      <!-- STAGE 10: COURSE REFLECTION (BAKED PRODUCT STAGE) -->
+      <!-- STAGE 10: COURSE REFLECTION -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card stage-10-reflectiontree">
         <div class="plant-art-container">
-          
-          <!-- Bounced Apple & Pie Duo Floating Above -->
           <div class="apple-pie-combo-container">
             <i class="fa-solid fa-apple-whole bitten-apple-icon"></i>
             <i class="fa-solid fa-pie-slice pie-slice-icon"></i>
           </div>
-          
-          <!-- New Brown Pie Pan Tin Housing the Icon Base -->
-          <div class="pie-pan">
-            <i class="fa-solid fa-book-open topic-badge-icon"></i>
+          <div class="pie-pan-tin-isolated">
+            <i class="fa-solid fa-book-open topic-badge-icon-pan"></i>
           </div>
-          
         </div>
         <span>Course Reflection</span>
       </a>
