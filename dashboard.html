@@ -9,7 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* GLOBAL STRUCTURE & SCROLL ENGINE FIX */
+    /* GLOBAL STRUCTURE & SCROLL ENGINE */
     html {
       margin: 0 !important;
       padding: 0 !important;
@@ -94,7 +94,7 @@
       color: #2d3436 !important;
       letter-spacing: 2px !important;
       text-transform: uppercase !important;
-      margin: 0 0 45px 0 !important; /* Slightly increased gap since quote is gone */
+      margin: 0 0 55px 0 !important; 
       text-align: center !important;
     }
 
@@ -155,7 +155,7 @@
       position: relative !important;
     }
 
-    /* THE CLAY POT BASE */
+    /* THE CLAY POT BASE (Stages 2-9) */
     .terracotta-pot {
       width: 54px !important;
       height: 42px !important;
@@ -303,7 +303,7 @@
       box-shadow: inset -5px -5px 0 rgba(0,0,0,0.1) !important;
     }
 
-    /* STAGE 9: FRUITING TREE (CBAR) */
+    /* STAGE 9: FRUITING TREE */
     .stage-9-fruittree .growth-element {
       width: 10px !important;
       height: 25px !important;
@@ -343,65 +343,87 @@
       z-index: 3 !important;
     }
 
-    /* STAGE 10: COURSE REFLECTION TREE WITH TRUE-WHITE FLESH BITE */
-    .stage-10-reflectiontree .growth-element {
-      width: 10px !important;
-      height: 25px !important;
-      background: #5c3a21 !important; 
-      margin-bottom: -4px !important;
-      position: relative;
-    }
-    .stage-10-reflectiontree .growth-element::before {
-      content: '' !important;
-      position: absolute;
-      bottom: 18px; left: -26px;
-      width: 62px; height: 52px;
-      background: #145a32 !important; 
-      border-radius: 35px 35px 25px 25px !important;
-      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.2) !important;
+    /* STAGE 10: PRODUCT STAGE (Bake/Pie Pan Setup) */
+    .stage-10-reflectiontree .apple-pie-combo-container {
+      position: absolute !important;
+      bottom: 36px !important; 
+      left: 22px !important; 
+      width: 55px !important;
+      height: 30px !important;
+      z-index: 4 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      animation: gentle-bounce 3s infinite ease-in-out;
     }
 
-    /* Beautifully shaded and outlined apple nested safely inside the canopy foliage */
-    .stage-10-reflectiontree .bitten-apple-canopy-emblem {
-      position: absolute !important;
-      bottom: 34px !important;
-      left: -14px !important;
-      font-size: 28px !important;
-      z-index: 4 !important;
-      
-      /* Rich multi-tone shading gradient */
+    /* 1. THE BITTEN APPLE */
+    .stage-10-reflectiontree .bitten-apple-icon {
+      font-size: 24px !important;
       background: linear-gradient(135deg, #ff6b6b 0%, #c0392b 60%, #962d22 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      
-      /* Dark crimson crisp border line */
-      -webkit-text-stroke: 1.5px #7b1e15 !important;
-      
-      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.35)) !important;
-      animation: gentle-sway 4s infinite ease-in-out;
+      -webkit-text-stroke: 1.2px #7b1e15 !important;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+      position: relative !important;
     }
-
-    /* Bite cutout circle: Reveals the bright, clean internal fruit flesh */
-    .stage-10-reflectiontree .bitten-apple-canopy-emblem::after {
+    .stage-10-reflectiontree .bitten-apple-icon::after {
       content: '' !important;
       position: absolute !important;
-      top: 6px !important;
-      right: -5px !important;
-      width: 11px !important;
-      height: 11px !important;
+      top: 5px !important;
+      right: 1px !important;
+      width: 9px !important;
+      height: 9px !important;
       background: #fafbfc !important;
       border-radius: 50% !important;
-      
-      /* Crisp interior outline curve for the bite marks */
       box-shadow: inset 1px -0.5px 0 0.5px #7b1e15 !important;
     }
 
-    /* Dynamic hover update: Matches the bright white card background highlight */
-    .plant-card:hover .bitten-apple-canopy-emblem::after {
+    /* 2. THE PIE SLICE BESIDE IT */
+    .stage-10-reflectiontree .pie-slice-icon {
+      font-size: 22px !important;
+      background: linear-gradient(135deg, #f39c12 0%, #d35400 70%, #a04000 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      -webkit-text-stroke: 1.2px #873600 !important;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+      position: relative !important;
+      margin-left: -2px !important;
+    }
+
+    /* 3. THE BROWN PIE PAN TIN */
+    .stage-10-reflectiontree .pie-pan {
+      width: 66px !important;
+      height: 28px !important;
+      background: linear-gradient(to bottom, #8e684d, #5c3e29) !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+      position: relative !important;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.2) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-bottom: 4px !important;
+    }
+    /* Flared crimped rim of the pie pan */
+    .stage-10-reflectiontree .pie-pan::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -4px !important;
+      left: -5px !important;
+      width: 76px !important;
+      height: 6px !important;
+      background: #714f37 !important;
+      border-radius: 4px !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Dynamic hover updates to keep mask crisp matching card background states */
+    .plant-card:hover .bitten-apple-icon::after {
       background: #ffffff !important;
     }
 
-    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
+    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH / PAN */
     .topic-badge-icon {
       position: absolute !important;
       bottom: 12px !important;
@@ -413,6 +435,12 @@
     .stage-1-bare .topic-badge-icon {
       bottom: 2px !important;
       color: #fafbfc !important;
+    }
+    /* Specific inner-pan adjustment for Course Reflection logo */
+    .stage-10-reflectiontree .topic-badge-icon {
+      position: relative !important;
+      bottom: -2px !important;
+      font-size: 11px !important;
     }
 
     /* TEXT LABEL CONTENT STYLE */
@@ -476,9 +504,9 @@
       transform: rotate(180deg) !important;
     }
 
-    @keyframes gentle-sway {
-      0%, 100% { transform: rotate(-3deg); }
-      50% { transform: rotate(3deg); }
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
 
     @media (max-width: 480px) {
@@ -614,13 +642,21 @@
         <span>CBAR</span>
       </a>
 
-      <!-- STAGE 10: COURSE REFLECTION -->
+      <!-- STAGE 10: COURSE REFLECTION (BAKED PRODUCT STAGE) -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card stage-10-reflectiontree">
         <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <i class="fa-solid fa-apple-whole bitten-apple-canopy-emblem"></i>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-book-open topic-badge-icon"></i>
+          
+          <!-- Bounced Apple & Pie Duo Floating Above -->
+          <div class="apple-pie-combo-container">
+            <i class="fa-solid fa-apple-whole bitten-apple-icon"></i>
+            <i class="fa-solid fa-pie-slice pie-slice-icon"></i>
+          </div>
+          
+          <!-- New Brown Pie Pan Tin Housing the Icon Base -->
+          <div class="pie-pan">
+            <i class="fa-solid fa-book-open topic-badge-icon"></i>
+          </div>
+          
         </div>
         <span>Course Reflection</span>
       </a>
@@ -629,7 +665,7 @@
 
   </div>
 
-  <footer>© 2026 Miss Caryll's Teaching Portfolio</footer>
+  <footer>© 2026 Caryll's Growth Portfolio</footer>
 
   <script>
     window.onscroll = function() { trackScrollEngine() };
