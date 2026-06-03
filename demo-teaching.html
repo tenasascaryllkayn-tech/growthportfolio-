@@ -1,409 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Demo Lesson | Caryll's Growth Portfolio</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-  
-  <style>
-    /* GLOBAL STRUCTURE */
-    html {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-    }
-    
-    body {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      min-height: 100vh !important; 
-      background-color: #ffffff !important;
-      font-family: 'Quicksand', sans-serif !important;
-      color: #2d3436 !important;
-      display: block !important;
-      box-sizing: border-box !important;
-    }
-
-    .page-container {
-      width: 100% !important;
-      max-width: 900px !important;
-      margin: 0 auto !important; 
-      padding: 60px 20px 40px !important; 
-      box-sizing: border-box !important;
-    }
-
-    /* TYPOGRAPHY HEADERS */
-    .header-section {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      margin-bottom: 40px !important;
-    }
-
-    .page-icon {
-      font-size: 38px !important; 
-      color: #27ae60 !important; 
-      margin-bottom: 20px !important;
-    }
-
-    h1 { 
-      font-family: 'Montserrat', sans-serif !important; 
-      font-size: 32px !important; 
-      font-weight: 800 !important; 
-      color: #2d3436 !important; 
-      text-transform: uppercase !important; 
-      letter-spacing: 4px !important; 
-      margin: 0 !important;
-      text-align: center !important;
-      line-height: 1.2 !important;
-    }
-
-    .title-accent-line {
-      width: 45px !important;
-      height: 3px !important;
-      background-color: #e67e22 !important;
-      margin-top: 15px !important;
-      border-radius: 2px !important;
-    }
-
-    /* CARDS STRUCTURE */
-    .workspace-card {
-      background: #fafbfc !important;
-      border: 1px solid #f0f3f4 !important;
-      border-radius: 24px !important;
-      padding: 30px !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.01) !important;
-      margin-bottom: 30px !important;
-    }
-
-    .split-grid {
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 30px !important;
-    }
-
-    @media (min-width: 768px) {
-      .split-grid {
-        grid-template-columns: 1.2fr 1fr !important;
-      }
-    }
-
-    .section-title {
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 13px !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      color: #2d3436 !important;
-      margin: 0 0 15px 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-    }
-
-    .section-title i {
-      color: #27ae60 !important;
-    }
-
-    /* VIDEO PLAYER STYLING */
-    .video-wrapper {
-      position: relative !important;
-      width: 100% !important;
-      padding-bottom: 56.25% !important;
-      height: 0 !important;
-      border-radius: 14px !important;
-      overflow: hidden !important;
-      border: 1px solid #eef2f3 !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
-    }
-
-    .video-wrapper iframe {
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      border: none !important;
-    }
-
-    /* NOTEBOOK SYSTEM */
-    .notebook-container {
-      display: flex !important;
-      flex-direction: column !important;
-      height: 100% !important;
-    }
-
-    .notebook-textarea {
-      width: 100% !important;
-      height: 320px !important;
-      padding: 20px !important;
-      border: 1px solid #cbd5e1 !important;
-      border-radius: 14px !important;
-      font-family: 'Quicksand', sans-serif !important;
-      font-size: 15px !important;
-      line-height: 1.6 !important;
-      color: #334155 !important;
-      background-color: #ffffff !important;
-      resize: none !important;
-      box-sizing: border-box !important;
-      outline: none !important;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-    }
-
-    .notebook-textarea:focus {
-      border-color: #e67e22 !important;
-      box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1) !important;
-    }
-
-    .save-status {
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.5px !important;
-      color: #94a3b8 !important;
-      margin-top: 10px !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      align-self: flex-end !important;
-    }
-
-    .save-status i {
-      font-size: 12px !important;
-    }
-
-    .save-status.saved i {
-      color: #27ae60 !important;
-    }
-
-    /* FIXED TIMED EMBED VIEWPORTS */
-    .toolbar {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 15px !important;
-      background: #ffffff !important;
-      border: 1px solid #eef2f3 !important;
-      border-bottom: none !important;
-      border-radius: 16px 16px 0 0 !important;
-      padding: 12px 20px !important;
-    }
-
-    .tool-group {
-      display: flex !important;
-      align-items: center !important;
-      gap: 12px !important;
-    }
-
-    .zoom-label {
-      font-size: 12px !important;
-      font-weight: 700 !important;
-      color: #64748b !important;
-      min-width: 45px !important;
-    }
-
-    .zoom-slider {
-      -webkit-appearance: none !important;
-      appearance: none !important;
-      width: 140px !important;
-      height: 6px !important;
-      background: #e2e8f0 !important;
-      border-radius: 3px !important;
-      outline: none !important;
-    }
-
-    .zoom-slider::-webkit-slider-thumb {
-      -webkit-appearance: none !important;
-      appearance: none !important;
-      width: 16px !important;
-      height: 16px !important;
-      border-radius: 50% !important;
-      background: #e67e22 !important;
-      cursor: pointer !important;
-    }
-
-    /* SCROLLBOX SYSTEM CONTAINER */
-    .embed-window-frame {
-      width: 100% !important;
-      height: 600px !important;
-      background: #ffffff !important;
-      border: 1px solid #eef2f3 !important;
-      border-radius: 0 0 16px 16px !important;
-      overflow: auto !important; 
-      position: relative !important;
-    }
-
-    .zoom-scroll-container {
-      width: 100% !important;
-      height: 100% !important;
-      transition: width 0.1s ease-out, height 0.1s ease-out !important;
-    }
-
-    .zoom-scroll-container iframe {
-      width: 100% !important;
-      height: 100% !important;
-      border: none !important;
-      display: block !important;
-    }
-
-    /* RETURN NAVIGATION BUTTON */
-    .navigation-wrapper {
-      display: flex !important;
-      justify-content: center !important;
-      margin-top: 50px !important;
-    }
-
-    .back-dashboard-btn {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 12px !important;
-      background-color: transparent !important;
-      color: #e67e22 !important; 
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 2px !important;
-      padding: 14px 40px !important;
-      border: 2px solid #e67e22 !important; 
-      border-radius: 8px !important; 
-      text-decoration: none !important;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
-    }
-
-    .back-dashboard-btn:hover {
-      transform: translateY(-2px) !important;
-      background-color: #e67e22 !important;
-      color: #ffffff !important;
-    }
-
-    footer {
-      width: 100% !important;
-      text-align: center !important;
-      padding: 60px 0 30px !important;
-      font-size: 11px !important;
-      color: #95a5a6 !important;
-      letter-spacing: 2px !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Growth Portfolio</title>
+    <!-- Load Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .notebook-editor { 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            min-height: 300px; 
+            border-radius: 8px; 
+        }
+        img { max-width: 100%; height: auto; display: block; margin: 10px 0; }
+    </style>
 </head>
 <body>
 
-  <div class="page-container">
+    <h1>My Teaching Portfolio</h1>
+    <p>Type your reflections or paste images below. Everything saves automatically!</p>
     
-    <div class="header-section">
-      <div class="page-icon">
-        <i class="fa-solid fa-seedling"></i>
-      </div>
-      <h1>Demo Lesson</h1>
-      <div class="title-accent-line"></div>
-    </div>
+    <div id="reflectionJournal" class="notebook-editor" contenteditable="true"></div>
 
-    <div class="workspace-card split-grid">
-      
-      <div>
-        <h3 class="section-title"><i class="fa-solid fa-video"></i> Video Observation</h3>
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/Jqr0cwi7qkk" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
+    <script>
+        // 1. Initialize Cloud Connection
+        const supabaseUrl = 'https://gbtatmfnaaqqnmrjanvf.supabase.co';
+        const supabaseKey = 'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz'; 
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-      <div class="notebook-container">
-        <h3 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Reflection Notebook</h3>
-        <textarea 
-          id="reflectionJournal" 
-          class="notebook-textarea" 
-          placeholder="Type your notes, observations, and structural pedagogy thoughts on the demo class here... (Your changes are saved automatically!)"
-          oninput="runAutoSaveEngine()"></textarea>
-        
-        <div id="saveIndicator" class="save-status">
-          <i class="fa-solid fa-circle-check"></i> <span id="statusText">Ready to Type</span>
-        </div>
-      </div>
+        const journalArea = document.getElementById('reflectionJournal');
 
-    </div>
+        // 2. Load data from Cloud on startup
+        window.addEventListener('DOMContentLoaded', async () => {
+            const { data } = await supabase
+                .from('reflections')
+                .select('content')
+                .eq('id', 1)
+                .single();
+            if (data) journalArea.innerHTML = data.content;
+        });
 
-    <div class="workspace-card">
-      <h3 class="section-title"><i class="fa-solid fa-file-signature"></i> Associated Lesson Plan</h3>
-      
-      <div class="toolbar">
-        <div class="tool-group">
-          <input type="range" class="zoom-slider" id="lessonPlanSlider" min="50" max="200" value="100" oninput="executeWidthZoomEngine('planZoomContainer', 'zoomPercentLabel', this.value)">
-          <span class="zoom-label" id="zoomPercentLabel">100%</span>
-        </div>
-      </div>
+        // 3. Save to Cloud automatically
+        async function saveToCloud() {
+            const content = journalArea.innerHTML;
+            await supabase
+                .from('reflections')
+                .upsert({ id: 1, content: content });
+        }
 
-      <div class="embed-window-frame">
-        <div class="zoom-scroll-container" id="planZoomContainer">
-          <iframe src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview"></iframe>
-        </div>
-      </div>
-    </div>
+        // Trigger save 1 second after you stop typing
+        journalArea.addEventListener('keyup', () => {
+            clearTimeout(window.saveTimer);
+            window.saveTimer = setTimeout(saveToCloud, 1000);
+        });
 
-    <div class="navigation-wrapper">
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/dashboard.html" class="back-dashboard-btn">
-        <i class="fa-solid fa-arrow-left"></i> Return to Dashboard
-      </a>
-    </div>
-
-  </div>
-
-  <footer>© 2026 Caryll's Growth Portfolio</footer>
-
-  <script>
-    // ENGINE 1: LOCAL AUTO-SAVE LOGIC
-    const storageKey = 'caryll_demo_reflection_data';
-    const journalArea = document.getElementById('reflectionJournal');
-    const indicator = document.getElementById('saveIndicator');
-    const statusText = document.getElementById('statusText');
-    let typingDebounceTimer;
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const persistedData = localStorage.getItem(storageKey);
-      if (persistedData) {
-        journalArea.value = persistedData;
-        indicator.classList.add('saved');
-        statusText.innerText = "All observations saved";
-      }
-    });
-
-    // Debounce timer keeps performance snappy
-    function runAutoSaveEngine() {
-      indicator.classList.remove('saved');
-      statusText.innerText = "Typing...";
-      clearTimeout(typingDebounceTimer);
-      
-      typingDebounceTimer = setTimeout(() => {
-        localStorage.setItem(storageKey, journalArea.value);
-        indicator.classList.add('saved');
-        statusText.innerText = "All observations saved";
-      }, 750);
-    }
-
-    // ENGINE 2: ANCHORED STABLE WIDTH ZOOM CONTROLLER
-    function executeWidthZoomEngine(containerId, labelId, currentScalePercent) {
-      const displayLabel = document.getElementById(labelId);
-      const zoomContainer = document.getElementById(containerId);
-      
-      displayLabel.innerText = currentScalePercent + "%";
-      
-      if (currentScalePercent == 100) {
-        zoomContainer.style.width = "100%";
-        zoomContainer.style.height = "100%";
-      } else {
-        zoomContainer.style.width = currentScalePercent + "%";
-        zoomContainer.style.height = currentScalePercent + "%";
-      }
-    }
-  </script>
-
+        // 4. Handle Image Pasting
+        journalArea.addEventListener('paste', (e) => {
+            const items = e.clipboardData.items;
+            for (let item of items) {
+                if (item.type.startsWith('image')) {
+                    const file = item.getAsFile();
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        journalArea.appendChild(img);
+                        saveToCloud(); // Save immediately after adding image
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
