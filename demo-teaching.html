@@ -2,37 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chalkboard Chronicles | Growth Portfolio</title>
+    <title>Caryll's Growth Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; padding: 20px; }
         .notebook-editor { 
-            background: white; border: 1px solid #ddd; padding: 20px; 
-            min-height: 500px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: white; border: 1px solid #ddd; padding: 20px; min-height: 500px; 
+            border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-        .upload-section { margin: 10px 0; padding: 10px; background: #eef; border-radius: 5px; }
         .video-container { margin: 20px 0; border: 3px solid #333; }
-        img { max-width: 100%; height: auto; display: block; margin: 10px 0; }
+        .auto-timestamp { color: blue; text-decoration: underline; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="notebook-editor" id="reflectionJournal" contenteditable="true">
-        <h1>Chalkboard Chronicles</h1>
+    <!-- This notebook is locked by default -->
+    <div class="notebook-editor" id="reflectionJournal" contenteditable="false">
+        <h1>Caryll's Growth Portfolio</h1>
         
         <div class="video-container">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/Jqr0cwi7qkk" frameborder="0" allowfullscreen></iframe>
+            <iframe id="lessonVideo" width="100%" height="315" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <div class="upload-section">
-            <label><strong>Add Images:</strong> </label>
-            <input type="file" id="imageUploader" accept="image/*">
-        </div>
-
-        <ul>
-            <li><a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit?usp=drivesdk" target="_blank">Access Lesson Plan</a></li>
-        </ul>
-        
+        <p id="statusMsg"><em>View-Only Mode</em></p>
         <p>Add your pedagogical reflections here...</p>
     </div>
 
@@ -44,35 +36,49 @@
 
         const journalArea = document.getElementById('reflectionJournal');
 
-        // Load from cloud
+        // SECURITY: Only unlocks if you add ?edit=true to the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('edit') === 'true') {
+            journalArea.setAttribute('contenteditable', 'true');
+            document.getElementById('statusMsg').innerText = "Editing Enabled (You can type here)";
+        }
+
+        // Logic to jump video
+        window.seekTo = function(seconds) {
+            const iframe = document.getElementById('lessonVideo');
+            iframe.contentWindow.postMessage(JSON.stringify({
+                event: 'command', func: 'seekTo', args: [seconds, true]
+            }), '*');
+        };
+
+        // Automatically turns M:SS into clickable links
+        function convertTimestamps() {
+            const regex = /(\d{1,2}):(\d{2})/g;
+            journalArea.innerHTML = journalArea.innerHTML.replace(regex, (match, m, s) => {
+                const seconds = parseInt(m) * 60 + parseInt(s);
+                return `<span class="auto-timestamp" onclick="seekTo(${seconds})">${match}</span>`;
+            });
+        }
+
+        // Load content and then apply the click functions
         window.addEventListener('DOMContentLoaded', async () => {
             const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
-            if (data) journalArea.innerHTML = data.content;
+            if (data) {
+                journalArea.innerHTML = data.content;
+                convertTimestamps();
+            }
         });
 
-        // Save logic
+        // Save content to cloud
         async function saveToCloud() {
-            await supabase.from('reflections').upsert({ id: 1, content: journalArea.innerHTML });
+            if (journalArea.getAttribute('contenteditable') === 'true') {
+                await supabase.from('reflections').upsert({ id: 1, content: journalArea.innerHTML });
+            }
         }
 
         journalArea.addEventListener('keyup', () => {
             clearTimeout(window.saveTimer);
-            window.saveTimer = setTimeout(saveToCloud, 1000);
-        });
-
-        // Image Upload Button Logic
-        document.getElementById('imageUploader').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const img = document.createElement('img');
-                    img.src = event.target.result;
-                    journalArea.appendChild(img);
-                    saveToCloud();
-                };
-                reader.readAsDataURL(file);
-            }
+            window.saveTimer = setTimeout(saveToCloud, 2000);
         });
     </script>
 </body>
