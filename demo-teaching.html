@@ -5,53 +5,67 @@
     <title>Caryll's Growth Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* Exact Aesthetic Match to your Portfolio Branding */
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; text-align: center; }
-        
-        .brand-area { padding: 40px 20px; }
-        .leaf-logo { font-size: 40px; margin-bottom: 5px; display: block; }
-        h1 { font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin: 5px 0; }
-        .sub-header { font-weight: 300; letter-spacing: 2px; color: #cc5500; margin-bottom: 30px; }
+        /* Modern, Clean Base */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            margin: 0; 
+            color: #2d3436;
+            line-height: 1.6;
+        }
 
-        .container { max-width: 800px; margin: auto; padding: 20px; text-align: left; }
-        h3 { color: #cc5500; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        /* Minimalist Nav - No clunky blocks */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            border-bottom: 1px solid #f0f0f0; 
+        }
+        .nav-brand { font-weight: 700; letter-spacing: -0.5px; }
+        .nav-link { text-decoration: none; color: #636e72; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-link:hover { color: #000; }
 
-        .notebook-editor { border: 1px solid #eee; padding: 30px; min-height: 200px; border-radius: 10px; margin: 20px 0; }
-        .video-container { border: 2px solid #333; margin: 20px 0; }
-        .auto-timestamp { color: #cc5500; text-decoration: underline; cursor: pointer; font-weight: bold; }
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.2rem; color: #636e72; margin-bottom: 2rem; font-weight: 400; }
+
+        /* Video and Doc container - Clean edges */
+        .video-wrapper { aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
+        .notebook-area { background: #fafafa; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; }
         
-        .doc-wrapper { border: 1px solid #ddd; height: 600px; overflow: auto; margin-top: 20px; position: relative; }
-        #zoomTarget { transform-origin: top left; transition: transform 0.2s; width: 100%; }
-        .controls { margin-top: 20px; padding: 15px; background: #fafafa; border-radius: 5px; }
+        .zoom-controls { margin-bottom: 10px; display: flex; gap: 10px; align-items: center; font-size: 0.8rem; }
+        .doc-viewer { border: 1px solid #eee; height: 600px; overflow: auto; border-radius: 4px; background: #fff; }
+        #zoomTarget { transform-origin: top left; transition: transform 0.15s ease-out; }
     </style>
 </head>
 <body>
 
-<div class="brand-area">
-    <span class="leaf-logo">🌱</span>
-    <h1>Caryll's</h1>
-    <div class="sub-header">GROWTH PORTFOLIO</div>
-</div>
+<nav>
+    <div class="nav-brand">CARYLL KAYN</div>
+    <a href="index.html" class="nav-link">← Return to Dashboard</a>
+</nav>
 
-<div class="container">
-    <h3>Demo Lesson Video</h3>
-    <div class="video-container">
-        <iframe id="lessonVideo" width="100%" height="450" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+<div class="main-container">
+    <h1>Growth Portfolio</h1>
+    <h2>Demo Lesson Video</h2>
+    
+    <div class="video-wrapper">
+        <iframe id="lessonVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    <div class="notebook-editor" id="reflectionJournal" contenteditable="false">
-        <p id="statusMsg" style="color:#cc5500;"><em>View-Only Mode</em></p>
-        <p>Type your reflections here...</p>
+    <div class="notebook-area" id="reflectionJournal" contenteditable="false">
+        <p id="statusMsg"><em>View-Only Mode</em></p>
     </div>
 
     <h3>Lesson Plan</h3>
-    <div class="controls">
-        <label>Zoom:</label>
+    <div class="zoom-controls">
+        <label>Zoom</label>
         <input type="range" id="zoomRange" min="50" max="150" value="100">
         <span id="zoomVal">100%</span>
     </div>
 
-    <div class="doc-wrapper">
+    <div class="doc-viewer">
         <div id="zoomTarget">
             <iframe src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview" width="100%" height="800px"></iframe>
         </div>
@@ -74,34 +88,20 @@
         document.getElementById('zoomVal').innerText = val + "%";
     });
 
+    // Check for edit mode
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('edit') === 'true') {
         journalArea.setAttribute('contenteditable', 'true');
         document.getElementById('statusMsg').innerText = "Editing Enabled";
     }
 
-    window.seekTo = function(seconds) {
-        document.getElementById('lessonVideo').contentWindow.postMessage(JSON.stringify({
-            event: 'command', func: 'seekTo', args: [seconds, true]
-        }), '*');
-    };
-
-    function convertTimestamps() {
-        const regex = /(\d{1,2}):(\d{2})/g;
-        journalArea.innerHTML = journalArea.innerHTML.replace(regex, (match, m, s) => {
-            const seconds = parseInt(m) * 60 + parseInt(s);
-            return `<span class="auto-timestamp" onclick="seekTo(${seconds})">${match}</span>`;
-        });
-    }
-
+    // Load content
     window.addEventListener('DOMContentLoaded', async () => {
         const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
-        if (data) {
-            journalArea.innerHTML = data.content;
-            convertTimestamps();
-        }
+        if (data) journalArea.innerHTML = data.content;
     });
 
+    // Autosave
     journalArea.addEventListener('keyup', () => {
         if (journalArea.getAttribute('contenteditable') === 'true') {
             clearTimeout(window.saveTimer);
@@ -113,3 +113,4 @@
 </script>
 </body>
 </html>
+
