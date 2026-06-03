@@ -16,7 +16,7 @@
     .video-wrapper { width: 100%; min-height: 450px; background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 30px; }
     .video-wrapper iframe { width: 100%; height: 500px; display: block; }
     .notebook-area { background: #ffffff; border: 2px dashed #e67e22; border-radius: 18px; padding: 25px; min-height: 150px; margin-bottom: 20px; }
-    /* Preview Container */
+    .ts-link { color: #e67e22; text-decoration: underline; cursor: pointer; font-weight: bold; }
     .doc-preview-wrapper { width: 100%; height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid #eef2f3; margin-bottom: 20px; }
     .doc-preview-wrapper iframe { width: 100%; height: 100%; border: none; }
     .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
@@ -33,9 +33,10 @@
   <div class="content-panel">
     <p class="section-label">Video Evidence</p>
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/Jqr0cwi7qkk" frameborder="0" allowfullscreen></iframe>
+      <iframe id="vidFrame" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </div>
     <p class="section-label">Reflection Journal</p>
+    <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 10px;"><em>Tip: Click any orange timestamp (e.g., 4:00) to jump to that moment in the video.</em></p>
     <div class="notebook-area" id="reflectionJournal" contenteditable="true">Loading...</div>
     <div class="controls">
       <span id="timestamp">Last saved: Never</span>
@@ -46,7 +47,7 @@
     <div class="doc-preview-wrapper">
       <iframe src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview"></iframe>
     </div>
-    <a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit" target="_blank" class="btn">Open Full Lesson Plan in New Tab</a>
+    <a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit" target="_blank" class="btn">Open Full Lesson Plan</a>
   </div>
   <div class="content-panel" style="text-align: center;">
     <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
@@ -56,6 +57,14 @@
     const supabase = supabase.createClient('https://gbtatmfnaaqqnmrjanvf.supabase.co', 'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz');
     const journal = document.getElementById('reflectionJournal');
     const ts = document.getElementById('timestamp');
+    const vidFrame = document.getElementById('vidFrame');
+
+    journal.addEventListener('click', (e) => {
+        if (e.target.classList.contains('ts-link')) {
+            const time = e.target.dataset.time;
+            vidFrame.src = "https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1&start=" + time;
+        }
+    });
 
     async function load() {
         const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
@@ -63,7 +72,11 @@
     }
     
     async function saveReflection() {
-        await supabase.from('reflections').update({ content: journal.innerHTML }).eq('id', 1);
+        let html = journal.innerHTML.replace(/(\d+):(\d+)/g, (match, m, s) => {
+            const seconds = parseInt(m) * 60 + parseInt(s);
+            return `<span class="ts-link" data-time="${seconds}">${match}</span>`;
+        });
+        await supabase.from('reflections').update({ content: html }).eq('id', 1);
         ts.innerText = "Last saved: " + new Date().toLocaleString();
     }
     load();
