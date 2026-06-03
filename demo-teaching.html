@@ -1,116 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Caryll's Growth Portfolio</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <style>
-        /* Modern, Clean Base */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #ffffff; 
-            margin: 0; 
-            color: #2d3436;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8">
+  <title>Demo Teaching | Portfolio Asset</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: #ffffff;
+      color: #2d3436;
+      font-family: 'Quicksand', sans-serif;
+      padding: 40px 20px 120px 20px; 
+      max-width: 500px; 
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        /* Minimalist Nav - No clunky blocks */
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 20px 5%; 
-            border-bottom: 1px solid #f0f0f0; 
-        }
-        .nav-brand { font-weight: 700; letter-spacing: -0.5px; }
-        .nav-link { text-decoration: none; color: #636e72; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-link:hover { color: #000; }
+    .brand-icon { color: #2ecc71; font-size: 32px; margin-bottom: 10px; animation: gentle-bounce 2s infinite ease-in-out; }
 
-        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        h1 { font-size: 2rem; margin-bottom: 1rem; }
-        h2 { font-size: 1.2rem; color: #636e72; margin-bottom: 2rem; font-weight: 400; }
+    .main-page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #2d3436;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .main-page-title::after { content: ''; display: block; width: 40px; height: 3px; background-color: #e67e22; margin: 8px auto 0 auto; border-radius: 2px; }
 
-        /* Video and Doc container - Clean edges */
-        .video-wrapper { aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
-        .notebook-area { background: #fafafa; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; }
-        
-        .zoom-controls { margin-bottom: 10px; display: flex; gap: 10px; align-items: center; font-size: 0.8rem; }
-        .doc-viewer { border: 1px solid #eee; height: 600px; overflow: auto; border-radius: 4px; background: #fff; }
-        #zoomTarget { transform-origin: top left; transition: transform 0.15s ease-out; }
-    </style>
+    .container { width: 100%; margin-bottom: 30px; }
+    
+    /* Video Wrapper */
+    .video-container { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    
+    /* Doc Viewer Styling */
+    .doc-container { position: relative; height: 600px; overflow: hidden; width: 100%; background: #fafafa; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    .iframe-zoom-wrapper { width: 100%; height: 100%; overflow: auto; position: relative; border-radius: 16px; }
+    .doc-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 16px; transform-origin: top left; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+
+    .section-heading { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #e67e22; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; text-align: center; }
+
+    .utility-buttons { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+    .utility-buttons button, .utility-buttons a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: #e67e22; padding: 8px 16px; border-radius: 6px; background: #ffffff; border: 2px solid #e67e22; cursor: pointer; transition: all 0.3s ease; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    
+    .zoom-control { display: inline-flex; align-items: center; gap: 8px; background: #fafafa; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.05); }
+    .zoom-control label { color: #636e72; font-size: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+    .zoom-control input { width: 100px; accent-color: #e67e22; cursor: pointer; }
+
+    .mobile-nav-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background-color: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-top: 1px solid rgba(0,0,0,0.05); padding: 20px; display: flex; justify-content: center; z-index: 2000; }
+    .return-link-btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #e67e22; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 12px 28px; border-radius: 6px; background: #ffffff; border: 2px solid #e67e22; cursor: pointer; transition: all 0.3s ease; }
+    
+    @keyframes gentle-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-brand">CARYLL KAYN</div>
-    <a href="index.html" class="nav-link">← Return to Dashboard</a>
-</nav>
+  <div class="brand-icon"><i class="fa-solid fa-seedling"></i></div>
+  <h1 class="main-page-title">Demo Teaching</h1>
 
-<div class="main-container">
-    <h1>Growth Portfolio</h1>
-    <h2>Demo Lesson Video</h2>
+  <div class="container">
+    <div class="video-container">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Jqr0cwi7qkk" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Lesson Plan</h2>
+  <div class="doc-container" id="outerContainer">
+    <div class="iframe-zoom-wrapper" id="zoomWrapper">
+      <iframe id="docFrame" src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview" width="100%" height="100%"></iframe>
+    </div>
+  </div>
+
+  <div class="utility-buttons">
+    <div class="zoom-control">
+      <label><i class="fa-solid fa-magnifying-glass"></i> Zoom</label>
+      <input type="range" id="zoomRange" min="100" max="180" step="10" value="100">
+    </div>
+    <a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit" target="_blank">
+      <i class="fa-solid fa-up-right-from-square"></i> Open Tab
+    </a>
+  </div>
+
+  <nav class="mobile-nav-bar">
+    <a href="dashboard.html" class="return-link-btn"><i class="fa-solid fa-arrow-left-long"></i> Return to Dashboard</a>
+  </nav>
+
+  <script>
+    const slider = document.getElementById('zoomRange');
+    const frame = document.getElementById('docFrame');
+    const outerContainer = document.getElementById('outerContainer');
     
-    <div class="video-wrapper">
-        <iframe id="lessonVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="notebook-area" id="reflectionJournal" contenteditable="false">
-        <p id="statusMsg"><em>View-Only Mode</em></p>
-    </div>
-
-    <h3>Lesson Plan</h3>
-    <div class="zoom-controls">
-        <label>Zoom</label>
-        <input type="range" id="zoomRange" min="50" max="150" value="100">
-        <span id="zoomVal">100%</span>
-    </div>
-
-    <div class="doc-viewer">
-        <div id="zoomTarget">
-            <iframe src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview" width="100%" height="800px"></iframe>
-        </div>
-    </div>
-</div>
-
-<script>
-    const supabase = supabase.createClient(
-        'https://gbtatmfnaaqqnmrjanvf.supabase.co',
-        'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz'
-    );
-
-    const journalArea = document.getElementById('reflectionJournal');
-    const zoomTarget = document.getElementById('zoomTarget');
-    const zoomRange = document.getElementById('zoomRange');
-
-    zoomRange.addEventListener('input', (e) => {
-        const val = e.target.value;
-        zoomTarget.style.transform = `scale(${val / 100})`;
-        document.getElementById('zoomVal').innerText = val + "%";
+    slider.addEventListener('input', function() {
+      const scale = this.value / 100;
+      frame.style.width = (100 * scale) + '%';
+      frame.style.height = (100 * scale) + '%';
+      frame.style.transform = `scale(${1 / scale})`;
+      outerContainer.style.height = (600 * scale) + 'px';
     });
-
-    // Check for edit mode
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('edit') === 'true') {
-        journalArea.setAttribute('contenteditable', 'true');
-        document.getElementById('statusMsg').innerText = "Editing Enabled";
-    }
-
-    // Load content
-    window.addEventListener('DOMContentLoaded', async () => {
-        const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
-        if (data) journalArea.innerHTML = data.content;
-    });
-
-    // Autosave
-    journalArea.addEventListener('keyup', () => {
-        if (journalArea.getAttribute('contenteditable') === 'true') {
-            clearTimeout(window.saveTimer);
-            window.saveTimer = setTimeout(async () => {
-                await supabase.from('reflections').upsert({ id: 1, content: journalArea.innerHTML });
-            }, 2000);
-        }
-    });
-</script>
+  </script>
 </body>
 </html>
-
