@@ -9,20 +9,19 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* GLOBAL STRUCTURE & SCROLL ENGINE */
+    /* GLOBAL STRUCTURE */
     html {
       margin: 0 !important;
       padding: 0 !important;
       width: 100% !important;
       height: 100% !important;
-      scroll-behavior: smooth;
     }
     
     body {
       margin: 0 !important;
       padding: 0 !important;
       width: 100% !important;
-      min-height: 101vh !important; 
+      min-height: 100vh !important; 
       background-color: #ffffff !important;
       font-family: 'Quicksand', sans-serif !important;
       color: #2d3436 !important;
@@ -30,33 +29,15 @@
       box-sizing: border-box !important;
     }
 
-    /* FLUSH TOP EDGE PROGRESS BAR */
-    .top-progress-container {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 12px !important;
-      background-color: #f2f4f4 !important;
-      z-index: 2000 !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
-    }
-
-    .top-progress-bar {
-      width: 0%; 
-      height: 100% !important;
-      background: linear-gradient(to right, #27ae60, #a3e4d7, #e67e22, #d35400) !important;
-    }
-
     .page-container {
       width: 100% !important;
       max-width: 850px !important;
       margin: 0 auto !important; 
-      padding: 80px 20px 40px !important; 
+      padding: 60px 20px 40px !important; 
       box-sizing: border-box !important;
     }
 
-    /* TYPOGRAPHY HEADERS (MATCHING 1780452097804.jpeg) */
+    /* TYPOGRAPHY HEADERS */
     .header-section {
       display: flex !important;
       flex-direction: column !important;
@@ -66,7 +47,7 @@
 
     .page-icon {
       font-size: 38px !important; 
-      color: #27ae60 !important; /* Green seedling color matching the screenshot */
+      color: #27ae60 !important; 
       margin-bottom: 20px !important;
     }
 
@@ -82,7 +63,6 @@
       line-height: 1.2 !important;
     }
 
-    /* MINIMALIST UNDERLINE ACCENT FROM SCREENSHOT */
     .title-accent-line {
       width: 45px !important;
       height: 3px !important;
@@ -144,7 +124,7 @@
       font-weight: 500 !important;
     }
 
-    /* INTERLOCKING PILLARS SECTIONS (CLEAN, NO ASTERISKS) */
+    /* INTERLOCKING PILLARS SECTIONS */
     .pillars-container {
       display: flex !important;
       flex-direction: column !important;
@@ -176,11 +156,10 @@
       }
     }
 
-    /* DYNAMIC SOFT BADGES FROM 1780452068033.jpeg */
     .pillar-icon-wrap {
       width: 55px !important;
       height: 55px !important;
-      background: #fff5eb !important; /* Soft warm terracotta glow */
+      background: #fff5eb !important; 
       border-radius: 14px !important;
       display: flex !important;
       align-items: center !important;
@@ -209,7 +188,7 @@
       margin: 0 !important;
     }
 
-    /* RETURN NAVIGATION BUTTON (MATCHING 1780452097804.jpeg) */
+    /* RETURN NAVIGATION BUTTON */
     .navigation-wrapper {
       display: flex !important;
       justify-content: center !important;
@@ -222,15 +201,15 @@
       justify-content: center !important;
       gap: 12px !important;
       background-color: transparent !important;
-      color: #e67e22 !important; /* Terracotta text colored directly */
+      color: #e67e22 !important; 
       font-family: 'Montserrat', sans-serif !important;
       font-size: 11px !important;
       font-weight: 700 !important;
       text-transform: uppercase !important;
       letter-spacing: 2px !important;
       padding: 14px 40px !important;
-      border: 2px solid #e67e22 !important; /* Clean bordered shell outline */
-      border-radius: 8px !important; /* Square-rounded shape edge match */
+      border: 2px solid #e67e22 !important; 
+      border-radius: 8px !important; 
       text-decoration: none !important;
       transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
     }
@@ -253,14 +232,9 @@
 </head>
 <body>
 
-  <!-- Top Scroll Progress Bar Tracker -->
-  <div class="top-progress-container">
-    <div id="scrollProgressBar" class="top-progress-bar"></div>
-  </div>
-
   <div class="page-container">
     
-    <!-- HEADER SECTION MATCHING THE SCREENSHOT -->
+    <!-- HEADER SECTION -->
     <div class="header-section">
       <div class="page-icon">
         <i class="fa-solid fa-seedling"></i>
@@ -285,7 +259,7 @@
         </p>
       </div>
 
-      <!-- Clean Pillars Layout without asterisks -->
+      <!-- Pillars Layout -->
       <div class="pillars-container">
         
         <!-- Pillar 1 -->
@@ -321,7 +295,7 @@
           </div>
         </div>
 
-        <!-- Pillar 4 (ICON SPACE COMPLETELY FIXED HERE) -->
+        <!-- Pillar 4 -->
         <div class="pillar-row">
           <div class="pillar-icon-wrap">
             <i class="fa-solid fa-hand-holding-heart"></i>
@@ -336,7 +310,7 @@
 
     </div>
 
-    <!-- CLEAN TRANSPARENT TERRACOTTA RETURN BUTTON -->
+    <!-- RETURN NAVIGATION BUTTON -->
     <div class="navigation-wrapper">
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/dashboard.html" class="back-dashboard-btn">
         <i class="fa-solid fa-arrow-left"></i> Return to Dashboard
@@ -346,25 +320,6 @@
   </div>
 
   <footer>© 2026 Caryll's Growth Portfolio</footer>
-
-  <script>
-    window.onscroll = function() { trackScrollEngine() };
-    window.onload = function() { trackScrollEngine() };
-    window.onresize = function() { trackScrollEngine() };
-
-    function trackScrollEngine() {
-      var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progressBar = document.getElementById("scrollProgressBar");
-
-      if (totalHeight <= 10) {
-        progressBar.style.width = "0%";
-      } else {
-        var scrolled = (winScroll / totalHeight) * 100;
-        progressBar.style.width = Math.min(Math.max(scrolled, 0), 100) + "%";
-      }
-    }
-  </script>
 
 </body>
 </html>
