@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard | Miss Caryll's Teaching Portfolio</title>
+  <title>Dashboard | Caryll's Growth Portfolio</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
@@ -94,29 +94,8 @@
       color: #2d3436 !important;
       letter-spacing: 2px !important;
       text-transform: uppercase !important;
-      margin: 0 0 35px 0 !important;
+      margin: 0 0 45px 0 !important; /* Slightly increased gap since quote is gone */
       text-align: center !important;
-    }
-
-    /* QUOTE BLOCK */
-    .quote-container {
-      max-width: 550px !important;
-      text-align: center !important;
-      margin-bottom: 55px !important;
-    }
-
-    .quote-text {
-      font-size: 18px !important;
-      font-weight: 700 !important;
-      color: #2d3436 !important;
-      line-height: 1.5 !important;
-    }
-
-    .quote-author {
-      display: block !important;
-      font-size: 14px !important;
-      color: #2d3436 !important;
-      margin-top: 8px !important;
     }
 
     /* THE LUSH GARDEN GRID */
@@ -364,7 +343,7 @@
       z-index: 3 !important;
     }
 
-    /* STAGE 10: ULTIMATE BOTANICAL TREE (COURSE REFLECTION) WITH SHADED/BORDERED APPLE */
+    /* STAGE 10: COURSE REFLECTION TREE WITH TRUE-WHITE FLESH BITE */
     .stage-10-reflectiontree .growth-element {
       width: 10px !important;
       height: 25px !important;
@@ -382,7 +361,7 @@
       box-shadow: inset -5px -5px 0 rgba(0,0,0,0.2) !important;
     }
 
-    /* Rich Shaded and Outlined Bitten Apple floating overlay within canopy */
+    /* Beautifully shaded and outlined apple nested safely inside the canopy foliage */
     .stage-10-reflectiontree .bitten-apple-canopy-emblem {
       position: absolute !important;
       bottom: 34px !important;
@@ -390,22 +369,19 @@
       font-size: 28px !important;
       z-index: 4 !important;
       
-      /* --- SHADING EFFECTS --- */
-      /* Base red fallback with a linear lighting gradient running from top-left down to dark bottom-right */
+      /* Rich multi-tone shading gradient */
       background: linear-gradient(135deg, #ff6b6b 0%, #c0392b 60%, #962d22 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       
-      /* --- BORDER CONTRAST ENGINE --- */
-      /* Generates a crisp, continuous 1.5px border layout around the curved icon silhouette */
+      /* Dark crimson crisp border line */
       -webkit-text-stroke: 1.5px #7b1e15 !important;
       
-      /* Drop shadow for visual separation from dark green leaves */
       filter: drop-shadow(0 3px 5px rgba(0,0,0,0.35)) !important;
       animation: gentle-sway 4s infinite ease-in-out;
     }
 
-    /* Bite Cutout dynamically blending with the tree canopy foliage */
+    /* Bite cutout circle: Reveals the bright, clean internal fruit flesh */
     .stage-10-reflectiontree .bitten-apple-canopy-emblem::after {
       content: '' !important;
       position: absolute !important;
@@ -413,11 +389,16 @@
       right: -5px !important;
       width: 11px !important;
       height: 11px !important;
-      background: #145a32 !important; /* Matches perfectly to canopy green background */
+      background: #fafbfc !important;
       border-radius: 50% !important;
       
-      /* Subtle dark border line match along the inside curve of the bite cutout */
-      box-shadow: -1.5px 0 0 0 #7b1e15 !important;
+      /* Crisp interior outline curve for the bite marks */
+      box-shadow: inset 1px -0.5px 0 0.5px #7b1e15 !important;
+    }
+
+    /* Dynamic hover update: Matches the bright white card background highlight */
+    .plant-card:hover .bitten-apple-canopy-emblem::after {
+      background: #ffffff !important;
     }
 
     /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
@@ -539,11 +520,6 @@
     <p class="subtitle">GROWTH PORTFOLIO</p>
     <p class="welcome-text">Welcome to my portfolio dashboard</p>
 
-    <div class="quote-container">
-      <span class="quote-text">"The roots of education are bitter, but the fruit is sweet."</span>
-      <span class="quote-author">— Aristotle</span>
-    </div>
-
     <div class="garden-grid">
       
       <!-- STAGE 1: THE TEACHER -->
@@ -596,7 +572,7 @@
         <span>Management</span>
       </a>
 
-      <!-- STAGE 6: ASSESSMENT (LINK REMOVED - TURNED TO STYLED CONTAINER) -->
+      <!-- STAGE 6: ASSESSMENT -->
       <div class="plant-card stage-6-shrub3">
         <div class="plant-art-container">
           <div class="growth-element"></div>
@@ -638,7 +614,7 @@
         <span>CBAR</span>
       </a>
 
-      <!-- STAGE 10: COURSE REFLECTION (HARMONIZED BOTANICAL APPLE TREE WITH DETAILED ART) -->
+      <!-- STAGE 10: COURSE REFLECTION -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card stage-10-reflectiontree">
         <div class="plant-art-container">
           <div class="growth-element"></div>
