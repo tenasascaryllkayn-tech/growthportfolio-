@@ -74,7 +74,6 @@
     const ts = document.getElementById('timestamp');
     const vidFrame = document.getElementById('vidFrame');
 
-    // 1. Keep the click handler
     journal.addEventListener('click', (e) => {
         if (e.target.classList.contains('ts-link')) {
             const time = e.target.dataset.time;
@@ -82,31 +81,28 @@
         }
     });
 
-    // 2. Load function
     async function load() {
         const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
         if (data) journal.innerHTML = data.content;
     }
     
-    // 3. Updated Save function
     async function saveReflection() {
-        console.log("Save button clicked!"); // Check your browser console
+        // Get raw text, ignoring all HTML
+        let text = journal.innerText;
         
-        let text = journal.innerHTML; 
-        
-        // This regex looks for digits, a colon, and more digits
-        let newHtml = text.replace(/(\d+):(\d+)/g, (match, m, s) => {
+        // This looks for [min:sec]
+        let newHtml = text.replace(/\[(\d+):(\d+)\]/g, (match, m, s) => {
             const seconds = parseInt(m) * 60 + parseInt(s);
             return `<span class="ts-link" style="color: #e67e22; text-decoration: underline; cursor: pointer; font-weight: bold;" data-time="${seconds}">${match}</span>`;
         });
         
         journal.innerHTML = newHtml;
-        
         await supabase.from('reflections').update({ content: newHtml }).eq('id', 1);
         ts.innerText = "Last saved: " + new Date().toLocaleString();
     }
     load();
   </script>
+
 
 
 </body>
