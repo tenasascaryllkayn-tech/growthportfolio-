@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Educational Philosophy | Caryll's Growth Portfolio</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  
+  <!-- Fonts & Icons matching the Dashboard and previous layouts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    /* GLOBAL STRUCTURE & SCROLL ENGINE */
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      min-height: 101vh !important; 
+      background-color: #ffffff !important;
+      font-family: 'Quicksand', sans-serif !important;
+      color: #2d3436 !important;
+      display: block !important;
+      box-sizing: border-box !important;
+    }
+
+    /* FLUSH TOP EDGE PROGRESS BAR */
+    .top-progress-container {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 12px !important;
+      background-color: #f2f4f4 !important;
+      z-index: 2000 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    }
+
+    .top-progress-bar {
+      width: 0%; 
+      height: 100% !important;
+      background: linear-gradient(to right, #27ae60, #a3e4d7, #e67e22, #d35400) !important;
+    }
+
+    .page-container {
+      width: 100% !important;
+      max-width: 850px !important;
+      margin: 0 auto !important; 
+      padding: 80px 20px 40px !important; 
+      box-sizing: border-box !important;
+    }
+
+    /* TYPOGRAPHY HEADERS */
+    .header-section {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      margin-bottom: 50px !important;
+    }
+
+    .page-icon {
+      font-size: 50px !important; 
+      color: #e67e22 !important; /* Stage 4 Orange/Terracotta accent */
+      margin-bottom: 15px !important;
+    }
+
+    h1 { 
+      font-family: 'Montserrat', sans-serif !important; 
+      font-size: 30px !important; 
+      font-weight: 800 !important; 
+      color: #2d3436 !important; 
+      text-transform: uppercase !important; 
+      letter-spacing: 5px !important; 
+      margin: 0 !important;
+      text-align: center !important;
+      line-height: 1.3 !important;
+    }
+    
+    .subtitle { 
+      font-size: 11px !important; 
+      font-weight: 700 !important; 
+      color: #27ae60 !important; 
+      text-transform: uppercase !important; 
+      letter-spacing: 4px !important; 
+      margin: 12px 0 5px 0 !important; 
+      text-align: center !important;
+    }
+
+    /* MAIN TEXT WINDOW */
+    .philosophy-content {
+      background: #fafbfc !important;
+      border: 1px solid #f0f3f4 !important;
+      border-radius: 24px !important;
+      padding: 40px !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01) !important;
+      margin-bottom: 40px !important;
+    }
+
+    @media (max-width: 500px) {
+      .philosophy-content { padding: 25px !important; }
+    }
+
+    /* DEFENSE FRAMEWORK CALLOUT BOX */
+    .defense-summary-box {
+      background: #ffffff !important;
+      border-left: 4px solid #27ae60 !important;
+      border-top: 1px solid #eef2f3 !important;
+      border-right: 1px solid #eef2f3 !important;
+      border-bottom: 1px solid #eef2f3 !important;
+      border-radius: 4px 16px 16px 4px !important;
+      padding: 25px !important;
+      margin-bottom: 35px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.01) !important;
+    }
+
+    .defense-summary-box h4 {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      color: #e67e22 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+      margin: 0 0 10px 0 !important;
+    }
+
+    .defense-summary-box p {
+      font-size: 15px !important;
+      font-style: italic !important;
+      line-height: 1.6 !important;
+      color: #34495e !important;
+      margin: 0 !important;
+    }
+
+    .manifesto-lead {
+      font-size: 16px !important;
+      line-height: 1.8 !important;
+      color: #2d3436 !important;
+      margin-bottom: 35px !important;
+      font-weight: 500 !important;
+    }
+
+    /* INTERLOCKING PILLARS SECTIONS (NO ASTERISKS) */
+    .pillars-container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 30px !important;
+      margin-top: 20px !important;
+    }
+
+    .pillar-row {
+      display: grid !important;
+      grid-template-columns: 60px 1fr !important;
+      gap: 20px !important;
+      background: #ffffff !important;
+      border: 1px solid #eef2f3 !important;
+      border-radius: 18px !important;
+      padding: 25px !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    .pillar-row:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03) !important;
+    }
+
+    @media (max-width: 550px) {
+      .pillar-row {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        justify-items: center !important;
+      }
+    }
+
+    .pillar-icon-wrap {
+      width: 55px !important;
+      height: 55px !important;
+      background: #fff5eb !important;
+      border-radius: 14px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .pillar-icon-wrap i {
+      font-size: 22px !important;
+      color: #e67e22 !important;
+    }
+
+    .pillar-text-wrap h3 {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      margin: 0 0 8px 0 !important;
+      color: #2d3436 !important;
+    }
+
+    .pillar-text-wrap p {
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+      color: #57606f !important;
+      margin: 0 !important;
+    }
+
+    /* BACK TO DASHBOARD NAVIGATION BUTTON */
+    .navigation-wrapper {
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 50px !important;
+    }
+
+    .back-dashboard-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      background-color: #2d3436 !important;
+      color: #ffffff !important;
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+      padding: 14px 28px !important;
+      border-radius: 30px !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 12px rgba(45, 52, 54, 0.2) !important;
+      transition: transform 0.2s ease, background-color 0.2s ease !important;
+    }
+
+    .back-dashboard-btn:hover {
+      transform: translateY(-2px) !important;
+      background-color: #27ae60 !important; 
+      box-shadow: 0 6px 15px rgba(39, 174, 96, 0.25) !important;
+    }
+
+    footer {
+      width: 100% !important;
+      text-align: center !important;
+      padding: 60px 0 30px !important;
+      font-size: 11px !important;
+      color: #95a5a6 !important;
+      letter-spacing: 2px !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Scroll Progress bar -->
+  <div class="top-progress-container">
+    <div id="scrollProgressBar" class="top-progress-bar"></div>
+  </div>
+
+  <div class="page-container">
+    
+    <!-- HEADER SECTION -->
+    <div class="header-section">
+      <div class="page-icon">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <h1>Philosophy of Education</h1>
+      <p class="subtitle">An Eco-Progressive Framework for Neuro-Inclusive Learning</p>
+    </div>
+
+    <!-- MAIN PORTFOLIO CAPABLE WINDOW -->
+    <div class="philosophy-content">
+      
+      <!-- Lead Framework Introduction -->
+      <p class="manifesto-lead">
+        My educational philosophy is a commitment to <strong>Ecological Progressivism</strong>, driven by a proactive <strong>Special Education (SPED) lens</strong> and operationalized through <strong>Universal Design for Learning (UDL)</strong>. I believe the learning environment must bend to the child, not the child to the environment.
+      </p>
+
+      <!-- Defense Framework Callout Box -->
+      <div class="defense-summary-box">
+        <h4>Summary for My Defense</h4>
+        <p>
+          "My pedagogy is driven by <strong>Ecological Progressivism</strong> filtered through a <strong>proactive SPED lens</strong>. By synthesizing the environmental intentionality of Reggio Emilia with the inclusive architecture of UDL, I transform the classroom into a living ecosystem where the scaffolding typically reserved for isolated spaces becomes the standard, beautiful design for all children."
+        </p>
+      </div>
+
+      <!-- The Four Interlocking Pillars Container (No bullet asterisks, clean aesthetic layout) -->
+      <div class="pillars-container">
+        
+        <!-- Pillar 1 -->
+        <div class="pillar-row">
+          <div class="pillar-icon-wrap">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="pillar-text-wrap">
+            <h3>Reggio Emilia Inspired</h3>
+            <p>I honor the "100 languages of children" by providing diverse expressive mediums. I treat the physical classroom and its biophilic design as the "Third Teacher"—an active collaborator that soothes the nervous system and sparks wonder.</p>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar-row">
+          <div class="pillar-icon-wrap">
+            <i class="fa-solid fa-compass"></i>
+          </div>
+          <div class="pillar-text-wrap">
+            <h3>Universal Design for Learning (UDL)</h3>
+            <p>I reject a one-size-fits-all curriculum. Instead of retrofitting modifications, I proactively design the classroom architecture from the start so that it supports and accommodates all diverse nervous systems.</p>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-row">
+          <div class="pillar-icon-wrap">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <div class="pillar-text-wrap">
+            <h3>Ecological Progressivism</h3>
+            <p>Rooted in Arnold Gesell’s natural developmental timelines and John Dewey’s "learning by doing," I focus on grounded, tactile reality. I advocate for the "dignity of risk," allowing children to handle real tools and navigate authentic challenges to build true resilience.</p>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="pillar-row">
+          <div class="pillar-icon-wrap">
+            <i class="fa-solid fa-hands-holding-heart"></i>
+          </div>
+          <div class="pillar-text-wrap">
+            <h3>Social-Emotional Learning (SEL)</h3>
+            <p>Guided by Vygotsky and Bronfenbrenner, I co-construct a safe, nested community. By teaching emotional granularity, I equip children with the specific linguistic tools they need for authentic self-regulation and connection.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CORE DIRECT DIRECTORY BUTTON -->
+    <div class="navigation-wrapper">
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/dashboard.html" class="back-dashboard-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+  <footer>© 2026 Caryll's Growth Portfolio</footer>
+
+  <script>
+    window.onscroll = function() { trackScrollEngine() };
+    window.onload = function() { trackScrollEngine() };
+    window.onresize = function() { trackScrollEngine() };
+
+    function trackScrollEngine() {
+      var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progressBar = document.getElementById("scrollProgressBar");
+
+      if (totalHeight <= 10) {
+        progressBar.style.width = "0%";
+      } else {
+        var scrolled = (winScroll / totalHeight) * 100;
+        progressBar.style.width = Math.min(Math.max(scrolled, 0), 100) + "%";
+      }
+    }
+  </script>
+
+</body>
+</html>
