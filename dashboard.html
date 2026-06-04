@@ -3,41 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard | Caryll's Growth Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* Reset & Base */
-    html { margin: 0; padding: 0; width: 100%; scroll-behavior: smooth; }
-    body { margin: 0; padding: 0; width: 100%; min-height: 150vh; background-color: #ffffff; font-family: 'Quicksand', sans-serif; color: #2d3436; box-sizing: border-box; }
+    /* GLOBAL STRUCTURE & SCROLL ENGINE */
+    html { margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; scroll-behavior: smooth; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; min-height: 101vh !important; background-color: #ffffff !important; font-family: 'Quicksand', sans-serif !important; color: #2d3436 !important; display: block !important; box-sizing: border-box !important; }
 
-    /* Progress Bar */
-    .top-progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 12px; background-color: #f2f4f4; z-index: 2000; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .top-progress-bar { width: 0%; height: 100%; background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b); }
+    /* FLUSH TOP EDGE PROGRESS BAR */
+    .top-progress-container { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 12px !important; background-color: #f2f4f4 !important; z-index: 2000 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }
+    .top-progress-bar { width: 0%; height: 100% !important; background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important; }
 
-    /* Layout */
-    .dashboard-container { width: 100%; max-width: 950px; margin: 0 auto; padding: 80px 20px; display: flex; flex-direction: column; align-items: center; }
-    .garden-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; width: 100%; max-width: 800px; }
-    @media (max-width: 650px) { .garden-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 420px) { .garden-grid { grid-template-columns: 1fr; } }
+    .dashboard-container { width: 100% !important; max-width: 950px !important; margin: 0 auto !important; padding: 60px 20px 40px !important; box-sizing: border-box !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
 
-    /* Plant Card Styling */
-    .plant-card { display: flex; flex-direction: column; align-items: center; text-decoration: none; background: #fafbfc; border: 1px solid #f0f3f4; border-radius: 20px; padding: 25px 15px; transition: 0.3s; color: #2d3436; position: relative; }
-    .plant-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(39, 174, 96, 0.15); }
-    .plant-art-container { width: 100px; height: 110px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; margin-bottom: 15px; }
-    .terracotta-pot { width: 54px; height: 42px; background: #e67e22; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; position: relative; }
-    .terracotta-pot::before { content: ''; position: absolute; top: 0; left: -4px; width: 62px; height: 8px; background: #d35400; border-radius: 4px; }
+    /* THE LUSH GARDEN GRID */
+    .garden-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 40px 25px !important; width: 100% !important; max-width: 800px !important; margin-bottom: 60px !important; }
+    @media (max-width: 650px) { .garden-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 420px) { .garden-grid { grid-template-columns: 1fr !important; } }
+
+    .plant-card { display: flex !important; flex-direction: column !important; align-items: center !important; text-decoration: none !important; position: relative !important; background: #fafbfc !important; border: 1px solid #f0f3f4 !important; border-radius: 20px !important; padding: 20px 10px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important; }
+    .plant-card:hover { transform: translateY(-6px) !important; box-shadow: 0 12px 24px rgba(39, 174, 96, 0.12) !important; background: #ffffff !important; }
     
-    /* Plant Elements */
-    .apple { position: absolute; font-size: 14px; }
-    .growth-element { background: #27ae60; border-radius: 50% 50% 40% 40%; margin-bottom: -4px; }
+    .plant-art-container { width: 100px !important; height: 110px !important; display: flex !important; flex-direction: column !important; justify-content: flex-end !important; align-items: center !important; margin-bottom: 12px !important; position: relative !important; }
     
-    /* Navigation */
-    .lower-control-panel { position: fixed; right: 25px; bottom: 25px; z-index: 1100; display: flex; flex-direction: column; gap: 10px; }
-    .control-btn { width: 48px; height: 48px; background-color: #27ae60; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
-    .home-btn { background-color: #2d3436; }
-    .flip-up { transform: rotate(180deg); }
+    /* POT & ELEMENT STYLING */
+    .terracotta-pot { width: 54px !important; height: 42px !important; background: #e67e22 !important; border-bottom-left-radius: 12px !important; border-bottom-right-radius: 12px !important; position: relative !important; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1) !important; }
+    .terracotta-pot::before { content: '' !important; position: absolute !important; top: 0 !important; left: -4px !important; width: 62px !important; height: 8px !important; background: #d35400 !important; border-radius: 4px !important; }
+    .topic-badge-icon { position: absolute !important; bottom: 12px !important; z-index: 5 !important; color: #ffffff !important; font-size: 13px !important; text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important; }
+    
+    /* STAGE SPECIFICS */
+    .apple-extra-1 { position: absolute !important; bottom: 25px !important; right: -18px !important; font-size: 10px !important; z-index: 3 !important; }
+    .apple-extra-2 { position: absolute !important; bottom: 44px !important; right: -2px !important; font-size: 11px !important; z-index: 3 !important; }
+    .pie-pan-tin-isolated { width: 68px !important; height: 26px !important; background: linear-gradient(to bottom, #8a5a36, #5c3a21) !important; border-bottom-left-radius: 16px !important; border-bottom-right-radius: 16px !important; position: relative !important; box-shadow: 0 4px 6px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.2) !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 6px !important; z-index: 2 !important; }
+    
+    /* NAV & FOOTER */
+    .lower-control-panel { position: fixed !important; right: 25px !important; bottom: 25px !important; display: flex !important; flex-direction: column !important; gap: 12px !important; z-index: 1100 !important; }
+    .control-btn { width: 48px !important; height: 48px !important; background-color: #27ae60 !important; color: #ffffff !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+    .home-btn { background-color: #2d3436 !important; }
+    .flip-up i { transform: rotate(180deg) !important; }
+    footer { width: 100% !important; text-align: center !important; padding: 45px 0 30px !important; font-size: 11px !important; color: #95a5a6 !important; letter-spacing: 2px !important; }
   </style>
 </head>
 <body>
@@ -46,53 +53,52 @@
 
   <div class="lower-control-panel">
     <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/index.html" class="control-btn home-btn"><i class="fa-solid fa-house"></i></a>
-    <button id="adaptiveArrow" class="control-btn" onclick="toggleScroll()"><i class="fa-solid fa-chevron-down"></i></button>
+    <button id="adaptiveArrow" onclick="handleArrowScroll()" class="control-btn"><i class="fa-solid fa-chevron-down"></i></button>
   </div>
 
   <div class="dashboard-container">
-    <h1>CARYLL'S GROWTH PORTFOLIO</h1>
     <div class="garden-grid">
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/the-teacher.html" class="plant-card"><span>The Teacher</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/environment.html" class="plant-card"><span>Environment</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/theory.html" class="plant-card"><span>Theory</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/philosophy.html" class="plant-card"><span>Philosophy</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/management.html" class="plant-card"><span>Management</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/assessment.html" class="plant-card"><span>Assessment</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/demo-teaching.html" class="plant-card"><span>Demo Teaching</span></a>
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/gallery.html" class="plant-card"><span>Gallery</span></a>
       
-      <!-- Stage 9: CBAR (Fruiting Tree) -->
       <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/cbar.html" class="plant-card">
-        <div class="plant-art-container">
-          <span class="apple" style="top:20px; left:20px;">🍎</span>
-          <span class="apple" style="top:10px; right:20px;">🍎</span>
-          <div style="width:10px; height:30px; background:#734d26;"></div>
-          <div class="terracotta-pot"></div>
-        </div>
+        <div class="plant-art-container"><span class="apple-extra-1">🍎</span><span class="apple-extra-2">🍎</span><div class="terracotta-pot"></div></div>
         <span>CBAR</span>
       </a>
 
-      <!-- Stage 8: Gallery (Tree) -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/gallery.html" class="plant-card">
+      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card">
         <div class="plant-art-container">
-          <div class="growth-element" style="width:50px; height:50px;"></div>
-          <div class="terracotta-pot"></div>
+          <i class="fa-solid fa-apple-whole" style="color:red;"></i><i class="fa-solid fa-pie-slice" style="color:orange;"></i>
+          <div class="pie-pan-tin-isolated"></div>
         </div>
-        <span>Gallery</span>
+        <span>Course Reflection</span>
       </a>
-
-      <!-- Repeat structure for all 9 stages... -->
     </div>
   </div>
 
+  <footer>© 2026 Caryll's Growth Portfolio</footer>
+
   <script>
-    function updateProgress() {
-      const scroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = height > 0 ? (scroll / height) * 100 : 0;
-      document.getElementById("scrollProgressBar").style.width = scrolled + "%";
-      const btn = document.getElementById("adaptiveArrow");
-      if (scrolled > 20) btn.classList.add("flip-up");
-      else btn.classList.remove("flip-up");
+    function trackScrollEngine() {
+      var scroll = window.scrollY;
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      var prog = total > 0 ? (scroll / total) * 100 : 0;
+      document.getElementById("scrollProgressBar").style.width = prog + "%";
+      var btn = document.getElementById("adaptiveArrow");
+      if (prog > 40) btn.classList.add("flip-up"); else btn.classList.remove("flip-up");
     }
-    function toggleScroll() {
-      const btn = document.getElementById("adaptiveArrow");
+    function handleArrowScroll() {
+      var btn = document.getElementById("adaptiveArrow");
       if (btn.classList.contains("flip-up")) window.scrollTo({top: 0, behavior: 'smooth'});
       else window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
     }
-    window.addEventListener('scroll', updateProgress);
+    window.onscroll = trackScrollEngine;
   </script>
 </body>
 </html>
