@@ -49,7 +49,6 @@
     .doc-embed-wrapper { position: relative; width: 100%; height: 480px; overflow-y: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; background: #fafafa; margin-bottom: 10px; transition: transform 0.3s ease; }
     .zoomed-in { transform: scale(1.15); transform-origin: top center; height: 550px; }
 
-    /* REPLACED FLOATING CONTAINER WITH BLOCK CONTAINER */
     .footer-container { width: 100%; text-align: center; margin-top: 20px; padding-bottom: 40px; }
     .dashboard-link-btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--btn-color); text-decoration: none; border: 2px solid var(--btn-color); padding: 12px 32px; border-radius: 6px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; background: #ffffff; transition: all 0.2s ease; cursor: pointer; }
     .dashboard-link-btn:hover { background-color: var(--btn-color); color: #ffffff; }
@@ -91,7 +90,7 @@
 
   <div class="content-card">
     <h3><i class="fa-solid fa-book-open" style="margin-right: 8px;"></i> Live Reflection Journal</h3>
-    <p>Observation of the Teaching Environment:</p>
+    <p>View and edit the live reflection journal for this environment audit:</p>
     <div class="doc-toolbar">
       <button class="toolbar-btn" onclick="toggleZoom('notion-frame')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
       <button class="toolbar-btn" onclick="scrollToTop('notion-frame')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
@@ -101,9 +100,13 @@
     </div>
   </div>
 
-  <!-- Footer block with arrow button -->
   <div class="footer-container">
-    <a href="dashboard.html" class="dashboard-link-btn"><i class="fa-solid fa-arrow-left"></i> Return to Dashboard</a>
+    <a href="dashboard.html" class="dashboard-link-btn">
+      <i class="fa-solid fa-arrow-left"></i> Return to Dashboard
+    </a>
+    <div style="margin-top: 15px; color: var(--btn-color); font-size: 24px;">
+      <i class="fa-solid fa-arrow-down"></i>
+    </div>
   </div>
 
   <script>
