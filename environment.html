@@ -4,26 +4,27 @@
   <meta charset="UTF-8">
   <title>Classroom Environment Assessment</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
     :root {
-        --bg-color: #fcfbfa;
+        --bg-color: #f7f6f4;
+        --card-bg: #ffffff;
         --text-color: #2c3e50;
         --accent-color: #4a6741;
-        --border-color: #e6e4e0;
-        --secondary-text: #576574;
+        --border-color: #dcd9d3;
         --btn-color: #d37327;
+        --shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Quicksand', sans-serif;
-      padding: 40px 20px 80px 20px; 
+      padding: 40px 20px; 
       max-width: 500px; 
       margin: 0 auto;
       min-height: 100vh;
@@ -32,34 +33,63 @@
       align-items: center;
     }
 
-    .brand-icon { color: var(--accent-color); font-size: 32px; margin-bottom: 12px; }
-    .main-page-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.8rem; color: var(--accent-color); text-align: center; margin-bottom: 8px; }
-    .subtitle { font-size: 1rem; color: var(--secondary-text); text-align: center; margin-bottom: 35px; font-style: italic; }
+    .brand-icon { color: var(--accent-color); font-size: 40px; margin-bottom: 15px; }
+    
+    .main-page-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.6rem; color: var(--accent-color); margin-bottom: 8px; }
+    .subtitle { font-size: 0.95rem; color: #7f8c8d; margin-bottom: 40px; letter-spacing: 0.5px; text-align: center;}
 
-    .content-card { width: 100%; background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; margin-bottom: 25px; }
-    h3 { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.1rem; color: var(--accent-color); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
+    .content-card { 
+      width: 100%; 
+      background: var(--card-bg); 
+      border: 1px solid var(--border-color); 
+      border-radius: 12px; 
+      padding: 24px; 
+      margin-bottom: 30px; 
+      box-shadow: var(--shadow);
+    }
+    
+    h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--accent-color); margin-bottom: 15px; display: flex; align-items: center; }
 
-    .doc-toolbar { display: flex; justify-content: flex-end; gap: 10px; background: #fdfdfd; border: 1px solid var(--border-color); border-bottom: none; padding: 8px 12px; border-top-left-radius: 6px; border-top-right-radius: 6px; }
-    .toolbar-btn { background: #ffffff; border: 1px solid var(--border-color); color: var(--secondary-text); padding: 6px 12px; font-family: 'Quicksand', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .doc-toolbar { 
+      display: flex; gap: 8px; background: #fdfdfd; border: 1px solid var(--border-color); 
+      border-bottom: none; padding: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px; 
+    }
+    .toolbar-btn { 
+      background: #fff; border: 1px solid var(--border-color); color: #636e72; 
+      padding: 6px 12px; font-family: 'Quicksand', sans-serif; font-size: 0.75rem; 
+      font-weight: 600; border-radius: 6px; cursor: pointer; transition: 0.2s;
+    }
+    .toolbar-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
-    .doc-embed-wrapper { position: relative; width: 100%; height: 400px; border: 1px solid var(--border-color); border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; background: #fafafa; margin-bottom: 10px; }
+    .doc-embed-wrapper { 
+      width: 100%; height: 350px; border: 1px solid var(--border-color); 
+      border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; background: #f9f9f9; 
+    }
 
-    .footer-container { text-align: center; margin-top: 20px; padding-bottom: 40px; }
-    .dashboard-link-btn { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--btn-color); text-decoration: none; border: 2px solid var(--btn-color); padding: 12px 32px; border-radius: 6px; text-transform: uppercase; }
+    .footer-container { text-align: center; margin-top: 20px; padding-bottom: 60px; }
+    .dashboard-link-btn { 
+      display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif; 
+      font-weight: 700; color: var(--btn-color); text-decoration: none; border: 2px solid var(--btn-color); 
+      padding: 14px 28px; border-radius: 8px; text-transform: uppercase; font-size: 0.8rem;
+    }
 
-    .floating-scroll-indicator { position: fixed; bottom: 80px; right: 20px; color: var(--btn-color); font-size: 32px; animation: bounce 2s infinite; z-index: 1000; pointer-events: none; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .floating-scroll-indicator { 
+      position: fixed; bottom: 40px; right: 25px; color: var(--btn-color); 
+      font-size: 28px; animation: bounce 2s infinite; z-index: 1000; 
+    }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   </style>
 </head>
 <body>
 
   <div class="brand-icon"><i class="fa-solid fa-seedling"></i></div>
+  
   <h1 class="main-page-title">Classroom Environment</h1>
-  <p class="subtitle">Evaluating and auditing intentional learning spaces</p>
+  <p class="subtitle">AUDIT & REFLECTION PORTFOLIO</p>
 
-  <!-- Environmental Checklist -->
+  <!-- Checklist -->
   <div class="content-card">
-    <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 8px;"></i> Environmental Checklist</h3>
+    <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 10px;"></i> Checklist</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
       <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
@@ -69,9 +99,9 @@
     </div>
   </div>
 
-  <!-- Reflection on Environment -->
+  <!-- Reflection -->
   <div class="content-card">
-    <h3><i class="fa-regular fa-comment-dots" style="margin-right: 8px;"></i> Reflection on Environment</h3>
+    <h3><i class="fa-regular fa-comment-dots" style="margin-right: 10px;"></i> Reflection</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
       <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
@@ -81,9 +111,9 @@
     </div>
   </div>
 
-  <!-- Live Reflection Journal -->
+  <!-- Notion Journal -->
   <div class="content-card">
-    <h3><i class="fa-solid fa-book-open" style="margin-right: 8px;"></i> Live Reflection Journal</h3>
+    <h3><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i> Live Journal</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
       <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
