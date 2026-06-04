@@ -10,28 +10,20 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* CLASSROOM MANAGEMENT SYSTEM VARIABLES */
     :root {
-        --bg-color: #fcfbfa; /* Warm oatmeal backdrop */
+        --bg-color: #fcfbfa; 
         --text-color: #2c3e50;
-        --accent-color: #4a6741; /* Sage green primary color */
+        --accent-color: #4a6741; 
         --border-color: #e6e4e0;
         --secondary-text: #576574;
-        --btn-color: #d37327; /* The warm orange-brown color */
+        --btn-color: #d37327; 
     }
 
-    * { 
-        box-sizing: border-box; 
-        margin: 0; 
-        padding: 0; 
-        -webkit-tap-highlight-color: transparent; 
-    }
-    
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Quicksand', sans-serif;
-      padding: 40px 20px 140px 20px; /* Extra bottom padding so content doesn't hide behind the floating button */
+      padding: 40px 20px;
       max-width: 500px; 
       margin: 0 auto;
       min-height: 100vh;
@@ -41,7 +33,6 @@
       line-height: 1.7;
     }
 
-    /* GENTLE FLOATING BRAND ICON */
     .brand-icon {
       color: var(--accent-color); 
       font-size: 32px;
@@ -49,14 +40,12 @@
       animation: gentle-bounce 3s infinite ease-in-out;
     }
 
-    /* TOP MAIN PAGE TITLE */
     .main-page-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.8rem;
       color: var(--accent-color);
       text-align: center;
-      letter-spacing: -0.5px;
       margin-bottom: 8px;
     }
 
@@ -68,7 +57,6 @@
       font-style: italic;
     }
 
-    /* CONTENT BLOCKS */
     .content-card {
       width: 100%;
       background: #ffffff;
@@ -95,22 +83,21 @@
       text-align: justify;
     }
 
-    /* PROFILE IMAGE COMPONENT */
+    /* Profile Image Circle - Smaller */
     .profile-image-container {
-        width: 100%;
-        margin-bottom: 25px;
-        text-align: center;
+      width: 100%;
+      margin-bottom: 25px;
+      text-align: center;
     }
 
     .profile-image-container img {
-        width: 100%;
-        max-height: 350px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
     }
 
-    /* LIST STYLING */
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -133,43 +120,46 @@
       top: 0;
     }
 
-    /* CONSTANT FLOATING BOTTOM CONTAINER */
-    .dashboard-btn-container {
+    /* Floating Scroll Arrow */
+    .scroll-arrow {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 0;
-      text-align: center;
-      z-index: 999;
-      background: linear-gradient(to top, rgba(252,251,250,1) 70%, rgba(252,251,250,0) 100%); /* Fades seamlessly into background */
+      bottom: 20px;
+      right: 20px;
+      font-size: 28px;
+      color: var(--btn-color);
+      cursor: pointer;
+      animation: gentle-bounce 2s infinite ease-in-out;
+      z-index: 1000;
+      transition: color 0.2s ease;
     }
 
-    /* THE FLOATING ORANGE-BROWN BUTTON */
-    .dashboard-link-btn {
+    .scroll-arrow:hover {
+      color: var(--accent-color);
+    }
+
+    /* Static Return Link */
+    .return-link {
       display: inline-block;
       font-family: 'Montserrat', sans-serif; 
       font-weight: 700;
       color: var(--btn-color);
       text-decoration: none;
       border: 2px solid var(--btn-color);
-      padding: 12px 32px;
+      padding: 10px 20px;
       border-radius: 6px;
       font-size: 0.85rem;
       letter-spacing: 1px;
       text-transform: uppercase; 
       background: #ffffff; 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow so it looks elevated */
+      margin-top: 30px;
       transition: all 0.2s ease;
-      cursor: pointer;
     }
 
-    .dashboard-link-btn:hover {
+    .return-link:hover {
       background-color: var(--btn-color);
       color: #ffffff;
     }
 
-    /* FLOATING ANIMATION FOR ICON */
     @keyframes gentle-bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
@@ -178,21 +168,17 @@
 </head>
 <body>
 
-  <!-- Exact Seedling Icon From Classroom Management -->
   <div class="brand-icon">
     <i class="fa-solid fa-seedling"></i>
   </div>
 
-  <!-- Page Header -->
   <h1 class="main-page-title">Caryll Kayn</h1>
   <p class="subtitle">Editor, Educator, and Lifelong Learner</p>
 
-  <!-- Profile Image Container -->
   <div class="profile-image-container">
-      <img src="image/90cb1868-f743-4993-a144-d3a175235e54.jpg" alt="Caryll Kayn Portfolio Photo">
+    <img src="image/90cb1868-f743-4993-a144-d3a175235e54.jpg" alt="Caryll Kayn Portfolio Photo">
   </div>
 
-  <!-- Biography Card -->
   <div class="content-card">
     <h3>About Me</h3>
     <p>
@@ -203,7 +189,6 @@
     </p>
   </div>
 
-  <!-- Hobbies Card -->
   <div class="content-card">
     <h3>Beyond the Desk & Classroom</h3>
     <p>
@@ -216,11 +201,15 @@
     </ul>
   </div>
 
-  <!-- Sticky Constant Floating Navigation Button -->
-  <div class="dashboard-btn-container">
-    <a href="dashboard.html" class="dashboard-link-btn">← Return to Dashboard</a>
+  <!-- Floating Scroll Arrow -->
+  <div class="scroll-arrow" onclick="document.getElementById('dashboard-link').scrollIntoView({behavior:'smooth'});">
+    <i class="fa-solid fa-arrow-down"></i>
   </div>
+
+  <!-- Static Return Link at Bottom -->
+  <a id="dashboard-link" href="dashboard.html" class="return-link">
+    ← Return to Dashboard
+  </a>
 
 </body>
 </html>
-
