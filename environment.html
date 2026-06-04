@@ -2,121 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Classroom Environment Assessment | Portfolio Asset</title>
+  <title>Classroom Environment Assessment</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
     :root {
-        --bg-color: #fcfbfa;
         --text-color: #2c3e50;
         --accent-color: #4a6741;
-        --border-color: #e6e4e0;
-        --secondary-text: #576574;
         --btn-color: #d37327;
+        --bg-color: #fcfbfa;
+        --border-color: #e6e4e0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Quicksand', sans-serif;
-      padding: 40px 20px 80px 20px; 
-      max-width: 500px; 
+      padding: 40px 20px;
+      max-width: 500px;
       margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
-    .brand-icon { color: var(--accent-color); font-size: 32px; margin-bottom: 12px; animation: gentle-bounce 3s infinite ease-in-out; }
-    .main-page-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.8rem; color: var(--accent-color); text-align: center; letter-spacing: -0.5px; margin-bottom: 8px; }
-    .subtitle { font-size: 1rem; color: var(--secondary-text); text-align: center; margin-bottom: 35px; font-style: italic; }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
 
-    .content-card { width: 100%; background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; margin-bottom: 25px; }
-    h3 { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.1rem; color: var(--accent-color); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
-    p { font-size: 0.95rem; color: var(--text-color); margin-bottom: 15px; text-align: justify; }
+    /* Document container styles */
+    .doc-embed-wrapper { 
+      width: 100%; 
+      height: 400px; 
+      border: 1px solid var(--border-color); 
+      margin-bottom: 30px; 
+      background: #ffffff;
+    }
 
-    .doc-toolbar { display: flex; justify-content: flex-end; gap: 10px; background: #fdfdfd; border: 1px solid var(--border-color); border-bottom: none; padding: 8px 12px; border-top-left-radius: 6px; border-top-right-radius: 6px; }
-    .toolbar-btn { background: #ffffff; border: 1px solid var(--border-color); color: var(--secondary-text); padding: 6px 12px; font-family: 'Quicksand', sans-serif; font-size: 0.8rem; font-weight: 700; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s ease; text-decoration: none; }
-    .toolbar-btn:hover { border-color: var(--accent-color); color: var(--accent-color); background: #fafbfa; }
-
-    .doc-embed-wrapper { position: relative; width: 100%; height: 480px; overflow-y: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; background: #fafafa; margin-bottom: 10px; transition: transform 0.3s ease; }
-    .zoomed-in { transform: scale(1.15); transform-origin: top center; height: 550px; }
-
-    .footer-container { width: 100%; text-align: center; margin-top: 20px; padding-bottom: 40px; }
+    /* Footer styling with left-aligned arrow */
+    .footer-container { text-align: center; margin-top: 40px; }
+    .dashboard-link-btn { 
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--btn-color);
+      text-decoration: none;
+      border: 2px solid var(--btn-color);
+      padding: 15px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
     
-    .dashboard-link-btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--btn-color); text-decoration: none; border: 2px solid var(--btn-color); padding: 12px 32px; border-radius: 6px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; background: #ffffff; transition: all 0.2s ease; cursor: pointer; }
-    .dashboard-link-btn:hover { background-color: var(--btn-color); color: #ffffff; }
-    
-    /* Left-aligned arrow style matching 2621.jpg */
-    .left-aligned-arrow { margin-top: 15px; color: var(--btn-color); font-size: 28px; text-align: left; padding-left: 20px; animation: bounce 2s infinite; }
+    /* Left-aligned arrow matching your request */
+    .left-aligned-arrow { 
+      color: var(--btn-color); 
+      font-size: 32px; 
+      text-align: left; 
+      padding-left: 10px;
+      animation: bounce 2s infinite; 
+    }
 
-    @keyframes gentle-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
   </style>
 </head>
 <body>
 
-  <div class="brand-icon"><i class="fa-solid fa-seedling"></i></div>
-  <h1 class="main-page-title">Classroom Environment</h1>
-  <p class="subtitle">Evaluating and auditing intentional learning spaces</p>
-
-  <div class="content-card">
-    <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 8px;"></i> Environmental Checklist</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn" onclick="toggleZoom('frame1')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn" onclick="scrollToTop('frame1')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
-    <div class="doc-embed-wrapper" id="frame1">
-      <iframe src="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/preview" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
+  <h2>Classroom Environment Assessment</h2>
+  
+  <!-- Document Embeds -->
+  <div class="doc-embed-wrapper">
+    <iframe src="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/preview" width="100%" height="100%" frameborder="0"></iframe>
   </div>
 
-  <div class="content-card">
-    <h3><i class="fa-regular fa-comment-dots" style="margin-right: 8px;"></i> Reflection on Environment</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn" onclick="toggleZoom('frame2')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn" onclick="scrollToTop('frame2')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
-    <div class="doc-embed-wrapper" id="frame2">
-      <iframe src="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/preview" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
+  <div class="doc-embed-wrapper">
+    <iframe src="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/preview" width="100%" height="100%" frameborder="0"></iframe>
   </div>
 
-  <div class="content-card">
-    <h3><i class="fa-solid fa-book-open" style="margin-right: 8px;"></i> Live Reflection Journal</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn" onclick="toggleZoom('notion-frame')"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn" onclick="scrollToTop('notion-frame')"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
-    <div class="doc-embed-wrapper" id="notion-frame">
-      <iframe src="https://sassy-flier-535.notion.site/ebd//b76d12e2102e4482a9c4d08580582827" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
-  </div>
-
+  <!-- Footer block -->
   <div class="footer-container">
     <a href="dashboard.html" class="dashboard-link-btn">
-      <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> RETURN TO DASHBOARD
+      <i class="fa-solid fa-arrow-left"></i> RETURN TO DASHBOARD
     </a>
-    <div class="left-aligned-arrow">
-      <i class="fa-solid fa-arrow-down"></i>
-    </div>
+    <div class="left-aligned-arrow"><i class="fa-solid fa-arrow-down"></i></div>
   </div>
-
-  <script>
-    function toggleZoom(frameId) {
-      document.getElementById(frameId).classList.toggle('zoomed-in');
-    }
-    function scrollToTop(frameId) {
-      document.getElementById(frameId).scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
 
 </body>
 </html>
