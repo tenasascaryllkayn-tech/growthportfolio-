@@ -8,6 +8,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
+    /* Smooth scrolling for the whole page */
+    html { scroll-behavior: smooth; }
+
     :root {
         --bg-color: #f7f6f4;
         --card-bg: #ffffff;
@@ -73,9 +76,11 @@
       padding: 14px 28px; border-radius: 8px; text-transform: uppercase; font-size: 0.8rem;
     }
 
+    /* Functional floating scroll indicator */
     .floating-scroll-indicator { 
       position: fixed; bottom: 40px; right: 25px; color: var(--btn-color); 
       font-size: 28px; animation: bounce 2s infinite; z-index: 1000; 
+      cursor: pointer; /* Indicates it can be clicked */
     }
     @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   </style>
@@ -88,7 +93,7 @@
   <p class="subtitle">AUDIT & REFLECTION PORTFOLIO</p>
 
   <!-- Checklist -->
-  <div class="content-card">
+  <div class="content-card" id="checklist">
     <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 10px;"></i> Checklist</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
@@ -100,7 +105,7 @@
   </div>
 
   <!-- Reflection -->
-  <div class="content-card">
+  <div class="content-card" id="reflection">
     <h3><i class="fa-regular fa-comment-dots" style="margin-right: 10px;"></i> Reflection</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
@@ -112,7 +117,7 @@
   </div>
 
   <!-- Notion Journal -->
-  <div class="content-card">
+  <div class="content-card" id="journal">
     <h3><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i> Live Journal</h3>
     <div class="doc-toolbar">
       <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
@@ -129,7 +134,8 @@
     </a>
   </div>
 
-  <div class="floating-scroll-indicator">
+  <!-- Clickable floating indicator -->
+  <div class="floating-scroll-indicator" onclick="window.scrollTo(0, document.body.scrollHeight)">
     <i class="fa-solid fa-arrow-down"></i>
   </div>
 
