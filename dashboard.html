@@ -4,712 +4,94 @@
   <meta charset="UTF-8">
   <title>Dashboard | Caryll's Growth Portfolio</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    /* GLOBAL STRUCTURE & SCROLL ENGINE */
-    html {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      scroll-behavior: smooth;
-    }
+    html { margin: 0; padding: 0; width: 100%; height: 100%; scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; width: 100%; min-height: 101vh; background-color: #ffffff; font-family: 'Quicksand', sans-serif; color: #2d3436; display: block; box-sizing: border-box; }
+
+    .top-progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 12px; background-color: #f2f4f4; z-index: 2000; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .top-progress-bar { width: 0%; height: 100%; background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b); }
+
+    .dashboard-container { width: 100%; max-width: 950px; margin: 0 auto; padding: 60px 20px 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+    .hero-icon { font-size: 55px; color: #27ae60; margin-bottom: 15px; display: block; }
+    h1 { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 800; color: #2d3436; text-transform: uppercase; letter-spacing: 8px; margin: 0; text-align: center; }
+    .subtitle { font-size: 11px; font-weight: 700; color: #e67e22; text-transform: uppercase; letter-spacing: 5px; margin: 10px 0 5px 0; text-align: center; }
+    .welcome-text { font-size: 13px; font-weight: 700; color: #2d3436; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 55px 0; text-align: center; }
+
+    .garden-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 25px; width: 100%; max-width: 800px; margin-bottom: 60px; }
+    @media (max-width: 650px) { .garden-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .garden-grid { grid-template-columns: 1fr; } }
+
+    .plant-card { display: flex; flex-direction: column; align-items: center; text-decoration: none; position: relative; background: #fafbfc; border: 1px solid #f0f3f4; border-radius: 20px; padding: 20px 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .plant-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(39, 174, 96, 0.12); background: #ffffff; }
+
+    .plant-art-container { width: 100px; height: 110px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; margin-bottom: 12px; position: relative; }
+    .terracotta-pot { width: 54px; height: 42px; background: #e67e22; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; position: relative; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1); }
+    .terracotta-pot::before { content: ''; position: absolute; top: 0; left: -4px; width: 62px; height: 8px; background: #d35400; border-radius: 4px; }
     
-    body {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      min-height: 101vh !important; 
-      background-color: #ffffff !important;
-      font-family: 'Quicksand', sans-serif !important;
-      color: #2d3436 !important;
-      display: block !important;
-      box-sizing: border-box !important;
-    }
-
-    /* FLUSH TOP EDGE PROGRESS BAR */
-    .top-progress-container {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 12px !important;
-      background-color: #f2f4f4 !important;
-      z-index: 2000 !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
-    }
-
-    .top-progress-bar {
-      width: 0%; 
-      height: 100% !important;
-      background: linear-gradient(to right, #27ae60, #a3e4d7, #f5b041, #c0392b) !important;
-    }
-
-    .dashboard-container {
-      width: 100% !important;
-      max-width: 950px !important;
-      margin: 0 auto !important; 
-      padding: 60px 20px 40px !important; 
-      box-sizing: border-box !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-    }
-
-    /* TYPOGRAPHY HEADERS */
-    .hero-icon {
-      font-size: 55px !important; 
-      color: #27ae60 !important; 
-      margin-bottom: 15px !important;
-      display: block !important;
-    }
-
-    h1 { 
-      font-family: 'Montserrat', sans-serif !important; 
-      font-size: 38px !important; 
-      font-weight: 800 !important; 
-      color: #2d3436 !important; 
-      text-transform: uppercase !important; 
-      letter-spacing: 8px !important; 
-      margin: 0 !important;
-      text-align: center !important;
-    }
+    .pie-pan-tin-isolated { width: 68px; height: 26px; background: linear-gradient(to bottom, #8a5a36, #5c3a21); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; z-index: 2; }
+    .pie-pan-tin-isolated::before { content: ''; position: absolute; top: -3px; left: -4px; width: 76px; height: 5px; background: #734a29; border-radius: 3px; }
     
-    .subtitle { 
-      font-size: 11px !important; 
-      font-weight: 700 !important; 
-      color: #e67e22 !important; 
-      text-transform: uppercase !important; 
-      letter-spacing: 5px !important; 
-      margin: 10px 0 5px 0 !important; 
-      text-align: center !important;
-    }
-
-    .welcome-text {
-      font-size: 13px !important;
-      font-weight: 700 !important;
-      color: #2d3436 !important;
-      letter-spacing: 2px !important;
-      text-transform: uppercase !important;
-      margin: 0 0 55px 0 !important; 
-      text-align: center !important;
-    }
-
-    /* THE LUSH GARDEN GRID */
-    .garden-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 40px 25px !important;
-      width: 100% !important;
-      max-width: 800px !important;
-      margin-bottom: 60px !important;
-    }
-
-    @media (max-width: 650px) {
-      .garden-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    }
-    @media (max-width: 420px) {
-      .garden-grid { grid-template-columns: 1fr !important; }
-    }
-
-    /* BOTANICAL PLANT ELEMENT WRAPPER */
-    .plant-card {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      text-decoration: none !important;
-      position: relative !important;
-      background: #fafbfc !important;
-      border: 1px solid #f0f3f4 !important;
-      border-radius: 20px !important;
-      padding: 20px 10px !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
-    }
-
-    a.plant-card {
-      cursor: pointer !important;
-    }
-    div.plant-card {
-      cursor: default !important;
-    }
-
-    .plant-card:hover {
-      transform: translateY(-6px) !important;
-      box-shadow: 0 12px 24px rgba(39, 174, 96, 0.12) !important;
-      background: #ffffff !important;
-    }
-
-    /* THE GROWING PLANT ARTWORK LAYOUT */
-    .plant-art-container {
-      width: 100px !important;
-      height: 110px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: flex-end !important;
-      align-items: center !important;
-      margin-bottom: 12px !important;
-      position: relative !important;
-    }
-
-    /* THE CLAY POT BASE (Stages 2-9) */
-    .terracotta-pot {
-      width: 54px !important;
-      height: 42px !important;
-      background: #e67e22 !important; 
-      border-bottom-left-radius: 12px !important;
-      border-bottom-right-radius: 12px !important;
-      position: relative !important;
-      box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1) !important;
-    }
-    .terracotta-pot::before {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: -4px !important;
-      width: 62px !important;
-      height: 8px !important;
-      background: #d35400 !important;
-      border-radius: 4px !important;
-    }
-
-    /* --- THE EVOLUTIONARY STAGES CSS --- */
-
-    /* STAGE 1: BARE SEEDLING (No Pot) */
-    .stage-1-bare .growth-element {
-      width: 16px !important;
-      height: 24px !important;
-      background-color: #2ecc71 !important;
-      border-radius: 0 100% 0 100% !important;
-      transform: rotate(-10deg);
-      margin-bottom: 15px !important;
-      box-shadow: -4px -1px 0 #27ae60 inset !important;
-    }
-    .stage-1-bare .earth-mound {
-      width: 60px !important;
-      height: 16px !important;
-      background: #855e42 !important;
-      border-radius: 50% 50% 0 0 !important;
-      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15) !important;
-    }
-
-    /* STAGE 2: POTTED SPROUT */
-    .stage-2-sprout .growth-element {
-      width: 20px !important;
-      height: 16px !important;
-      background-color: #2ecc71 !important;
-      border-radius: 0 100% 0 100% !important;
-      transform: rotate(-15deg);
-      margin-bottom: 2px !important;
-    }
-
-    /* STAGE 3: GROWING SAPLING */
-    .stage-3-sapling .growth-element {
-      width: 5px !important;
-      height: 26px !important;
-      background: #27ae60 !important;
-      position: relative !important;
-      margin-bottom: -2px !important;
-    }
-    .stage-3-sapling .growth-element::after {
-      content: '' !important;
-      position: absolute;
-      top: 4px; right: -10px;
-      width: 12px; height: 8px;
-      background: #2ecc71;
-      border-radius: 0 100% 0 100%;
-    }
-
-    /* STAGE 4: SMALL SHRUB */
-    .stage-4-shrub1 .growth-element {
-      width: 32px !important;
-      height: 32px !important;
-      background: #27ae60 !important;
-      border-radius: 50% !important;
-      margin-bottom: -3px !important;
-    }
-
-    /* STAGE 5: MEDIUM SHRUB */
-    .stage-5-shrub2 .growth-element {
-      width: 42px !important;
-      height: 40px !important;
-      background: #219653 !important;
-      border-radius: 50% 50% 40% 40% !important;
-      margin-bottom: -4px !important;
-      position: relative !important;
-    }
-    .stage-5-shrub2 .growth-element::before {
-      content: '' !important;
-      position: absolute;
-      width: 18px; height: 18px;
-      background: #2ecc71;
-      border-radius: 50%;
-      top: -4px; left: 16px;
-    }
-
-    /* STAGE 6: LARGE LUSH SHRUB */
-    .stage-6-shrub3 .growth-element {
-      width: 50px !important;
-      height: 48px !important;
-      background: #1e824c !important;
-      border-radius: 45% 45% 40% 40% !important;
-      margin-bottom: -4px !important;
-      position: relative;
-    }
-    .stage-6-shrub3 .growth-element::after {
-      content: '' !important;
-      position: absolute;
-      width: 25px; height: 25px;
-      background: #27ae60;
-      border-radius: 50%;
-      top: -6px; left: 4px;
-    }
-
-    /* STAGE 7: YOUNG TREE */
-    .stage-7-youngtree .growth-element {
-      width: 8px !important;
-      height: 22px !important;
-      background: #855e42 !important; 
-      margin-bottom: -4px !important;
-      position: relative;
-    }
-    .stage-7-youngtree .growth-element::before {
-      content: '' !important;
-      position: absolute;
-      bottom: 16px; left: -18px;
-      width: 44px; height: 38px;
-      background: #27ae60;
-      border-radius: 50%;
-    }
-
-    /* STAGE 8: MATURE CANOPY TREE */
-    .stage-8-maturetree .growth-element {
-      width: 10px !important;
-      height: 25px !important;
-      background: #734d26 !important;
-      margin-bottom: -4px !important;
-      position: relative;
-    }
-    .stage-8-maturetree .growth-element::before {
-      content: '' !important;
-      position: absolute;
-      bottom: 18px; left: -26px;
-      width: 62px; height: 52px;
-      background: #1e824c;
-      border-radius: 35px 35px 25px 25px !important;
-      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.1) !important;
-    }
-
-    /* STAGE 9: FRUITING TREE */
-    .stage-9-fruittree .growth-element {
-      width: 10px !important;
-      height: 25px !important;
-      background: #734d26 !important;
-      margin-bottom: -4px !important;
-      position: relative;
-    }
-    .stage-9-fruittree .growth-element::before {
-      content: '' !important;
-      position: absolute;
-      bottom: 18px; left: -26px;
-      width: 62px; height: 52px;
-      background: #196f3d !important;
-      border-radius: 35px 35px 25px 25px !important;
-      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.15) !important;
-    }
-    .stage-9-fruittree .growth-element::after {
-      content: '🍎' !important;
-      position: absolute;
-      bottom: 34px;
-      left: -8px;
-      font-size: 14px;
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-    }
-    .stage-9-fruittree .apple-extra-1 {
-      position: absolute !important;
-      bottom: 25px !important;
-      right: -18px !important;
-      font-size: 10px !important;
-      z-index: 3 !important;
-    }
-    .stage-9-fruittree .apple-extra-2 {
-      position: absolute !important;
-      bottom: 44px !important;
-      right: -2px !important;
-      font-size: 11px !important;
-      z-index: 3 !important;
-    }
-
-    /* STAGE 10: PRODUCT STAGE (Isolated Pie Pan Setup) */
-    .stage-10-reflectiontree .apple-pie-combo-container {
-      position: absolute !important;
-      bottom: 38px !important; 
-      left: 22px !important; 
-      width: 55px !important;
-      height: 30px !important;
-      z-index: 4 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      animation: gentle-bounce 3s infinite ease-in-out;
-    }
-
-    /* 1. THE BITTEN APPLE */
-    .stage-10-reflectiontree .bitten-apple-icon {
-      font-size: 24px !important;
-      background: linear-gradient(135deg, #ff6b6b 0%, #c0392b 60%, #962d22 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      -webkit-text-stroke: 1.2px #7b1e15 !important;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
-      position: relative !important;
-    }
-    .stage-10-reflectiontree .bitten-apple-icon::after {
-      content: '' !important;
-      position: absolute !important;
-      top: 5px !important;
-      right: 1px !important;
-      width: 9px !important;
-      height: 9px !important;
-      background: #fafbfc !important;
-      border-radius: 50% !important;
-      box-shadow: inset 1px -0.5px 0 0.5px #7b1e15 !important;
-    }
-
-    /* 2. THE PIE SLICE */
-    .stage-10-reflectiontree .pie-slice-icon {
-      font-size: 22px !important;
-      background: linear-gradient(135deg, #f39c12 0%, #d35400 70%, #a04000 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      -webkit-text-stroke: 1.2px #873600 !important;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
-      position: relative !important;
-      margin-left: -2px !important;
-    }
-
-    /* 3. THE DISTINCT BROWN PIE PAN TIN (No Terracotta References) */
-    .pie-pan-tin-isolated {
-      width: 68px !important;
-      height: 26px !important;
-      background: linear-gradient(to bottom, #8a5a36, #5c3a21) !important; /* Deep pastry brown */
-      border-bottom-left-radius: 16px !important;
-      border-bottom-right-radius: 16px !important;
-      position: relative !important;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.2) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin-bottom: 6px !important;
-      z-index: 2 !important;
-    }
+    .ribbon { position: absolute; top: 5px; right: -25px; width: 100px; background: #e67e22; color: white; font-size: 9px; font-weight: 800; text-align: center; text-transform: uppercase; transform: rotate(45deg); padding: 3px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 10; }
     
-    /* Flared crimped rim of the pie pan */
-    .pie-pan-tin-isolated::before {
-      content: '' !important;
-      position: absolute !important;
-      top: -3px !important;
-      left: -4px !important;
-      width: 76px !important;
-      height: 5px !important;
-      background: #734a29 !important;
-      border-radius: 3px !important;
-    }
+    .topic-badge-icon { position: absolute; bottom: 12px; z-index: 5; color: #ffffff; font-size: 13px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .topic-badge-icon-pan { color: #ffffff; font-size: 12px; }
+    .plant-card span { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: #2d3436; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-top: 8px; }
 
-    /* Isolated inner-pan Book Icon */
-    .topic-badge-icon-pan {
-      color: #ffffff !important;
-      font-size: 12px !important;
-      position: relative !important;
-      top: 1px !important;
-      z-index: 5 !important;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
-    }
-    
-    /* Dynamic hover updates to keep mask crisp matching card background states */
-    .plant-card:hover .bitten-apple-icon::after {
-      background: #ffffff !important;
-    }
-
-    /* APP ICON BADGES FLOATING INSIDE POTS / EARTH */
-    .topic-badge-icon {
-      position: absolute !important;
-      bottom: 12px !important;
-      z-index: 5 !important;
-      color: #ffffff !important;
-      font-size: 13px !important;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
-    }
-    .stage-1-bare .topic-badge-icon {
-      bottom: 2px !important;
-      color: #fafbfc !important;
-    }
-
-    /* TEXT LABEL CONTENT STYLE */
-    .plant-card span {
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 700 !important;
-      color: #2d3436 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      text-align: center !important;
-      margin-top: 8px !important;
-      line-height: 1.3 !important;
-    }
-
-    /* LOWER RIGHT NAVIGATION CONTROLS */
-    .lower-control-panel {
-      position: fixed !important;
-      right: 25px !important;
-      bottom: 25px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 12px !important;
-      z-index: 1100 !important;
-    }
-
-    .control-btn {
-      width: 48px !important;
-      height: 48px !important;
-      background-color: #27ae60 !important; 
-      color: #ffffff !important;
-      border-radius: 50% !important; 
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      font-size: 18px !important;
-      border: none !important;
-      text-decoration: none !important;
-      cursor: pointer !important;
-      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3) !important;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease !important;
-    }
-
-    .control-btn:hover {
-      transform: scale(1.1) !important;
-      background-color: #219653 !important;
-    }
-
-    .home-btn {
-      background-color: #2d3436 !important; 
-      box-shadow: 0 4px 15px rgba(45, 52, 54, 0.25) !important;
-    }
-    .home-btn:hover {
-      background-color: #1a1a1a !important;
-    }
-
-    .smart-arrow i {
-      transition: transform 0.3s ease !important;
-    }
-    .flip-up i {
-      transform: rotate(180deg) !important;
-    }
-
-    @keyframes gentle-bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    @media (max-width: 480px) {
-      .lower-control-panel { right: 16px !important; bottom: 16px !important; }
-      .control-btn { width: 44px !important; height: 44px !important; font-size: 16px !important; }
-    }
-
-    footer {
-      width: 100% !important;
-      text-align: center !important;
-      padding: 45px 0 30px !important;
-      font-size: 11px !important;
-      color: #95a5a6 !important;
-      letter-spacing: 2px !important;
-    }
+    .lower-control-panel { position: fixed; right: 25px; bottom: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1100; }
+    .control-btn { width: 48px; height: 48px; background-color: #27ae60; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); }
+    .home-btn { background-color: #2d3436; }
+    footer { width: 100%; text-align: center; padding: 45px 0 30px; font-size: 11px; color: #95a5a6; letter-spacing: 2px; }
   </style>
 </head>
 <body>
 
-  <div class="top-progress-container">
-    <div id="scrollProgressBar" class="top-progress-bar"></div>
-  </div>
+  <div class="top-progress-container"><div id="scrollProgressBar" class="top-progress-bar"></div></div>
 
   <div class="lower-control-panel">
-    <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/index.html" class="control-btn home-btn" aria-label="Go to home cover screen">
-      <i class="fa-solid fa-house"></i>
-    </a>
-    <button id="adaptiveArrow" onclick="handleArrowScroll()" class="control-btn smart-arrow" aria-label="Scroll page">
-      <i class="fa-solid fa-chevron-down"></i>
-    </button>
+    <a href="index.html" class="control-btn home-btn"><i class="fa-solid fa-house"></i></a>
+    <button id="adaptiveArrow" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" class="control-btn"><i class="fa-solid fa-chevron-down"></i></button>
   </div>
 
   <div class="dashboard-container">
-    
-    <div class="hero-icon">
-      <i class="fa-solid fa-seedling"></i>
-    </div>
+    <div class="hero-icon"><i class="fa-solid fa-seedling"></i></div>
     <h1>CARYLL'S</h1>
     <p class="subtitle">GROWTH PORTFOLIO</p>
     <p class="welcome-text">Welcome to my portfolio dashboard</p>
 
     <div class="garden-grid">
+      <!-- Cards -->
+      <a href="the-teacher.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-user-tie topic-badge-icon"></i></div><span>The Teacher</span></a>
+      <a href="environment.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-school topic-badge-icon"></i></div><span>Environment</span></a>
+      <a href="theory.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-lightbulb topic-badge-icon"></i></div><span>Theory</span></a>
+      <a href="philosophy.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-heart topic-badge-icon"></i></div><span>Philosophy</span></a>
+      <a href="management.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-hand-holding-heart topic-badge-icon"></i></div><span>Management</span></a>
+      <a href="assessment.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-clipboard-check topic-badge-icon"></i></div><span>Assessment</span></a>
+      <a href="demo-teaching.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-chalkboard-user topic-badge-icon"></i></div><span>Demo Teaching</span></a>
+      <a href="gallery.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-images topic-badge-icon"></i></div><span>Gallery</span></a>
+      <a href="cbar.html" class="plant-card"><div class="plant-art-container"><div class="terracotta-pot"></div><i class="fa-solid fa-chart-bar topic-badge-icon"></i></div><span>CBAR</span></a>
+      <a href="course-reflection.html" class="plant-card"><div class="plant-art-container"><div class="pie-pan-tin-isolated"><i class="fa-solid fa-book-open topic-badge-icon-pan"></i></div></div><span>Course Reflection</span></a>
       
-      <!-- STAGE 1: THE TEACHER -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/the-teacher.html" class="plant-card stage-1-bare">
+      <!-- EXTRA -->
+      <a href="dream-school.html" class="plant-card">
         <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="earth-mound"></div>
-          <i class="fa-solid fa-user-tie topic-badge-icon"></i>
+          <div class="ribbon">EXTRA</div>
+          <div class="pie-pan-tin-isolated"><i class="fa-solid fa-school topic-badge-icon-pan"></i></div>
         </div>
-        <span>The Teacher</span>
+        <span>Dream School</span>
       </a>
-
-      <!-- STAGE 2: ENVIRONMENT -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/environment.html" class="plant-card stage-2-sprout">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-school topic-badge-icon"></i>
-        </div>
-        <span>Environment</span>
-      </a>
-
-      <!-- STAGE 3: THEORY -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/theory.html" class="plant-card stage-3-sapling">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-lightbulb topic-badge-icon"></i>
-        </div>
-        <span>Theory</span>
-      </a>
-
-      <!-- STAGE 4: PHILOSOPHY -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/philosophy.html" class="plant-card stage-4-shrub1">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-heart topic-badge-icon"></i>
-        </div>
-        <span>Philosophy</span>
-      </a>
-
-      <!-- STAGE 5: MANAGEMENT -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/management.html" class="plant-card stage-5-shrub2">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-hand-holding-heart topic-badge-icon"></i>
-        </div>
-        <span>Management</span>
-      </a>
-
-      <!-- STAGE 6: ASSESSMENT (CHANGED FROM DIV TO A HREF) -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/assessment.html" class="plant-card stage-6-shrub3">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-clipboard-check topic-badge-icon"></i>
-        </div>
-        <span>Assessment</span>
-      </a>
-
-      <!-- STAGE 7: DEMO TEACHING -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/demo-teaching.html" class="plant-card stage-7-youngtree">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-chalkboard-user topic-badge-icon"></i>
-        </div>
-        <span>Demo Teaching</span>
-      </a>
-
-      <!-- STAGE 8: GALLERY -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/gallery.html" class="plant-card stage-8-maturetree">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-images topic-badge-icon"></i>
-        </div>
-        <span>Gallery</span>
-      </a>
-
-      <!-- STAGE 9: CBAR -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/cbar.html" class="plant-card stage-9-fruittree">
-        <div class="plant-art-container">
-          <div class="growth-element"></div>
-          <span class="apple-extra-1">🍎</span>
-          <span class="apple-extra-2">🍎</span>
-          <div class="terracotta-pot"></div>
-          <i class="fa-solid fa-chart-bar topic-badge-icon"></i>
-        </div>
-        <span>CBAR</span>
-      </a>
-
-      <!-- STAGE 10: COURSE REFLECTION -->
-      <a href="https://tenasascaryllkayn-tech.github.io/growthportfolio-/course-reflection.html" class="plant-card stage-10-reflectiontree">
-        <div class="plant-art-container">
-          <div class="apple-pie-combo-container">
-            <i class="fa-solid fa-apple-whole bitten-apple-icon"></i>
-            <i class="fa-solid fa-pie-slice pie-slice-icon"></i>
-          </div>
-          <div class="pie-pan-tin-isolated">
-            <i class="fa-solid fa-book-open topic-badge-icon-pan"></i>
-          </div>
-        </div>
-        <span>Course Reflection</span>
-      </a>
-
     </div>
-
   </div>
 
   <footer>© 2026 Caryll's Growth Portfolio</footer>
 
   <script>
-    window.onscroll = function() { trackScrollEngine() };
-    window.onload = function() { trackScrollEngine() };
-    window.onresize = function() { trackScrollEngine() };
-
-    function trackScrollEngine() {
-      var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      
-      var progressBar = document.getElementById("scrollProgressBar");
-      var arrowButton = document.getElementById("adaptiveArrow");
-
-      if (totalHeight <= 10) {
-        progressBar.style.width = "0%";
-        arrowButton.classList.remove("flip-up");
-      } else {
-        var scrolled = (winScroll / totalHeight) * 100;
-        scrolled = Math.min(Math.max(scrolled, 0), 100);
-        progressBar.style.width = scrolled + "%";
-        
-        if (scrolled > 40) {
-          arrowButton.classList.add("flip-up");
-        } else {
-          arrowButton.classList.remove("flip-up");
-        }
-      }
-    }
-
-    function handleArrowScroll() {
-      var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var arrowButton = document.getElementById("adaptiveArrow");
-      
-      if (totalHeight <= 10) {
-        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
-      } else {
-        if (arrowButton.classList.contains("flip-up")) {
-          window.scrollTo({top: 0, behavior: 'smooth'});
-        } else {
-          window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
-        }
-      }
-    }
+    window.onscroll = function() {
+      var scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById("scrollProgressBar").style.width = scrolled + "%";
+    };
   </script>
-
 </body>
 </html>
