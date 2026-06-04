@@ -34,7 +34,6 @@
       padding-bottom: 10px;
     }
 
-    /* Document container styles */
     .doc-embed-wrapper { 
       width: 100%; 
       height: 400px; 
@@ -43,7 +42,6 @@
       background: #ffffff;
     }
 
-    /* Footer styling with left-aligned arrow */
     .footer-container { text-align: center; margin-top: 40px; }
     .dashboard-link-btn { 
       display: block;
@@ -57,14 +55,17 @@
       text-transform: uppercase;
       margin-bottom: 15px;
     }
-    
-    /* Left-aligned arrow matching your request */
-    .left-aligned-arrow { 
-      color: var(--btn-color); 
-      font-size: 32px; 
-      text-align: left; 
-      padding-left: 10px;
-      animation: bounce 2s infinite; 
+
+    /* Floating right-side arrow */
+    .floating-scroll-indicator {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      color: var(--btn-color);
+      font-size: 32px;
+      animation: bounce 2s infinite;
+      z-index: 1000;
+      pointer-events: none;
     }
 
     @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -74,7 +75,6 @@
 
   <h2>Classroom Environment Assessment</h2>
   
-  <!-- Document Embeds -->
   <div class="doc-embed-wrapper">
     <iframe src="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/preview" width="100%" height="100%" frameborder="0"></iframe>
   </div>
@@ -83,12 +83,15 @@
     <iframe src="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/preview" width="100%" height="100%" frameborder="0"></iframe>
   </div>
 
-  <!-- Footer block -->
   <div class="footer-container">
     <a href="dashboard.html" class="dashboard-link-btn">
       <i class="fa-solid fa-arrow-left"></i> RETURN TO DASHBOARD
     </a>
-    <div class="left-aligned-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+  </div>
+
+  <!-- Floating indicator from 2623.jpg -->
+  <div class="floating-scroll-indicator">
+    <i class="fa-solid fa-arrow-down"></i>
   </div>
 
 </body>
