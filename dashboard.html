@@ -12,7 +12,6 @@
     body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background-color: #ffffff; font-family: 'Quicksand', sans-serif; color: #2d3436; }
     .dashboard-container { width: 100%; max-width: 950px; margin: 0 auto; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; }
     
-    /* Title Section */
     h1 { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 800; text-transform: uppercase; letter-spacing: 8px; margin: 0; }
     .subtitle { font-size: 11px; font-weight: 700; color: #e67e22; text-transform: uppercase; letter-spacing: 5px; margin: 10px 0 40px 0; }
 
@@ -24,7 +23,6 @@
     .plant-art-container { width: 100px; height: 110px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; }
     .terracotta-pot { width: 54px; height: 42px; background: #e67e22; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; position: relative; }
     
-    /* Stages */
     .growth-element { margin-bottom: -2px; }
     .stage-1 .growth-element { width: 16px; height: 24px; background: #2ecc71; border-radius: 0 100% 0 100%; transform: rotate(-10deg); }
     .stage-2 .growth-element { width: 20px; height: 16px; background: #2ecc71; border-radius: 0 100% 0 100%; }
@@ -36,7 +34,6 @@
     .stage-8 .growth-element { width: 10px; height: 25px; background: #734d26; }
     .stage-9 .growth-element { width: 10px; height: 25px; background: #734d26; }
     
-    .ribbon { position: absolute; top: 15px; right: -25px; width: 100px; background: #e67e22; color: white; font-size: 9px; font-weight: 800; text-align: center; text-transform: uppercase; transform: rotate(45deg); padding: 3px 0; z-index: 10; }
     .topic-badge-icon { position: absolute; bottom: 12px; color: #ffffff; font-size: 13px; z-index: 5; }
     .plant-card span { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-top: 10px; color: #2d3436; }
   </style>
@@ -48,7 +45,6 @@
     <p class="subtitle">GROWTH PORTFOLIO</p>
 
     <div class="garden-grid">
-      <!-- Standard Plant Cards -->
       <a href="#" class="plant-card stage-1"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-user-tie topic-badge-icon"></i></div><span>The Teacher</span></a>
       <a href="#" class="plant-card stage-2"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-school topic-badge-icon"></i></div><span>Environment</span></a>
       <a href="#" class="plant-card stage-3"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-lightbulb topic-badge-icon"></i></div><span>Theory</span></a>
@@ -58,23 +54,6 @@
       <a href="#" class="plant-card stage-7"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-chalkboard-user topic-badge-icon"></i></div><span>Demo Teaching</span></a>
       <a href="#" class="plant-card stage-8"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-images topic-badge-icon"></i></div><span>Gallery</span></a>
       <a href="#" class="plant-card stage-9"><div class="plant-art-container"><div class="growth-element"></div><div class="terracotta-pot"></div><i class="fa-solid fa-chart-bar topic-badge-icon"></i></div><span>CBAR</span></a>
-      
-      <!-- Final Two (Standardized) -->
-      <a href="#" class="plant-card">
-        <div class="plant-art-container">
-          <div class="terracotta-pot" style="background: #5c3a21;"></div>
-          <i class="fa-solid fa-book-open topic-badge-icon"></i>
-        </div>
-        <span>Course Reflection</span>
-      </a>
-      <a href="#" class="plant-card">
-        <div class="plant-art-container">
-          <div class="ribbon">EXTRA</div>
-          <div class="terracotta-pot" style="background: #5c3a21;"></div>
-          <i class="fa-solid fa-school topic-badge-icon"></i>
-        </div>
-        <span>Dream School</span>
-      </a>
     </div>
   </div>
 </body>
