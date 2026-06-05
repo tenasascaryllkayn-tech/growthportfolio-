@@ -25,7 +25,11 @@
       color: var(--text-color);
     }
 
-    .brand-icon { color: var(--accent-color); font-size: 32px; margin-bottom: 12px; }
+    .brand-icon { 
+      color: var(--accent-color); 
+      font-size: 32px; 
+      margin-bottom: 12px; 
+    }
 
     h1 { 
       font-family: 'Montserrat', sans-serif; 
@@ -48,8 +52,22 @@
     
     iframe {
       width: 100%;
-      height: 700px;
+      height: 80vh; /* scales with viewport height */
       border: none;
+    }
+
+    /* Tablet adjustments */
+    @media (max-width: 768px) {
+      iframe {
+        height: 65vh;
+      }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      iframe {
+        height: 55vh;
+      }
     }
 
     .return-link {
@@ -70,6 +88,23 @@
       background-color: var(--btn-color);
       color: #ffffff;
     }
+
+    .download-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 18px;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .download-link:hover {
+      background-color: #365a32;
+    }
   </style>
 </head>
 <body>
@@ -81,10 +116,12 @@
   <h1>Classroom Based Action Research</h1>
 
   <div class="doc-container">
-    <iframe src="https://docs.google.com/document/d/e/2PACX-1vSWWQaQ7yXaJyhhG5LtxHSV8Jt0VLkyGCVUEDbF2Tl-wWHQmsPWo98RK4Gacs1Ecw/pub?embedded=true"></iframe>
+    <iframe src="https://drive.google.com/file/d/18I93mSt7RfPgdcpZrwcAG9dD6crlMjws/preview"></iframe>
   </div>
 
   <a href="dashboard.html" class="return-link">← Return to Dashboard</a>
+  <a href="https://drive.google.com/uc?export=download&id=18I93mSt7RfPgdcpZrwcAG9dD6crlMjws" class="download-link">⬇ Download File</a>
 
 </body>
 </html>
+
