@@ -5,33 +5,115 @@
   <title>Growth Portfolio | Demo Teaching</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    body { background-color: #f8f9fa; font-family: 'Quicksand', sans-serif; color: #2d3436; margin: 0; padding: 40px 20px 120px; max-width: 900px; margin: 0 auto; }
-    .header-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; }
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Quicksand', sans-serif;
+      color: #2d3436;
+      margin: 0;
+      padding: 40px 20px 120px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+    }
     .seedling-icon { font-size: 48px; margin-bottom: 10px; }
-    h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin: 0; color: #2d3436; }
-    .title-accent-line { width: 60px; height: 4px; background-color: #e67e22; margin-top: 15px; border-radius: 2px; }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      margin: 0;
+      color: #2d3436;
+    }
+    .title-accent-line {
+      width: 60px;
+      height: 4px;
+      background-color: #e67e22;
+      margin-top: 15px;
+      border-radius: 2px;
+    }
     
-    .content-panel { background: #ffffff; border: 1px solid #eef2f3; border-radius: 24px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-    .section-label { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; color: #e67e22; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+    .content-panel {
+      background: #ffffff;
+      border: 1px solid #eef2f3;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: #e67e22;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      display: block;
+    }
     
-    .video-wrapper { width: 100%; height: 500px; background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 30px; }
-    .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+    .video-wrapper {
+      width: 100%;
+      height: 550px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
     
-    .instruction-note { font-size: 13px; color: #636e72; background: #fff3e0; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #e67e22; }
-    .notebook-area { background: #ffffff; border: 2px dashed #dfe6e9; border-radius: 16px; padding: 25px; min-height: 200px; margin-bottom: 20px; outline: none; transition: border 0.3s; }
-    .notebook-area:focus { border-color: #e67e22; }
+    .doc-preview-wrapper {
+      width: 100%;
+      height: 700px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #dfe6e9;
+      margin-bottom: 20px;
+    }
+    .doc-preview-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
     
-    .ts-link { color: #e67e22; text-decoration: underline; cursor: pointer; font-weight: bold; background: #fff3e0; padding: 0 4px; border-radius: 4px; }
-    .doc-preview-wrapper { width: 100%; height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid #dfe6e9; margin-bottom: 20px; }
-    .doc-preview-wrapper iframe { width: 100%; height: 100%; border: none; }
-    
-    .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-    #timestamp { font-size: 13px; color: #b2bec3; font-style: italic; }
-    
-    .btn { display: inline-flex; align-items: center; gap: 10px; background: #ffffff; color: #e67e22; padding: 12px 25px; border: 2px solid #e67e22; border-radius: 10px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      color: #e67e22;
+      padding: 12px 25px;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
     .btn:hover { background: #e67e22; color: #ffffff; }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .video-wrapper { height: 400px; }
+      .doc-preview-wrapper { height: 500px; }
+    }
+    @media (max-width: 480px) {
+      .video-wrapper { height: 300px; }
+      .doc-preview-wrapper { height: 350px; }
+    }
   </style>
 </head>
 <body>
@@ -44,66 +126,26 @@
   <div class="content-panel">
     <span class="section-label">Video Evidence</span>
     <div class="video-wrapper">
-      <iframe id="vidFrame" src="https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Jqr0cwi7qkk" allowfullscreen></iframe>
     </div>
 
-    <span class="section-label">Reflection Journal</span>
-    <div class="instruction-note">
-      <i class="fa-solid fa-lightbulb"></i> <strong>Note:</strong> 🌱 Click any orange timestamp (e.g., 4:00) to jump to that moment in the video.
-    </div>
-    <div class="notebook-area" id="reflectionJournal" contenteditable="true">Loading...</div>
-    
-    <div class="controls">
-      <span id="timestamp">Last saved: Never</span>
-      <button class="btn" onclick="saveReflection()"><i class="fa-solid fa-floppy-disk"></i> Save Reflection</button>
-    </div>
-    
     <span class="section-label">Lesson Plan Preview</span>
     <div class="doc-preview-wrapper">
       <iframe src="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/preview"></iframe>
     </div>
-    <a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full Lesson Plan</a>
+    <a href="https://docs.google.com/document/d/1mdb8r3qnsqcDWXe4kq3zK5RfUKgJQcsiDu6i5Os4P-I/edit" target="_blank" class="btn">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full Lesson Plan
+    </a>
+
+    <span class="section-label">Additional Document</span>
+    <div class="doc-preview-wrapper">
+      <iframe src="https://docs.google.com/document/d/e/2PACX-1vS8YYlEkeaYy4sHXhfo7oJPCW0sadLAmeC_w2ymESsYvol2DsEThirn-v-Un3RN97hIrdxsCiC9vpdB/pub?embedded=true"></iframe>
+    </div>
   </div>
 
   <div style="text-align: center;">
     <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
   </div>
-  <script>
-    const supabase = supabase.createClient('https://gbtatmfnaaqqnmrjanvf.supabase.co', 'Sb_publishable_WB5kPvrpZaQ3Pqi6Dytvyw_05644sAz');
-    const journal = document.getElementById('reflectionJournal');
-    const ts = document.getElementById('timestamp');
-    const vidFrame = document.getElementById('vidFrame');
-
-    journal.addEventListener('click', (e) => {
-        if (e.target.classList.contains('ts-link')) {
-            const time = e.target.dataset.time;
-            vidFrame.src = "https://www.youtube.com/embed/Jqr0cwi7qkk?enablejsapi=1&start=" + time;
-        }
-    });
-
-    async function load() {
-        const { data } = await supabase.from('reflections').select('content').eq('id', 1).single();
-        if (data) journal.innerHTML = data.content;
-    }
-    
-    async function saveReflection() {
-        // Get raw text, ignoring all HTML
-        let text = journal.innerText;
-        
-        // This looks for [min:sec]
-        let newHtml = text.replace(/\[(\d+):(\d+)\]/g, (match, m, s) => {
-            const seconds = parseInt(m) * 60 + parseInt(s);
-            return `<span class="ts-link" style="color: #e67e22; text-decoration: underline; cursor: pointer; font-weight: bold;" data-time="${seconds}">${match}</span>`;
-        });
-        
-        journal.innerHTML = newHtml;
-        await supabase.from('reflections').update({ content: newHtml }).eq('id', 1);
-        ts.innerText = "Last saved: " + new Date().toLocaleString();
-    }
-    load();
-  </script>
-
-
-
 </body>
 </html>
+
