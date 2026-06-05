@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classroom Based Action Research | Caryll's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+        --bg-color: #fcfbfa; 
+        --text-color: #2c3e50;
+        --accent-color: #4a6741; 
+        --btn-color: #d37327; 
+    }
 
+    body { 
+      font-family: 'Quicksand', sans-serif; 
+      background-color: var(--bg-color); 
+      padding: 40px 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    .brand-icon { color: var(--accent-color); font-size: 32px; margin-bottom: 12px; }
+
+    h1 { 
+      font-family: 'Montserrat', sans-serif; 
+      color: var(--accent-color); 
+      margin-bottom: 25px; 
+      text-align: center;
+    }
+    
+    /* Responsive Container for the Document */
+    .doc-container {
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      border: 1px solid #e6e4e0;
+      border-radius: 8px;
+      padding: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    .return-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 2px solid var(--btn-color);
+      color: var(--btn-color);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .return-link:hover {
+      background-color: var(--btn-color);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-icon">
+    <i class="fa-solid fa-seedling"></i>
+  </div>
+
+  <h1>Classroom Based Action Research</h1>
+
+  <div class="doc-container">
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vSWWQaQ7yXaJyhhG5LtxHSV8Jt0VLkyGCVUEDbF2Tl-wWHQmsPWo98RK4Gacs1Ecw/pub?embedded=true"></iframe>
+  </div>
+
+  <a href="dashboard.html" class="return-link">← Return to Dashboard</a>
+
+</body>
+</html>
