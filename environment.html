@@ -8,7 +8,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
   
   <style>
-    html { scroll-behavior: smooth; }
     :root {
         --bg-color: #f7f6f4;
         --card-bg: #ffffff;
@@ -48,35 +47,11 @@
 
     h3 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: var(--accent-color); margin-bottom: 15px; display: flex; align-items: center; }
 
-    .doc-toolbar {
-      display: flex;
-      gap: 8px;
-      background: #fdfdfd;
-      border: 1px solid var(--border-color);
-      border-bottom: none;
-      padding: 10px;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-
-    .toolbar-btn {
-      background: #fff;
-      border: 1px solid var(--border-color);
-      color: #636e72;
-      padding: 6px 12px;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    
     .doc-embed-wrapper {
       width: 100%;
-      height: 600px; /* taller for desktop */
+      height: 700px; /* bigger for desktop */
       border: 1px solid var(--border-color);
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
+      border-radius: 8px;
       background: #f9f9f9;
     }
 
@@ -88,7 +63,7 @@
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .doc-embed-wrapper { height: 450px; }
+      .doc-embed-wrapper { height: 500px; }
     }
 
     @media (max-width: 480px) {
@@ -114,22 +89,6 @@
       background-color: var(--btn-color);
       color: #fff;
     }
-
-    .floating-scroll-indicator {
-      position: fixed;
-      bottom: 40px;
-      right: 25px;
-      color: var(--btn-color);
-      font-size: 28px;
-      animation: bounce 2s infinite;
-      z-index: 1000;
-      cursor: pointer;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
   </style>
 </head>
 <body>
@@ -141,10 +100,6 @@
   <!-- Checklist -->
   <div class="content-card">
     <h3><i class="fa-solid fa-clipboard-check" style="margin-right: 10px;"></i> Checklist</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
     <div class="doc-embed-wrapper">
       <iframe src="https://docs.google.com/document/d/1-H5LbAkzfEA9Jtmwap0_F3RibYvcoHUk/preview"></iframe>
     </div>
@@ -153,10 +108,6 @@
   <!-- Reflection -->
   <div class="content-card">
     <h3><i class="fa-regular fa-comment-dots" style="margin-right: 10px;"></i> Reflection</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
     <div class="doc-embed-wrapper">
       <iframe src="https://docs.google.com/document/d/1vAr85zRzkWAu7L7xlSMdb9bgoL4blPQuB-p8p_LRmF8/preview"></iframe>
     </div>
@@ -165,10 +116,6 @@
   <!-- Notion Journal -->
   <div class="content-card">
     <h3><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i> Live Journal</h3>
-    <div class="doc-toolbar">
-      <button class="toolbar-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</button>
-      <button class="toolbar-btn"><i class="fa-solid fa-arrows-up-down"></i> Scroll</button>
-    </div>
     <div class="doc-embed-wrapper">
       <iframe src="https://sassy-flier-535.notion.site/ebd//b76d12e2102e4482a9c4d08580582827"></iframe>
     </div>
@@ -178,10 +125,7 @@
     <a href="dashboard.html" class="dashboard-link-btn"><i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> RETURN TO DASHBOARD</a>
   </div>
 
-  <div class="floating-scroll-indicator" onclick="window.scrollBy(0, 400)">
-    <i class="fa-solid fa-arrow-down"></i>
-  </div>
-
 </body>
 </html>
+
 
