@@ -1,82 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Reflection - Growth Portfolio</title>
-    <style>
-        body { 
-            font-family: sans-serif; 
-            padding: 40px 20px; 
-            margin: 0; 
-            text-align: center;
-            color: #333;
-        }
-        h1 { 
-            font-size: 24px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            margin-bottom: 10px;
-        }
-        .separator {
-            width: 50px;
-            height: 2px;
-            background-color: #e67e22; 
-            margin: 0 auto 40px auto;
-        }
-        .iframe-container {
-            max-width: 900px;
-            margin: 0 auto 30px auto;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 20px;
-            background-color: #fcfcfc;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        /* Button group container */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        /* Button styling */
-        .nav-btn {
-            display: inline-block;
-            padding: 10px 30px;
-            border: 1px solid #e67e22;
-            color: #e67e22;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: bold;
-            min-width: 220px;
-        }
-        .nav-btn:hover { background-color: #fffaf5; }
-        
-        .footer-text { font-size: 12px; color: #aaa; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Course Reflection | Growth Portfolio</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  
+  <style>
+    body { background-color: #ffffff; color: #2d3436; font-family: 'Quicksand', sans-serif; padding: 40px 20px 120px 20px; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    
+    /* Pot Button Styles mirroring 2627_2.jpg */
+    .pot-grid { display: flex; gap: 20px; justify-content: center; margin-top: 30px; margin-bottom: 40px; }
+    .pot-card {
+        width: 120px; text-align: center; text-decoration: none; color: #2d3436;
+        padding: 15px; border-radius: 15px; border: 1px solid #f0f0f0; transition: transform 0.2s;
+    }
+    .pot-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .pot-icon { 
+        width: 60px; height: 50px; background-color: #d35400; /* Terracotta Color */
+        margin: 0 auto 10px auto; border-radius: 0 0 20px 20px; position: relative;
+    }
+    .pot-icon::before { 
+        content: ''; position: absolute; top: -10px; left: 10px; width: 40px; height: 10px; 
+        background-color: #d35400; border-radius: 5px; 
+    }
+    .pot-label { font-family: 'Montserrat'; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+
+    /* Previous styles... */
+    .main-page-title { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; text-align: center; }
+    .main-page-title::after { content: ''; display: block; width: 40px; height: 3px; background-color: #e67e22; margin: 8px auto 0 auto; }
+    .embed-container { width: 100%; height: 700px; background: #fafafa; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; overflow: hidden; margin-bottom: 40px; }
+    iframe { width: 100%; height: 100%; border: 0; }
+    .nav-btn { display: inline-flex; justify-content: center; padding: 12px 20px; border: 2px solid #e67e22; color: #e67e22; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 12px; }
+  </style>
 </head>
 <body>
 
-    <h1>Course Reflection</h1>
-    <div class="separator"></div>
+  <h1 class="main-page-title">Course Reflection</h1>
 
-    <div class="iframe-container">
-        <iframe src="https://sassy-flier-535.notion.site/ebd//1c355077bf114a6e9b14531ba144a65e" 
-                width="100%" height="700" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <div class="embed-container">
+    <iframe src="https://sassy-flier-535.notion.site/ebd//1c355077bf114a6e9b14531ba144a65e" allowfullscreen></iframe>
+  </div>
 
-    <!-- Navigation Buttons -->
-    <div class="btn-group">
-        <a href="dashboard.html" class="nav-btn">Return to Dashboard</a>
-        <a href="dream-school.html" class="nav-btn">Dream School</a>
-        <a href="about-me-video.html" class="nav-btn">About Me Video</a>
-    </div>
+  <a href="dashboard.html" class="nav-btn"><i class="fa-solid fa-arrow-left"></i> &nbsp; Return to Dashboard</a>
 
-    <div class="footer-text">© 2026 Caryll's Growth Portfolio</div>
+  <!-- Terracotta Pot Navigation -->
+  <div class="pot-grid">
+    <a href="dream-school.html" class="pot-card">
+      <div class="pot-icon"></div>
+      <div class="pot-label">Dream School</div>
+    </a>
+    <a href="about-me-video.html" class="pot-card">
+      <div class="pot-icon"></div>
+      <div class="pot-label">About Me Video</div>
+    </a>
+  </div>
 
 </body>
 </html>
+
