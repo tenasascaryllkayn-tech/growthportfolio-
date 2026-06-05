@@ -5,54 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Reflection - Growth Portfolio</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; margin: 0; }
-        .nav-container { margin-bottom: 20px; display: flex; gap: 15px; }
-        .nav-button { 
-            padding: 12px 24px; 
-            background-color: #5a7d5a; 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-size: 18px; 
-            font-weight: bold;
+        body { 
+            font-family: sans-serif; 
+            padding: 40px 20px; 
+            margin: 0; 
+            text-align: center;
+            color: #333;
         }
-        /* Floating Down Arrow */
-        .scroll-arrow {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #5a7d5a;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        h1 { 
+            font-size: 24px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            margin-bottom: 10px;
         }
-        /* Ensures the iframe has a scrollbar */
+        .separator {
+            width: 50px;
+            height: 2px;
+            background-color: #e67e22; 
+            margin: 0 auto 40px auto;
+        }
         .iframe-container {
-            border: 2px solid #5a7d5a;
-            overflow: auto;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
+            background-color: #fcfcfc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+        /* Button group container */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        /* Button styling */
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid #e67e22;
+            color: #e67e22;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            min-width: 220px;
+        }
+        .nav-btn:hover { background-color: #fffaf5; }
+        
+        .footer-text { font-size: 12px; color: #aaa; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="nav-container">
-        <a href="javascript:history.back()" class="nav-button">← Back</a>
-        <a href="dashboard.html" class="nav-button">Dashboard</a>
-    </div>
-
     <h1>Course Reflection</h1>
+    <div class="separator"></div>
 
     <div class="iframe-container">
         <iframe src="https://sassy-flier-535.notion.site/ebd//1c355077bf114a6e9b14531ba144a65e" 
-                width="100%" height="900" frameborder="0" allowfullscreen></iframe>
+                width="100%" height="700" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    <!-- Floating arrow linking to the bottom of the page -->
-    <a href="#footer" class="scroll-arrow">↓</a>
-    <div id="footer" style="margin-top: 100px;"></div>
+    <!-- Navigation Buttons -->
+    <div class="btn-group">
+        <a href="dashboard.html" class="nav-btn">Return to Dashboard</a>
+        <a href="dream-school.html" class="nav-btn">Dream School</a>
+        <a href="about-me-video.html" class="nav-btn">About Me Video</a>
+    </div>
+
+    <div class="footer-text">© 2026 Caryll's Growth Portfolio</div>
 
 </body>
 </html>
